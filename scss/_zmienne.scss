@@ -12,11 +12,14 @@
 	$color_theme4_1: 	#919191;
 	$color_theme4_2: 	#BCBCBC;
 
+	$color_done: 		#61CE31;
+
 //gradients
 
-	$gradient_theme1_1: linear-gradient(99deg, $color_theme1_1, $color_theme1_2);
-	$gradient_theme2_1: linear-gradient(293deg, $color_theme2_1, $color_theme2_2);
-	$gradient_theme4_1: linear-gradient(293deg, $color_theme4_1, $color_theme4_2);
+	$gradient_theme1_1: linear-gradient(99deg, $color_theme1_2, $color_theme1_1);
+	$gradient_theme2_1: linear-gradient(293deg, $color_theme2_2, $color_theme2_1);
+	$gradient_theme3_1: linear-gradient(293deg, $color_theme3_2, $color_theme3_1);
+	$gradient_theme4_1: linear-gradient(293deg, $color_theme4_2, $color_theme4_1);
 
 //background colors
 	$color_back: 		#FAFAFA;
@@ -28,7 +31,14 @@
 	$color_text_light: 	#95989A;
 	$color_text_lighter:#989898; 
 	$color_text_white: 	white;
+	$color_text_tasks:  #818181;
 
+
+// media queries - lower bound
+
+	$screen_size_S: 576px;
+	$screen_size_M: 768px;
+	$screen_size_L: 992px;
 
 //fonts definition
 
