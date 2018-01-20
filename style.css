@@ -1,0 +1,185 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+body {
+  line-height: 1;
+  color: black;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+button {
+  border-style: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.interest-choice {
+  width: 100%;
+  background-color: #FAFAFA;
+  text-align: center;
+}
+
+.interest-choice button {
+  text-transform: uppercase;
+  font: 1.9rem "Proxima Nova", "Arial", sans_serif;
+  font-weight: bolder;
+  padding: 1.5rem 4.0rem;
+  border-radius: 2.6rem;
+  color: white;
+  margin-top: 8.0rem;
+}
+
+.interest-choice h2 {
+  padding-top: 15rem;
+  margin-bottom: 1rem;
+  font: 4rem "Catamaran", sans_serif;
+  color: #323C47;
+}
+
+.interest-choice h2 span {
+  font-weight: 700;
+}
+
+.interest-choice__subtitle {
+  font: 1.8rem "Proxima Nova", "Arial", sans_serif;
+  color: #95989A;
+  max-width: 580px;
+  margin: auto;
+  margin-bottom: 6.0rem;
+}
+
+.interest-choice__label {
+  display: block;
+  text-align: right;
+  padding-right: 10.8rem;
+  font: 1rem "Proxima Nova", "Arial", sans_serif;
+  line-height: 1.4rem;
+  text-transform: uppercase;
+  color: #95989A;
+  font-weight: bold;
+}
+
+.interest-choice__label::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.8rem;
+  background: #FAFAFA url(assets/zaznacz.svg) top center no-repeat;
+  background-size: 100%;
+}
+
+.interest-choice input[type='checkbox'] {
+  display: none;
+}
+
+.interest-choice__spec-choice button {
+  background: #919191 linear-gradient(293deg, #919191, #BCBCBC);
+}
+
+.interest-choice__spec-choice button.selected {
+  background: #FC597A linear-gradient(293deg, #FC597A, #FDB481);
+}
+
+.interest-choice__spec-card {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  background-color: #FFFFFF;
+  padding: 2.0rem 3.0rem;
+  border-radius: 2.6rem;
+  box-shadow: 0px 3px 22px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s;
+  transform-origin: 50% 50%;
+  cursor: pointer;
+}
+
+.interest-choice__spec-card h3 {
+  font: 3.7rem "Catamaran", sans_serif;
+  line-height: 100%;
+  font-weight: 700;
+}
+
+.interest-choice__spec-card p {
+  font: 1.6rem "Proxima Nova", "Arial", sans_serif;
+  color: #989898;
+}
+
+.interest-choice__spec-card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: 4.0rem;
+  left: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.interest-choice__spec-card:hover {
+  transform: scale(1.05);
+}
+
+.interest-choice__spec-card--selected {
+  background: #2884b3 linear-gradient(99deg, #2884b3, #84e2e3);
+}
+
+.interest-choice__spec-card--selected h3, .interest-choice__spec-card--selected p {
+  color: white;
+}

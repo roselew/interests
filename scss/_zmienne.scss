@@ -1,0 +1,41 @@
+//colors definition
+
+	$color_theme1_1: 	#2884b3;
+	$color_theme1_2: 	#84e2e3;
+
+	$color_theme2_1: 	#FC597A;
+	$color_theme2_2: 	#FDB481;
+
+	$color_theme3_1: 	#B367FF;
+	$color_theme3_2: 	#F410A5;
+
+	$color_theme4_1: 	#919191;
+	$color_theme4_2: 	#BCBCBC;
+
+//gradients
+
+	$gradient_theme1_1: linear-gradient(99deg, $color_theme1_1, $color_theme1_2);
+	$gradient_theme2_1: linear-gradient(293deg, $color_theme2_1, $color_theme2_2);
+	$gradient_theme4_1: linear-gradient(293deg, $color_theme4_1, $color_theme4_2);
+
+//background colors
+	$color_back: 		#FAFAFA;
+	$color_back_card: 	#FFFFFF;
+
+//font colors
+	$color_text_darker: #000000;
+	$color_text_dark:	#323C47;
+	$color_text_light: 	#95989A;
+	$color_text_lighter:#989898; 
+	$color_text_white: 	white;
+
+
+//fonts definition
+
+$font_title_family: 'Catamaran', sans_serif;
+$font_reg_family: 'Proxima Nova', 'Arial', sans_serif;
+
+
+
+
+

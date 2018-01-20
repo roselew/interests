@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1658 303 14 14">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #95989a;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="zaznacz" transform="translate(-9 -18)">
+    <g id="Rectangle_79" data-name="Rectangle 79" class="cls-1" transform="translate(1667 321)">
+      <rect class="cls-2" width="14" height="14" rx="5"/>
+      <rect class="cls-3" x="1" y="1" width="12" height="12" rx="4"/>
+    </g>
+    <path id="Path_802" data-name="Path 802" class="cls-1" d="M3305.551,5104.664l2.441,2.441,4.627-4.627" transform="translate(-1635 -4777)"/>
+  </g>
+</svg>

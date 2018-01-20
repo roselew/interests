@@ -1,0 +1,41 @@
+
+TECHNOLOGIE
+
+1. Je¿eli technologie wyje¿dz¹j¹ z lewej to potrzebny jest przycisk powrót ¿eby poprawiæ wybór specjalizacji. Albo mo¿e lepiej dó³ i góra
+
+dorobienie guzika
+
+specjalizacje w dó³, margines taki jak z boku
+
+2. Czy mo¿liwe jest dostanie gotowej listy specjalizacje / technologie / kursy w takim formacie jak jest ju¿ przechowywany w bazie eduweb
+
+3. Czy ikony to bêd¹ svg i wtedy mogê zmieniæ kolor ikony czy bêd¹ dwa zestawy ikon dla stanu selected i non-selected
+
+svg ze zmian¹ wype³nienia
+
+
+4. Problem z dublowaniem siê niektórych technologii np. Photoshop, Illustrator, Photoshop i Iluustrator
+
+5. Ekran zrobione - coœ nie gra w grafice, chyba ten ró¿ jest za mocny
+
+6. Czy zostaje tylko pasek górny i mam ca³y ekran 
+
+TESY
+
+1. Wykres - czy to chodzi o wykres typu waterfall dodatkowo z czerwonymi kropkami gdzie jest aktualny skumulowany wynik (to mo¿e lepiej po³¹czyæ je liniami)
+
+https://www.google.pl/search?q=waterfall+graph&tbm=isch&source=iu&ictx=1&fir=isBQe6fWboMS7M%253A%252CMtFW4Bfklz3l6M%252C_&usg=__kQ2CnldLqFd9IknWW-XuyXPwCeg%3D&sa=X&ved=0ahUKEwj18YnuoOXYAhVDr6QKHcw2Ca0Q9QEIMjAB#imgrc=qltvvwSO5EkkIM:
+
+2. To mo¿e póŸniej, bo jeszcze nie mam info o animacji
+
+3. 
+
+
+
+
+css wspólne 
+
+
+sass
+
+lista gradientow

@@ -1,0 +1,134 @@
+@import '_reset';
+@import '_zmienne';
+
+
+html {font-size: 62.5%;}
+
+
+.interest-choice{
+
+    width: 100%;
+    background-color: $color_back;
+    text-align: center;
+
+    button { 
+        text-transform: uppercase;
+        font: 1.9rem $font_reg_family;
+        font-weight: bolder;
+        padding: 1.5rem 4.0rem; //tu były różne paddingi podane
+        border-radius: 2.6rem;
+        color: $color_text_white;
+        margin-top: 8.0rem;
+    }
+
+    h2 {
+        padding-top: 15rem;
+        margin-bottom: 1rem;
+        font: 4.0rem $font_title_family;
+        color: $color_text_dark;
+        span{font-weight: 700;}
+    }
+
+    &__subtitle {
+        font: 1.8rem $font_reg_family;
+        color: $color_text_light;
+        max-width: 580px;
+        margin: auto;
+        margin-bottom: 6.0rem;
+    }
+
+    &__label {
+        display: block;
+        text-align: right;
+        padding-right: 10.8rem;
+        font: 1.0rem $font_reg_family;
+        line-height: 1.4rem;
+        text-transform: uppercase;
+        color: $color_text_light;
+        font-weight: bold;
+
+        &::before{
+            content:'';
+            display:inline-block;
+            vertical-align: middle;
+            width: 1.4rem;
+            height: 1.4rem;
+            margin-right: 0.8rem;
+            background: $color_back url(assets/zaznacz.svg) top center no-repeat;
+            background-size: 100%;
+
+        }
+
+    }
+
+    input[type='checkbox']{
+        display:none;
+    }
+
+
+    &__spec-choice{   
+
+        button {
+            background: $color_theme4_1 $gradient_theme4_1; 
+        }
+
+        button.selected{
+            background: $color_theme2_1 $gradient_theme2_1; 
+        }
+
+    }
+
+    &__spec-card{
+
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+        background-color: $color_back_card;
+        padding: 2.0rem 3.0rem;
+        border-radius: 2.6rem;
+        box-shadow: 0px 3px 22px rgba(black,0.15);
+        transition: all 0.3s;
+        transform-origin: 50% 50%;
+        cursor: pointer;
+        h3 {
+            font: 3.7rem $font_title_family;
+            line-height: 100%;
+            font-weight: 700;
+        }
+        p{
+            font: 1.6rem $font_reg_family;
+            color: $color_text_lighter;
+        }
+        img{
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+            position:absolute;
+            bottom: 4.0rem;
+            left:0;
+            right:0;
+            width: 100px;
+            height: 100px;
+
+
+        }
+
+        &:hover{transform: scale(1.05)}
+
+        &--selected {
+            background: $color_theme1_1 $gradient_theme1_1;
+            h3,p {color: white; }
+        }
+
+    }
+
+
+
+}
+
+
+
