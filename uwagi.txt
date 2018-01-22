@@ -1,39 +1,40 @@
 Pytania do Piotra:
 
-1) Grzegorz wspomina³, ¿e wszystko ma byæ przygotowne w modu³ach. Czy móg³byœ zerkn¹æ, czy w js ten zapis modu³owy jest prawid³owy? O to chodzi³o?
+1) Grzegorz wspominaÅ‚, Å¼e wszystko ma byÄ‡ przygotowne w moduÅ‚ach. Czy mÃ³gÅ‚byÅ› zerknÄ…Ä‡, czy w js ten zapis moduÅ‚owy jest prawidÅ‚owy? O to chodziÅ‚o?
 
-2) Czy dobrze nazywam klasy? Taka konwencja jest ok ? Stara³am siê trzymaæ, zgodnie z proœb¹ Grzegorza, BEM. Tylko nie  jestem pewna czy dorze to zrozumia³am.
+2) Czy dobrze nazywam klasy? Taka konwencja jest ok ? StaraÅ‚am siÄ™ trzymaÄ‡, zgodnie z proÅ›bÄ… Grzegorza, BEM. Tylko nie  jestem pewna czy dorze to zrozumiaÅ‚am.
 
-3) Mam spory problem z svg. Do tej pory robi³am tak, ¿e ¿eby modyfikowaæ styl svg albo trzyma³am kilka wersji pliku, albo trzyma³am gdzieœ w html ten który u¿ywa³am wielokrotnie. Ale tu jest za du¿o plików ¿eby tak zrobiæ. 
-Znalaz³am w sieci jakieœ "wstrzykiwacze" ale z tego co zrozumia³am one chyba wymagaj¹ uruchomienia lokalnego serwera. Móg³byœ mi podpowiedzieæ czy da siê to zrobiæ jakoœ proœciej ? 
+3) Mam spory problem z svg. Do tej pory robiÅ‚am tak, Å¼e Å¼eby modyfikowaÄ‡ styl svg albo trzymaÅ‚am kilka wersji pliku, albo trzymaÅ‚am gdzieÅ› w html ten ktÃ³ry uÅ¼ywaÅ‚am wielokrotnie. Ale tu jest za duÅ¼o plikÃ³w Å¼eby tak zrobiÄ‡. 
+ZnalazÅ‚am w sieci jakieÅ› "wstrzykiwacze" ale z tego co zrozumiaÅ‚am one chyba wymagajÄ… uruchomienia lokalnego serwera. MÃ³gÅ‚byÅ› mi podpowiedzieÄ‡ czy da siÄ™ to zrobiÄ‡ jakoÅ› proÅ›ciej ? 
 
-4) Mam jeszcze kilka problemów mniejszej rangi (zapisa³am w punkcie "Brakuj¹ce funkcjonalnoœci"), z którymi mo¿e lepiej jeszcze trochê powalczê, ¿eby nie marnowaæ Twojego czasu. 
+4) Mam jeszcze kilka problemÃ³w mniejszej rangi (zapisaÅ‚am w punkcie "BrakujÄ…ce funkcjonalnoÅ›ci"), z ktÃ³rymi moÅ¼e lepiej jeszcze trochÄ™ powalczÄ™, Å¼eby nie marnowaÄ‡ Twojego czasu. 
 
 
 Pytania do Grzegorza:
 
-1) Wygl¹d przycisku powrót
-2) Czy dobrze zrozumia³am ¿e dla kart specjalizacji/technologii marginesy skrajne i wewnêtrzne maj¹ byæ identyczne? 
+1) WyglÄ…d przycisku powrÃ³t
+2) Czy dobrze zrozumiaÅ‚am Å¼e dla kart specjalizacji/technologii marginesy skrajne i wewnÄ™trzne majÄ… byÄ‡ identyczne? 
 
 
 Pytania do Marcina:
 
-1) W jakiej formie zapisywaæ wybór u¿ytkownika?
-2) W jakiej formie dostanê dostêpne specjalizacje i technologie
+1) W jakiej formie zapisywaÄ‡ wybÃ³r uÅ¼ytkownika?
+2) W jakiej formie dostanÄ™ dostÄ™pne specjalizacje i technologie
 
 
-Brakuj¹ce funkcjonalnoœci (z braku czasu...):
+BrakujÄ…ce funkcjonalnoÅ›ci (z braku czasu...):
 
 1) Opcja Zaznacz / Odznacz Wszystko
 2) Wczytywanie specjalizacji i technologii z pliku json a nie ze zmiennej
-3) Przegl¹d kompatybilnoœci zastosowanych rozwi¹zañ dla starszych przegl¹darek
-4) Porz¹dek w kodzie, komentarze etc. 
+3) PrzeglÄ…d kompatybilnoÅ›ci zastosowanych rozwiÄ…zaÅ„ dla starszych przeglÄ…darek
+4) PorzÄ…dek w kodzie, komentarze etc. 
+5) RWD
 
 
-Brakuj¹ce funkcjonalnoœci (bo nie wiem jak...):
+BrakujÄ…ce funkcjonalnoÅ›ci (bo nie wiem jak...):
 
-1) svg - jak wstrzykn¹æ svg inline ¿eby zmieniaæ styl w css
-2) karta specjalizacji wybrana - bia³y trójk¹t w lewym górnym rogu - jak zaokr¹gliæ róg? (border-radius nie dzia³a, mo¿e wczytaæ gotowe svg ?)
-3) karta specjalizacji - jak zrobiæ wygaszanie
-4) animacja ukrycia niepotrzebnie widoczna przy za³adowaniu strony 
-5) usun¹æ zwiêkszone karty specjalizacji/technologii w ostatnim wierszu (tak ¿eby nadal mog³y marginesy byæ takie same)
+1) svg - jak wstrzyknÄ…Ä‡ svg inline Å¼eby zmieniaÄ‡ styl w css
+2) karta specjalizacji wybrana - biaÅ‚y trÃ³jkÄ…t w lewym gÃ³rnym rogu - jak zaokrÄ…gliÄ‡ rÃ³g? (border-radius nie dziaÅ‚a, moÅ¼e wczytaÄ‡ gotowe svg ?)
+3) karta specjalizacji - jak zrobiÄ‡ wygaszanie
+4) animacja ukrycia niepotrzebnie widoczna przy zaÅ‚adowaniu strony 
+5) usunÄ…Ä‡ zwiÄ™kszone karty specjalizacji/technologii w ostatnim wierszu (tak Å¼eby nadal mogÅ‚y marginesy byÄ‡ takie same)
