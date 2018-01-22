@@ -28,7 +28,7 @@ Brakujące funkcjonalności (z braku czasu...):
 2) Wczytywanie specjalizacji i technologii z pliku json a nie ze zmiennej
 3) Przegląd kompatybilności zastosowanych rozwiązań dla starszych przeglądarek
 4) Porządek w kodzie, komentarze etc. 
-5) RWD
+5) RWD (tło nie jest na pełną stronę + za duża czcionka dla małych rozdzielczości na niektórych ekranach)
 
 
 Brakujące funkcjonalności (bo nie wiem jak...):
@@ -38,3 +38,4 @@ Brakujące funkcjonalności (bo nie wiem jak...):
 3) karta specjalizacji - jak zrobić wygaszanie
 4) animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony 
 5) usunąć zwiększone karty specjalizacji/technologii w ostatnim wierszu (tak żeby nadal mogły marginesy być takie same)
+6) skąd dostęp do czcionki Proxima Nova
