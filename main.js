@@ -49,44 +49,41 @@ var technologies = [
 
 const interestsModule = (function(){
 
-    var userSpecializations=[];
+    var userSpecializations = [];
 
-    var userTechnologies=[];
+    var userTechnologies = [];
 
-    const setUserSpecializations = function(){
-        userSpecializations = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map (x => x.querySelector('h3').innerText);
-    };
+    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map(x => x.querySelector('h3').innerText);
 
-    const getUserSpecializtions = function(){
-        return userSpecializations;
-    };
+    const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserTechnologies = function(){
-        userTechnologies = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map (x => x.querySelector('h3').innerText);
-    };
+    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interest-choice__tech-card--selected')].map(x => x.querySelector('h3').innerText);
 
-    const getUserTechnologies = function(){
-        return userTechnologies;
-    };
+    const getUserTechnologies = () => userTechnologies;
 
-    const showSpecializations = function () {
+    const getAllSpecializations = () => specializations;
+
+    const getAllTechnologies = () => technologies; 
+
+    const appendSpecializations = () => {
 
         var element = document.querySelector('.interest-choice__spec-cards');
         var fragment = document.createDocumentFragment();
     
-        for (let specialization of specializations) {
+        for (let specialization of getAllSpecializations()) {
     
             //creates card with specialization
             let specCard = document.createElement('li');
             specCard.className = 'interest-choice__spec-card';
+            //name of specialization
             let specName = document.createElement('h3');
             specName.innerText = specialization.name;
             specCard.appendChild(specName);
-            
+            //number of technologies avaiable
             let specTechNum = document.createElement('p');
             specTechNum.innerText = 'Technologii: ' +  getTechnologies(specialization.name).length;
             specCard.appendChild(specTechNum);
-    
+            //specialization icon 
             let specIcon = document.createElement('img');
             specIcon.src = specialization.icon;
             specCard.appendChild(specIcon);
@@ -108,39 +105,41 @@ const interestsModule = (function(){
         specButton.addEventListener("click", displayTechnologies)
     };
 
-    const showTechnologies = function(){
+    const appendTechnologies = () => {
+
         var element = document.querySelector('.interest-choice__tech-cards');
         var fragment = document.createDocumentFragment();    
-    
-        // let allTechnologies = [];
 
         let selectedSpecializations = getUserSpecializtions();
 
+        //takes all available technologies from selected specializations
         let allTechnologies = selectedSpecializations.map( x => getTechnologies(x)).join(',').split(',');
 
+        // let allTechnologies = [];
         // for (let specialization of selectedSpecializations) {
         //     for (let technology of this.getTechnologies(specialization)) {
         //         allTechnologies.push(technology)
         //     }
         // }
     
-        //get rid of repetiting technologies
+        //get rid of repetiting technologies (technology can be in 2 specizalizations)
         uniq = allTechnologies => [... new Set(allTechnologies)];
     
         for (let technologyName of allTechnologies){
-            let technology = technologies.find( tech => tech.name ===technologyName);
+            let technology = getAllTechnologies().find( tech => tech.name ===technologyName);
           
            //creates card with technology
             let techCard = document.createElement('li');
             techCard.className = 'interest-choice__tech-card';
+            //name of technology
             let techName = document.createElement('h3');
             techName.innerText = technology.name;
             techCard.appendChild(techName);
-    
+            // number of courses (DO ZROBIENIA!!!)
             let techCourseNum = document.createElement('p');
             techCourseNum.innerText = 'Kursów: ';
             techCard.appendChild(techCourseNum);
-    
+            //technology icon
             let techIcon = document.createElement('img');
             techIcon.src = technology.icon;
             techCard.appendChild(techIcon);
@@ -161,9 +160,10 @@ const interestsModule = (function(){
         techButton.addEventListener("click", displayTasks)
     };
 
-    const getTechnologies = function(spec) {
-        tech=[];
-        for (let technology of technologies) {
+    //retruns technologies from given specification name (spec)
+    const getTechnologies = spec => {
+        let tech=[];
+        for (let technology of getAllTechnologies()) {
             if (technology.specializations.indexOf(spec)>-1){
                 tech.push(technology.name);
             }
@@ -171,82 +171,96 @@ const interestsModule = (function(){
         return tech;
     };
 
-    const selectSpecialization = function(e){
+    const selectSpecialization =  e => {
+
+        // toggles class selected for spec-card
         if (e.target !==e.currentTarget){
             let spec = e.target.closest('.interest-choice__spec-card');
             spec.classList.toggle('interest-choice__spec-card--selected')
         }
-        
+
+        // activates/inactivates button to go further
         let specButton = document.querySelector('.interest-choice__spec-button')
+        let activeClass = 'interest-choice__spec-button--active';
+
         if (document.querySelectorAll('.interest-choice__spec-card--selected').length>0) {
-            if (!specButton.classList.contains('interest-choice__spec-button--active')){
-                specButton.classList.add('interest-choice__spec-button--active')
+            // there are some spec-cards selected and button was inactive before - activate button
+            if (!specButton.classList.contains(activeClass)){
+                specButton.classList.add(activeClass)
             }
         } else {
-            if (specButton.classList.contains('interest-choice__spec-button--active')){
-                specButton.classList.remove('interest-choice__spec-button--active')
+            //there are none spec-cards selected and button was active bere - inactivate button
+            if (specButton.classList.contains(activeClass)){
+                specButton.classList.remove(activeClass)
             }  
         }
     };
 
 
-    const selectTechnology = function(e){
+    const selectTechnology =  e => {
+
+        // toggles class selected for tech-card
         if (e.target !==e.currentTarget){
             let tech = e.target.closest('.interest-choice__tech-card');
             tech.classList.toggle('interest-choice__tech-card--selected')
         }
         
+        // activates/inactivates button to go further
         let techButton = document.querySelector('.interest-choice__tech-button')
+        let activeClass = 'interest-choice__tech-button--active';
+
         if (document.querySelectorAll('.interest-choice__tech-card--selected').length>0) {
-            if (!techButton.classList.contains('interest-choice__tech-button--active')){
-                techButton.classList.add('interest-choice__tech-button--active')
+            // there are some tech-cards selected and button was inactive before - activate button
+            if (!techButton.classList.contains(activeClass)){
+                techButton.classList.add(activeClass)
             }
         } else {
-            if (techButton.classList.contains('interest-choice__tech-button--active')){
-                techButton.classList.remove('interest-choice__tech-button--active')
+            //there are none tech-cards selected and button was active bere - inactivate button
+            if (techButton.classList.contains(activeClass)){
+                techButton.classList.remove(activeClass)
             }  
         }
     };
 
     const displayTechnologies = e => {
+
+        //check if button is active
         if (e.target.closest('.interest-choice__spec-button--active')){
+            //stores selected specializations
             setUserSpecializations();
-            showTechnologies();
-            visibilityTechnologies();
-            visibilitySpecializations();
+            //appends technologies from selected specializations to HTML
+            appendTechnologies();
+            //show technologies page
+            toogleVisibility('tech-choice');
+            //hide sepcializations page
+            toogleVisibility('spec-choice');
         }
     };
 
     const displayTasks= e => {
+
+        //checks if button is active
         if (e.target.closest('.interest-choice__tech-button--active')){
+            //stores selected technologies
             setUserTechnologies();
-            visibilityTechnologies();
-            visibilityTasks();
+            //hide technologies page
+            toogleVisibility('tech-choice');
+            //show tasks page
+            toogleVisibility('task-list');
         }   
     };
 
-    const visibilityTechnologies=function(){
+    //toggles class --hidden for given element with className
+    const toogleVisibility = className => {
+        //scroll to the very top
         window.scrollTo(0,0);
-        let technologies = document.querySelector('.interest-choice__tech-choice');
-        technologies.classList.toggle('interest-choice__tech-choice--hidden');
+        let elem = document.querySelector('.interest-choice__'+className);
+        elem.classList.toggle('interest-choice__'+className+'--hidden');
     };
-
-    const visibilitySpecializations=function(){
-        window.scrollTo(0,0);
-        let specializations = document.querySelector('.interest-choice__spec-choice');
-        specializations.classList.toggle('interest-choice__spec-choice--hidden');
-    };
-
-    const visibilityTasks=function(){
-        window.scrollTo(0,0);
-        let tasks = document.querySelector('.interest-choice__task-list');
-        tasks.classList.toggle('interest-choice__task-list--hidden');
-    };
-
 
 
     return {
-        init: showSpecializations,
+        init: appendSpecializations,
         getUserSpecializtions: getUserSpecializtions,
         getUserTechnologies: getUserTechnologies
     }
