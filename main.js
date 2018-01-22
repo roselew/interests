@@ -47,10 +47,30 @@ var technologies = [
 ]
 
 
-var interests = (function(){
+const interestsModule = (function(){
 
-    this.showSpecializations = function () {
-        var that = this;
+    var userSpecializations=[];
+
+    var userTechnologies=[];
+
+    const setUserSpecializations = function(){
+        userSpecializations = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map (x => x.querySelector('h3').innerText);
+    };
+
+    const getUserSpecializtions = function(){
+        return userSpecializations;
+    };
+
+    const setUserTechnologies = function(){
+        userTechnologies = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map (x => x.querySelector('h3').innerText);
+    };
+
+    const getUserTechnologies = function(){
+        return userTechnologies;
+    };
+
+    const showSpecializations = function () {
+
         var element = document.querySelector('.interest-choice__spec-cards');
         var fragment = document.createDocumentFragment();
     
@@ -64,7 +84,7 @@ var interests = (function(){
             specCard.appendChild(specName);
             
             let specTechNum = document.createElement('p');
-            specTechNum.innerText = 'Technologii: ' +  this.getTechnologies(specialization.name).length;
+            specTechNum.innerText = 'Technologii: ' +  getTechnologies(specialization.name).length;
             specCard.appendChild(specTechNum);
     
             let specIcon = document.createElement('img');
@@ -81,26 +101,28 @@ var interests = (function(){
     
         //adds click event to specializations
         let specCards = document.querySelector('.interest-choice__spec-cards');
-        specCards.addEventListener("click",this.selectSpecialization)
+        specCards.addEventListener("click", selectSpecialization)
     
         //adds click event to button (only when active)
         let specButton = document.querySelector('.interest-choice__spec-button');
-        specButton.addEventListener("click",this.displayTechnologies)
-    },
+        specButton.addEventListener("click", displayTechnologies)
+    };
 
-    this.showTechnologies = function(){
+    const showTechnologies = function(){
         var element = document.querySelector('.interest-choice__tech-cards');
         var fragment = document.createDocumentFragment();    
     
-        let allTechnologies = [];
-    
-        let selectedSpecializations = document.querySelectorAll('.interest-choice__spec-card--selected');
-        for (let specialization of selectedSpecializations) {
-            let specName= specialization.querySelector('h3').innerText;
-            for (let technology of getTechnologies(specName)) {
-                allTechnologies.push(technology)
-            }
-        }
+        // let allTechnologies = [];
+
+        let selectedSpecializations = getUserSpecializtions();
+
+        let allTechnologies = selectedSpecializations.map( x => getTechnologies(x)).join(',').split(',');
+
+        // for (let specialization of selectedSpecializations) {
+        //     for (let technology of this.getTechnologies(specialization)) {
+        //         allTechnologies.push(technology)
+        //     }
+        // }
     
         //get rid of repetiting technologies
         uniq = allTechnologies => [... new Set(allTechnologies)];
@@ -132,14 +154,14 @@ var interests = (function(){
          
          //adds click event to technologies
          let techCards = document.querySelector('.interest-choice__tech-cards');
-         techCards.addEventListener("click",this.selectTechnology)
+         techCards.addEventListener("click", selectTechnology)
     
         //adds click event to button (only when active)
         let techButton = document.querySelector('.interest-choice__tech-button');
-        techButton.addEventListener("click",this.displayTasks)
-    },
+        techButton.addEventListener("click", displayTasks)
+    };
 
-    this.getTechnologies = function(spec) {
+    const getTechnologies = function(spec) {
         tech=[];
         for (let technology of technologies) {
             if (technology.specializations.indexOf(spec)>-1){
@@ -147,9 +169,9 @@ var interests = (function(){
             }
         }
         return tech;
-    },
+    };
 
-    this.selectSpecialization = function(e){
+    const selectSpecialization = function(e){
         if (e.target !==e.currentTarget){
             let spec = e.target.closest('.interest-choice__spec-card');
             spec.classList.toggle('interest-choice__spec-card--selected')
@@ -165,10 +187,10 @@ var interests = (function(){
                 specButton.classList.remove('interest-choice__spec-button--active')
             }  
         }
-    },
+    };
 
 
-    this.selectTechnology = function(e){
+    const selectTechnology = function(e){
         if (e.target !==e.currentTarget){
             let tech = e.target.closest('.interest-choice__tech-card');
             tech.classList.toggle('interest-choice__tech-card--selected')
@@ -184,45 +206,55 @@ var interests = (function(){
                 techButton.classList.remove('interest-choice__tech-button--active')
             }  
         }
-    },
+    };
 
-    this.displayTechnologies = e => {
+    const displayTechnologies = e => {
         if (e.target.closest('.interest-choice__spec-button--active')){
-            this.showTechnologies();
-            this.visibilityTechnologies();
-            this.visibilitySpecializations();
+            setUserSpecializations();
+            showTechnologies();
+            visibilityTechnologies();
+            visibilitySpecializations();
         }
-    },
+    };
 
-    this.displayTasks= e => {
+    const displayTasks= e => {
         if (e.target.closest('.interest-choice__tech-button--active')){
-            this.visibilityTechnologies();
-            this.visibilityTasks();
-        }    
-    },
+            setUserTechnologies();
+            visibilityTechnologies();
+            visibilityTasks();
+        }   
+    };
 
-    this.visibilityTechnologies=function(){
+    const visibilityTechnologies=function(){
         window.scrollTo(0,0);
         let technologies = document.querySelector('.interest-choice__tech-choice');
         technologies.classList.toggle('interest-choice__tech-choice--hidden');
-    },
+    };
 
-    this.visibilitySpecializations=function(){
+    const visibilitySpecializations=function(){
         window.scrollTo(0,0);
         let specializations = document.querySelector('.interest-choice__spec-choice');
         specializations.classList.toggle('interest-choice__spec-choice--hidden');
-    },
+    };
 
-    this.visibilityTasks=function(){
+    const visibilityTasks=function(){
         window.scrollTo(0,0);
         let tasks = document.querySelector('.interest-choice__task-list');
         tasks.classList.toggle('interest-choice__task-list--hidden');
-    },
+    };
 
-    this.showSpecializations();
+
+
+    return {
+        init: showSpecializations,
+        getUserSpecializtions: getUserSpecializtions,
+        getUserTechnologies: getUserTechnologies
+    }
+
+
 })()
 
-
+interestsModule.init()
 
 
 
