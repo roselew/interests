@@ -95,17 +95,6 @@ const interestsModule = (function(){
         //appends specialization choice fragment to html
         element.appendChild(fragment);
     
-        //adds click event to specializations
-        let specCards = document.querySelector('.interests__spec-cards');
-        specCards.addEventListener("click", selectSpecialization)
-    
-        //adds click event to button (only when active)
-        let specButton = document.querySelector('.interests__spec-button');
-        specButton.addEventListener("click", displayTechnologies)
-
-        //adds click event to show/hide all button
-        let showAllButton = document.querySelector('.interests__spec-label')
-        showAllButton.addEventListener("click", () => { selectAll(event, 'spec') })
     };
 
     const appendTechnologies = () => {
@@ -152,21 +141,47 @@ const interestsModule = (function(){
         }
     
         //appends technology choice fragment to html
-        element.appendChild(fragment);    
-        
-        //adds click event to technologies
-        let techCards = document.querySelector('.interests__tech-cards');
-        techCards.addEventListener("click", selectTechnology)
-    
-        //adds click event to button (only when active)
-        let techButton = document.querySelector('.interests__tech-button');
-        techButton.addEventListener("click", displayTasks)
-
-        //adds click event to show/hide all button
-        let showAllButton = document.querySelector('.interests__tech-label')
-        showAllButton.addEventListener("click", () => { selectAll(event, 'tech') })
+        element.appendChild(fragment);      
 
     };
+
+    const clearTechnologies = () => {
+        let techCards = document.querySelector('.interests__tech-cards');
+        while (techCards.firstChild) {
+            techCards.removeChild(techCards.firstChild);
+        }
+    }
+
+    const addEvents = () => {
+
+        //adds click event to specialization cards
+        let specCards = document.querySelector('.interests__spec-cards');
+        specCards.addEventListener("click", selectSpecialization);
+    
+        //adds click event to technology cards
+        let techCards = document.querySelector('.interests__tech-cards');
+        techCards.addEventListener("click", selectTechnology);
+
+        //adds click event to button go to technologies (only when active)
+        let specButton = document.querySelector('.interests__spec-button');
+        specButton.addEventListener("click", displayTechnologies)
+
+        //adds click event to button go to tasks (only when active)
+        let techButton = document.querySelector('.interests__tech-button');
+        techButton.addEventListener("click", displayTasks);
+
+        //adds click event to show/hide all button
+        let showAllSpecButton = document.querySelector('.interests__spec-label')
+        showAllSpecButton.addEventListener("click", () => { selectAll(event, 'spec') })
+
+        //adds click event to show/hide all button
+        let showAllTechsButton = document.querySelector('.interests__tech-label');
+        showAllTechsButton.addEventListener("click", () => { selectAll(event, 'tech') });
+
+        //adds click event to back button
+        let backButton = document.querySelector('.interests__tech-back');
+        backButton.addEventListener("click",displaySpecializations);
+    }
 
     //retruns technologies from given specification name (spec)
     const getTechnologies = spec => {
@@ -284,6 +299,17 @@ const interestsModule = (function(){
         }
     };
 
+    const displaySpecializations = e => {
+        //deletes all technologies, otherwise they are doubled
+        clearTechnologies();
+        //show technologies page
+        toogleVisibility('tech-choice');
+        //hide sepcializations page
+        toogleVisibility('spec-choice');
+    }
+
+
+
     const displayTasks= e => {
 
         //checks if button is active
@@ -305,9 +331,14 @@ const interestsModule = (function(){
         elem.classList.toggle('interests__'+className+'--hidden');
     };
 
+    const init = () => {
+        appendSpecializations();
+        addEvents(); 
+    }
+
 
     return {
-        init: appendSpecializations,
+        init: init,
         getUserSpecializtions: getUserSpecializtions,
         getUserTechnologies: getUserTechnologies
     }
