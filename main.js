@@ -102,6 +102,9 @@ const interestsModule = (function(){
         var element = document.querySelector('.interests__tech-cards');
         var fragment = document.createDocumentFragment();    
 
+        //deletes all technologies, otherwise they are doubled when going back
+        clearTechnologies();
+
         let selectedSpecializations = getUserSpecializtions();
 
         //takes all available technologies from selected specializations
@@ -155,32 +158,48 @@ const interestsModule = (function(){
     const addEvents = () => {
 
         //adds click event to specialization cards
-        let specCards = document.querySelector('.interests__spec-cards');
-        specCards.addEventListener("click", selectSpecialization);
+        document.querySelector('.interests__spec-cards')
+                .addEventListener("click", selectSpecialization);
     
         //adds click event to technology cards
-        let techCards = document.querySelector('.interests__tech-cards');
-        techCards.addEventListener("click", selectTechnology);
+        document.querySelector('.interests__tech-cards')
+                .addEventListener("click", selectTechnology);
 
         //adds click event to button go to technologies (only when active)
-        let specButton = document.querySelector('.interests__spec-button');
-        specButton.addEventListener("click", displayTechnologies)
+        document.querySelector('.interests__spec-button')
+                .addEventListener("click", displayTechnologies);
 
         //adds click event to button go to tasks (only when active)
-        let techButton = document.querySelector('.interests__tech-button');
-        techButton.addEventListener("click", displayTasks);
+        document.querySelector('.interests__tech-button')
+                .addEventListener("click", displayTasks);
 
         //adds click event to show/hide all button
-        let showAllSpecButton = document.querySelector('.interests__spec-label')
-        showAllSpecButton.addEventListener("click", () => { selectAll(event, 'spec') })
+        document.querySelector('.interests__spec-label')
+                .addEventListener("click", () => { selectAll(event, 'spec') });
 
         //adds click event to show/hide all button
-        let showAllTechsButton = document.querySelector('.interests__tech-label');
-        showAllTechsButton.addEventListener("click", () => { selectAll(event, 'tech') });
+        document.querySelector('.interests__tech-label')
+                .addEventListener("click", () => { selectAll(event, 'tech') });
 
-        //adds click event to back button
-        let backButton = document.querySelector('.interests__tech-back');
-        backButton.addEventListener("click",displaySpecializations);
+        //adds click event to back button to specializations
+        document.querySelector('.interests__tech-back')
+                .addEventListener("click", ()=> {
+                    //show sepcializations  page
+                    toogleVisibility('spec-choice');
+                    //hide technologies page
+                    toogleVisibility('tech-choice');
+                });
+
+        //adds click event to back button to technologies
+        document.querySelector('.interests__task-back')
+                .addEventListener("click", () => {
+                    //show technologies page
+                    toogleVisibility('tech-choice');
+                    //hide task page
+                    toogleVisibility('task-list');
+                });
+
+
     }
 
     //retruns technologies from given specification name (spec)
@@ -300,13 +319,16 @@ const interestsModule = (function(){
     };
 
     const displaySpecializations = e => {
-        //deletes all technologies, otherwise they are doubled
-        clearTechnologies();
+
+    }
+
+    const displayTec = e => {
         //show technologies page
         toogleVisibility('tech-choice');
         //hide sepcializations page
         toogleVisibility('spec-choice');
     }
+
 
 
 
