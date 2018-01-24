@@ -2,7 +2,7 @@
 @import '_zmienne';
 
 
-html {font-size: 62.5%;height: 100%;}
+html {font-size: 62.5%;height: 100%; background-color: $color_back;}
 body {width: 100%; height: 100%;}
 
 
@@ -18,8 +18,8 @@ body {width: 100%; height: 100%;}
 
 @keyframes slideInDiagonal {
     0%   {
-        border-top: 1000px solid white;
-        border-left: 500px solid transparent;
+        border-top: 300px solid white;
+        border-left: 300px solid transparent;
     }
     100% {
         border-top: 60px solid white;
@@ -69,11 +69,11 @@ body {width: 100%; height: 100%;}
 
 
 
-.interest-choice{
+.interests{
 
     width: 100%;
     height: 100%;
-    background-color: $color_back;
+    background-attachment: fixed;
     text-align: center;
 
 
@@ -108,7 +108,7 @@ body {width: 100%; height: 100%;}
     }
 
     h2 {
-        padding-top: 15rem;
+        padding-top: 10%;
         margin-bottom: 1rem;
         font: 4.0rem $font_title_family;
         color: $color_text_dark;
@@ -123,15 +123,12 @@ body {width: 100%; height: 100%;}
         margin-bottom: 6.0rem;
     }
 
-    &__label {
-        display: block;
+    &__tech-label, &__spec-label {
+        display: block;     
+        position: relative;
+        top:0;
+        right: 6%;
         text-align: right;
-        padding-right: 10.8rem;
-        font: 1.0rem $font_reg_family;
-        line-height: 1.4rem;
-        text-transform: uppercase;
-        color: $color_text_light;
-        font-weight: bold;
 
         &::before{
             content:'';
@@ -142,7 +139,27 @@ body {width: 100%; height: 100%;}
             margin-right: 0.8rem;
             background: $color_back url(assets/zaznacz.svg) top center no-repeat;
             background-size: 100%;
+        }
 
+        &::after{
+            content: 'Zaznacz wszystko';
+            font: 1.0rem $font_reg_family;
+            text-transform: uppercase;
+            color: $color_text_light;
+            font-weight: bold;
+        }
+
+        &--selected {
+
+            &::after{
+                content:  'Odznacz wszystko';
+            }
+
+            &::before{
+                background: $color_back url(assets/odznacz.svg) top center no-repeat;
+                background-size: 100%;
+            }
+            
         }
 
     }
@@ -161,7 +178,7 @@ body {width: 100%; height: 100%;}
     }
 
     &__spec-cards, &__tech-cards {
-        margin: 0px 20px;
+        margin: 0px 4.2%;
         display:flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -177,7 +194,8 @@ body {width: 100%; height: 100%;}
         padding: 2.0rem 3.0rem;
         border-radius: 2.6rem;
         transition: scale 0.3s;
-        transform-origin: 0% 0%;
+        transform-origin: 50% 50%;
+        box-shadow: 0px 3px 6px rgba(black,0.05);
         cursor: pointer;
         
         h3{
@@ -191,12 +209,16 @@ body {width: 100%; height: 100%;}
             color: $color_text_lighter;
         }
 
-        &:hover{transform: scale(1.05);}
+        &:hover{
+            transform: scale(1.05);
+            box-shadow: 0px 3px 22px rgba(black,0.15);
+        }
 
         &--selected {
 
             background: $gradient_theme1_1 $color_theme1_1;
             h3,p {color: white; }
+            
 
             &::after{
                 content: '';
@@ -232,8 +254,8 @@ body {width: 100%; height: 100%;}
     &__spec-card{
         width: 300px;
         height: 300px;
-        margin: 20px;
-        box-shadow: 0px 3px 22px rgba(black,0.15);
+        margin: 24px;
+        
 
         h3 { font-size: 3.7rem;}
 
@@ -255,7 +277,6 @@ body {width: 100%; height: 100%;}
         height: 120px;
         margin: 20px;
         padding-left: 11.3rem;
-        box-shadow: 0px 3px 6px rgba(black,0.05);
 
         h3  { font-size: 3.0rem;}
 

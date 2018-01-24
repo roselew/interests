@@ -1,7 +1,6 @@
 var specializations = [
     {name: 'Web design',                icon:'assets/camera-digital.svg'},
     {name: 'Wektory i dtp',             icon:'assets/camera-digital.svg'},
-    {name: 'UX i UI',                   icon:'assets/camera-digital.svg'},
     {name: 'Grafika i 3D',              icon:'assets/camera-digital.svg'},
     {name: 'Front-End',                 icon:'assets/camera-digital.svg'},
     {name: 'Back-End',                  icon:'assets/camera-digital.svg'},
@@ -53,11 +52,11 @@ const interestsModule = (function(){
 
     var userTechnologies = [];
 
-    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interest-choice__spec-card--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec-card--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interest-choice__tech-card--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interests__tech-card--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserTechnologies = () => userTechnologies;
 
@@ -67,14 +66,14 @@ const interestsModule = (function(){
 
     const appendSpecializations = () => {
 
-        var element = document.querySelector('.interest-choice__spec-cards');
+        var element = document.querySelector('.interests__spec-cards');
         var fragment = document.createDocumentFragment();
     
         for (let specialization of getAllSpecializations()) {
     
             //creates card with specialization
             let specCard = document.createElement('li');
-            specCard.className = 'interest-choice__spec-card';
+            specCard.className = 'interests__spec-card';
             //name of specialization
             let specName = document.createElement('h3');
             specName.innerText = specialization.name;
@@ -97,17 +96,21 @@ const interestsModule = (function(){
         element.appendChild(fragment);
     
         //adds click event to specializations
-        let specCards = document.querySelector('.interest-choice__spec-cards');
+        let specCards = document.querySelector('.interests__spec-cards');
         specCards.addEventListener("click", selectSpecialization)
     
         //adds click event to button (only when active)
-        let specButton = document.querySelector('.interest-choice__spec-button');
+        let specButton = document.querySelector('.interests__spec-button');
         specButton.addEventListener("click", displayTechnologies)
+
+        //adds click event to show/hide all button
+        let showAllButton = document.querySelector('.interests__spec-label')
+        showAllButton.addEventListener("click", () => { selectAll(event, 'spec') })
     };
 
     const appendTechnologies = () => {
 
-        var element = document.querySelector('.interest-choice__tech-cards');
+        var element = document.querySelector('.interests__tech-cards');
         var fragment = document.createDocumentFragment();    
 
         let selectedSpecializations = getUserSpecializtions();
@@ -130,7 +133,7 @@ const interestsModule = (function(){
           
            //creates card with technology
             let techCard = document.createElement('li');
-            techCard.className = 'interest-choice__tech-card';
+            techCard.className = 'interests__tech-card';
             //name of technology
             let techName = document.createElement('h3');
             techName.innerText = technology.name;
@@ -148,16 +151,21 @@ const interestsModule = (function(){
             fragment.appendChild(techCard);
         }
     
-         //appends technology choice fragment to html
-         element.appendChild(fragment);    
-         
-         //adds click event to technologies
-         let techCards = document.querySelector('.interest-choice__tech-cards');
-         techCards.addEventListener("click", selectTechnology)
+        //appends technology choice fragment to html
+        element.appendChild(fragment);    
+        
+        //adds click event to technologies
+        let techCards = document.querySelector('.interests__tech-cards');
+        techCards.addEventListener("click", selectTechnology)
     
         //adds click event to button (only when active)
-        let techButton = document.querySelector('.interest-choice__tech-button');
+        let techButton = document.querySelector('.interests__tech-button');
         techButton.addEventListener("click", displayTasks)
+
+        //adds click event to show/hide all button
+        let showAllButton = document.querySelector('.interests__tech-label')
+        showAllButton.addEventListener("click", () => { selectAll(event, 'tech') })
+
     };
 
     //retruns technologies from given specification name (spec)
@@ -175,15 +183,15 @@ const interestsModule = (function(){
 
         // toggles class selected for spec-card
         if (e.target !==e.currentTarget){
-            let spec = e.target.closest('.interest-choice__spec-card');
-            spec.classList.toggle('interest-choice__spec-card--selected')
+            let spec = e.target.closest('.interests__spec-card');
+            spec.classList.toggle('interests__spec-card--selected');
         }
 
         // activates/inactivates button to go further
-        let specButton = document.querySelector('.interest-choice__spec-button')
-        let activeClass = 'interest-choice__spec-button--active';
+        let specButton = document.querySelector('.interests__spec-button')
+        let activeClass = 'interests__spec-button--active';
 
-        if (document.querySelectorAll('.interest-choice__spec-card--selected').length>0) {
+        if (document.querySelectorAll('.interests__spec-card--selected').length>0) {
             // there are some spec-cards selected and button was inactive before - activate button
             if (!specButton.classList.contains(activeClass)){
                 specButton.classList.add(activeClass)
@@ -201,15 +209,15 @@ const interestsModule = (function(){
 
         // toggles class selected for tech-card
         if (e.target !==e.currentTarget){
-            let tech = e.target.closest('.interest-choice__tech-card');
-            tech.classList.toggle('interest-choice__tech-card--selected')
+            let tech = e.target.closest('.interests__tech-card');
+            tech.classList.toggle('interests__tech-card--selected')
         }
         
         // activates/inactivates button to go further
-        let techButton = document.querySelector('.interest-choice__tech-button')
-        let activeClass = 'interest-choice__tech-button--active';
+        let techButton = document.querySelector('.interests__tech-button')
+        let activeClass = 'interests__tech-button--active';
 
-        if (document.querySelectorAll('.interest-choice__tech-card--selected').length>0) {
+        if (document.querySelectorAll('.interests__tech-card--selected').length>0) {
             // there are some tech-cards selected and button was inactive before - activate button
             if (!techButton.classList.contains(activeClass)){
                 techButton.classList.add(activeClass)
@@ -222,10 +230,49 @@ const interestsModule = (function(){
         }
     };
 
+    const selectAll = (e,elem) => {
+        
+        let goButton = document.querySelector('.interests__'+elem+'-button')
+
+        //if label was selected we need to unselect all cards
+        if ( e.target.classList.contains('interests__'+elem+'-label--selected')){
+
+            [... document.querySelectorAll('.interests__'+elem+'-card')].forEach(x => {
+                if (x.classList.contains('interests__'+elem+'-card--selected')){
+                    x.classList.remove('interests__'+elem+'-card--selected')
+                }
+            });
+
+            // inactivates button to go further
+            if (goButton.classList.contains('interests__'+elem+'-button--active')){
+                goButton.classList.remove('interests__'+elem+'-button--active')
+            }
+
+        //if label was NOT selected we need to select all cards
+        } else {
+            
+            [... document.querySelectorAll('.interests__'+elem+'-card')].forEach(spec => {
+                if (!spec.classList.contains('interests__'+elem+'-card--selected')){
+                    spec.classList.add('interests__'+elem+'-card--selected')
+                }
+            });
+
+            // activates button to go further
+            if (!goButton.classList.contains('interests__'+elem+'-button--active')){
+                goButton.classList.add('interests__'+elem+'-button--active')
+            }
+        }
+            
+        //changes label from select all to unselect all and vice versa
+        e.target.classList.toggle('interests__'+elem+'-label--selected');
+
+    };
+
+ 
     const displayTechnologies = e => {
 
         //check if button is active
-        if (e.target.closest('.interest-choice__spec-button--active')){
+        if (e.target.closest('.interests__spec-button--active')){
             //stores selected specializations
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
@@ -240,7 +287,7 @@ const interestsModule = (function(){
     const displayTasks= e => {
 
         //checks if button is active
-        if (e.target.closest('.interest-choice__tech-button--active')){
+        if (e.target.closest('.interests__tech-button--active')){
             //stores selected technologies
             setUserTechnologies();
             //hide technologies page
@@ -254,8 +301,8 @@ const interestsModule = (function(){
     const toogleVisibility = className => {
         //scroll to the very top
         window.scrollTo(0,0);
-        let elem = document.querySelector('.interest-choice__'+className);
-        elem.classList.toggle('interest-choice__'+className+'--hidden');
+        let elem = document.querySelector('.interests__'+className);
+        elem.classList.toggle('interests__'+className+'--hidden');
     };
 
 
