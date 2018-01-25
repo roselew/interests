@@ -136,7 +136,7 @@ body {width: 100%; height: 100%;}
     &__specs ul{
         display:grid;
         grid-gap:48px;
-        grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill,minmax(296px, 1fr));
         @media( max-width: $screen_size_S){
             grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
         }
@@ -146,7 +146,7 @@ body {width: 100%; height: 100%;}
     &__techs ul{
         display:grid;
         grid-gap:28px;
-        grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fill,minmax(396px, 1fr));
         @media( max-width: $screen_size_S){
             grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
         }
@@ -163,10 +163,10 @@ body {width: 100%; height: 100%;}
         @media( max-width: $screen_size_S){
             background: linear-gradient(45deg, $color_theme1_2 0%, $color_theme1_1 42%, $color_back_card 42.1%);
             background-size: 200% 200%;
-            background-position: 100% 0%;
+            background-position: 99% 0%;
         }
         background-size: 200% 200%;
-        background-position: 100% 0%;
+        background-position: 99% 0%;
         padding: 2.0rem 3.0rem;
         border-radius: 2.6rem;
         transition: scale 0.3s;

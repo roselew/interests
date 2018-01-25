@@ -45,7 +45,6 @@ var technologies = [
     {name: 'AutoCAD',                       icon:'#text-document',     specializations:['CAD i narzędzia']}
 ]
 
-
 const interestsModule = (function(){
 
     var userSpecializations = [];
@@ -222,6 +221,11 @@ const interestsModule = (function(){
 
     }
 
+    const stopHiding = () => {
+        document.querySelector('.interests__techs').style.opacity="1";
+        document.querySelector('.interests__tasks').style.opacity = "1"
+    }
+
     //retruns technologies from given specification name (spec)
     const getTechnologies = spec => {
         let tech=[];
@@ -363,6 +367,7 @@ const interestsModule = (function(){
     const init = () => {
         appendSpecializations();
         addEvents(); 
+        setTimeout(stopHiding,1000);
     }
 
 

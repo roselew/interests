@@ -1,15 +1,15 @@
 ﻿
-Brakujące funkcjonalności (z braku czasu...):
+Problemy:
+- gradient kafelków - kąt niezgodny z projektem
+- animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony - narazie ukryta brzydkim sposobem
+- pojedynczy kafelek technologii wyśrodkowany do lewej strony a nie na środku
+- lista specjalizacji i technologii zaszyta js, a nie z pliku
+- nie działa w starszych przeglądarkach
 
-2) Wczytywanie specjalizacji i technologii z pliku json a nie ze zmiennej
-3) Przegląd kompatybilności zastosowanych rozwiązań dla starszych przeglądarek
-4) Porządek w kodzie, komentarze etc. 
-5) RWD (tło nie jest na pełną stronę + za duża czcionka dla małych ekranów, zapalanie karty za duże dla małych ekranów, etc.)
-6) powrót do technologii nie ma wybranych wcześniej
+Do dyskusji:
+- czy nie za duża czcionka dla małych ekranów
+- powrót do technologii czy powinny być wybrane wcześniej
 
-
-Brakujące funkcjonalności (bo nie wiem jak...):
-
-1) svg gradient jako wypełnieni
-4) animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony 
-6) skąd dostęp do czcionki Proxima Nova
+Nie mam :
+- Czcinko Proxima Nova
+- ikony z listą zadań (ostatni ekran)
