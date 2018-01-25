@@ -1,14 +1,15 @@
 ﻿
 Problemy:
 - gradient kafelków - kąt niezgodny z projektem
-- animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony - narazie ukryta brzydkim sposobem
+- animacja ukrycia stron - na razie ukryta przy wczytywaniu strony brzydkim sposobem
 - pojedynczy kafelek technologii wyśrodkowany do lewej strony a nie na środku
 - lista specjalizacji i technologii zaszyta js, a nie z pliku
 - nie działa w starszych przeglądarkach
+- niektóre kolory, odległości nie dało się odczytać z spec, wartości przybliżone
 
 Do dyskusji:
 - czy nie za duża czcionka dla małych ekranów
-- powrót do technologii czy powinny być wybrane wcześniej
+- powrót do technologii czy powinny być zachowane wybrane wcześniej
 
 Nie mam :
 - Czcinko Proxima Nova
