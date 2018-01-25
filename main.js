@@ -87,6 +87,7 @@ const interestsModule = (function(){
             specIcon.setAttribute('width','50px');
             specIcon.setAttribute('height','50px');
             let specUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
+            specUse.classList.add('proba');
             specUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', specialization.icon)
             specIcon.appendChild(specUse);
             specCard.appendChild(specIcon);
