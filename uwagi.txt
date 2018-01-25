@@ -10,7 +10,6 @@ Brakujące funkcjonalności (z braku czasu...):
 
 Brakujące funkcjonalności (bo nie wiem jak...):
 
-1) svg - jak wstrzyknąć svg inline żeby zmieniać styl w css
+1) svg gradient jako wypełnieni
 4) animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony 
-5) usunąć zwiększone karty specjalizacji/technologii w ostatnim wierszu (tak żeby nadal mogły marginesy być takie same)
 6) skąd dostęp do czcionki Proxima Nova

@@ -203,15 +203,33 @@ body {
   cursor: pointer;
 }
 
-.interests__specs ul, .interests__techs ul {
-  margin: 0px 4.2%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+.interests__specs ul {
+  display: grid;
+  grid-gap: 48px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 24px 6%;
+}
+
+@media (max-width: 576px) {
+  .interests__specs ul {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.interests__techs ul {
+  display: grid;
+  grid-gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  margin: 24px 6%;
+}
+
+@media (max-width: 576px) {
+  .interests__techs ul {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
 
 .interests__spec, .interests__tech {
-  flex-grow: 1;
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -226,6 +244,14 @@ body {
   transform-origin: 50% 50%;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .interests__spec, .interests__tech {
+    background: linear-gradient(45deg, #84e2e3 0%, #2884b3 42%, #FFFFFF 42.1%);
+    background-size: 200% 200%;
+    background-position: 100% 0%;
+  }
 }
 
 .interests__spec h3, .interests__tech h3 {
@@ -266,9 +292,7 @@ body {
 }
 
 .interests__spec {
-  width: 300px;
-  height: 300px;
-  margin: 24px;
+  min-height: 300px;
 }
 
 .interests__spec h3 {
@@ -293,9 +317,7 @@ body {
 }
 
 .interests__tech {
-  width: 400px;
-  height: 120px;
-  margin: 24px;
+  min-height: 120px;
   padding-left: 11.3rem;
 }
 
