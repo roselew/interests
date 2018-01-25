@@ -16,33 +16,33 @@ var specializations = [
 ]
 
 var technologies = [
-    {name: 'UX/UI dla Stron WWW',           icon:'assets/text-document.svg',     specializations:['Web design','UX/UI dla Stron WWW']},
-    {name: 'Photoshop i Illustrator',       icon:'assets/text-document.svg',     specializations:['Web design']},
-    {name: 'Projektowanie UI',              icon:'assets/text-document.svg',     specializations:['Web design','UX/UI dla Stron WWW']},
-    {name: 'Strony WWW bez kodowania',      icon:'assets/text-document.svg',     specializations:['Web design']},
-    {name: 'Optymalizacja i RWD',           icon:'assets/text-document.svg',     specializations:['Web design','Front-End']},
-    {name: 'Projektowanie graficzne',       icon:'assets/text-document.svg',     specializations:['Wektory i dtp']},
-    {name: 'Typografia',                    icon:'assets/text-document.svg',     specializations:['Wektory i dtp']},
-    {name: 'Photoshop',                     icon:'assets/text-document.svg',     specializations:['Wektory i dtp']},
-    {name: 'Illustrator',                   icon:'assets/text-document.svg',     specializations:['Wektory i dtp']},
-    {name: 'Prototypowanie',                icon:'assets/text-document.svg',     specializations:['UX/UI dla Stron WWW']},
-    {name: '3D',                            icon:'assets/text-document.svg',     specializations:['Grafika i 3D']},
-    {name: '3D i grafika',                  icon:'assets/text-document.svg',     specializations:['Grafika i 3D','Concept Art']},
-    {name: 'Podstawy Tworzenia Stron',      icon:'assets/text-document.svg',     specializations:['Front-End']},
-    {name: 'Client Side',                   icon:'assets/text-document.svg',     specializations:['Front-End']},
-    {name: 'PHP',                           icon:'assets/text-document.svg',     specializations:['Back-End']},
-    {name: 'Frameworki Back-End',           icon:'assets/text-document.svg',     specializations:['Back-End']},
-    {name: '.NET',                          icon:'assets/text-document.svg',     specializations:['Back-End']},
-    {name: 'Wordpress',                     icon:'assets/text-document.svg',     specializations:['Wordpress i CMS']},
-    {name: 'Projektowanie na Mobile',       icon:'assets/text-document.svg',     specializations:['Mobile']},
-    {name: 'Wideo',                         icon:'assets/text-document.svg',     specializations:['Wideo i Audio']},
-    {name: 'Fotografia',                    icon:'assets/text-document.svg',     specializations:['Fotografia']},
-    {name: 'Concept Art',                   icon:'assets/text-document.svg',     specializations:['Concept Art']},
-    {name: 'Unity',                         icon:'assets/text-document.svg',     specializations:['Tworzenie gier']},
-    {name: 'Facebook',                      icon:'assets/text-document.svg',     specializations:['Promocja i biznes']},
-    {name: 'Google',                        icon:'assets/text-document.svg',     specializations:['Promocja i biznes']},
-    {name: 'Linux',                         icon:'assets/text-document.svg',     specializations:['Serwery i administracja']},
-    {name: 'AutoCAD',                       icon:'assets/text-document.svg',     specializations:['CAD i narzędzia']}
+    {name: 'UX/UI dla Stron WWW',           icon:'#text-document',     specializations:['Web design','UX/UI dla Stron WWW']},
+    {name: 'Photoshop i Illustrator',       icon:'#text-document',     specializations:['Web design']},
+    {name: 'Projektowanie UI',              icon:'#text-document',     specializations:['Web design','UX/UI dla Stron WWW']},
+    {name: 'Strony WWW bez kodowania',      icon:'#text-document',     specializations:['Web design']},
+    {name: 'Optymalizacja i RWD',           icon:'#text-document',     specializations:['Web design','Front-End']},
+    {name: 'Projektowanie graficzne',       icon:'#text-document',     specializations:['Wektory i dtp']},
+    {name: 'Typografia',                    icon:'#text-document',     specializations:['Wektory i dtp']},
+    {name: 'Photoshop',                     icon:'#text-document',     specializations:['Wektory i dtp']},
+    {name: 'Illustrator',                   icon:'#text-document',     specializations:['Wektory i dtp']},
+    {name: 'Prototypowanie',                icon:'#text-document',     specializations:['UX/UI dla Stron WWW']},
+    {name: '3D',                            icon:'#text-document',     specializations:['Grafika i 3D']},
+    {name: '3D i grafika',                  icon:'#text-document',     specializations:['Grafika i 3D','Concept Art']},
+    {name: 'Podstawy Tworzenia Stron',      icon:'#text-document',     specializations:['Front-End']},
+    {name: 'Client Side',                   icon:'#text-document',     specializations:['Front-End']},
+    {name: 'PHP',                           icon:'#text-document',     specializations:['Back-End']},
+    {name: 'Frameworki Back-End',           icon:'#text-document',     specializations:['Back-End']},
+    {name: '.NET',                          icon:'#text-document',     specializations:['Back-End']},
+    {name: 'Wordpress',                     icon:'#text-document',     specializations:['Wordpress i CMS']},
+    {name: 'Projektowanie na Mobile',       icon:'#text-document',     specializations:['Mobile']},
+    {name: 'Wideo',                         icon:'#text-document',     specializations:['Wideo i Audio']},
+    {name: 'Fotografia',                    icon:'#text-document',     specializations:['Fotografia']},
+    {name: 'Concept Art',                   icon:'#text-document',     specializations:['Concept Art']},
+    {name: 'Unity',                         icon:'#text-document',     specializations:['Tworzenie gier']},
+    {name: 'Facebook',                      icon:'#text-document',     specializations:['Promocja i biznes']},
+    {name: 'Google',                        icon:'#text-document',     specializations:['Promocja i biznes']},
+    {name: 'Linux',                         icon:'#text-document',     specializations:['Serwery i administracja']},
+    {name: 'AutoCAD',                       icon:'#text-document',     specializations:['CAD i narzędzia']}
 ]
 
 
@@ -52,11 +52,11 @@ const interestsModule = (function(){
 
     var userTechnologies = [];
 
-    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec-card--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interests__tech-card--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interests__tech--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserTechnologies = () => userTechnologies;
 
@@ -66,14 +66,14 @@ const interestsModule = (function(){
 
     const appendSpecializations = () => {
 
-        var element = document.querySelector('.interests__spec-cards');
+        var element = document.querySelector('.interests__specs ul');
         var fragment = document.createDocumentFragment();
     
         for (let specialization of getAllSpecializations()) {
     
             //creates card with specialization
             let specCard = document.createElement('li');
-            specCard.className = 'interests__spec-card';
+            specCard.className = 'interests__spec';
             //name of specialization
             let specName = document.createElement('h3');
             specName.innerText = specialization.name;
@@ -86,12 +86,9 @@ const interestsModule = (function(){
             let specIcon = document.createElementNS("http://www.w3.org/2000/svg",'svg');
             specIcon.setAttribute('width','50px');
             specIcon.setAttribute('height','50px');
-            document.createElementNS ("http://www.w3.org/2000/svg", "svg");
             let specUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
             specUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', specialization.icon)
             specIcon.appendChild(specUse);
-
-            // specIcon.innerHTML = '<use xlink:href=' + specialization.icon + '></use>';
             specCard.appendChild(specIcon);
     
             // let specIcon = document.createElement('img');
@@ -110,7 +107,7 @@ const interestsModule = (function(){
 
     const appendTechnologies = () => {
 
-        var element = document.querySelector('.interests__tech-cards');
+        var element = document.querySelector('.interests__techs ul');
         var fragment = document.createDocumentFragment();    
 
         //deletes all technologies, otherwise they are doubled when going back
@@ -136,7 +133,7 @@ const interestsModule = (function(){
           
            //creates card with technology
             let techCard = document.createElement('li');
-            techCard.className = 'interests__tech-card';
+            techCard.className = 'interests__tech';
             //name of technology
             let techName = document.createElement('h3');
             techName.innerText = technology.name;
@@ -146,9 +143,17 @@ const interestsModule = (function(){
             techCourseNum.innerText = 'Kursów: ';
             techCard.appendChild(techCourseNum);
             //technology icon
-            let techIcon = document.createElement('img');
-            techIcon.src = technology.icon;
+            let techIcon = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+            techIcon.setAttribute('width','50px');
+            techIcon.setAttribute('height','50px');
+            let techUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
+            techUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', technology.icon)
+            techIcon.appendChild(techUse);
             techCard.appendChild(techIcon);
+
+            // let techIcon = document.createElement('img');
+            // techIcon.src = technology.icon;
+            // techCard.appendChild(techIcon);
     
             //appends technology card to technology choice fragment
             fragment.appendChild(techCard);
@@ -160,7 +165,7 @@ const interestsModule = (function(){
     };
 
     const clearTechnologies = () => {
-        let techCards = document.querySelector('.interests__tech-cards');
+        let techCards = document.querySelector('.interests__techs ul');
         while (techCards.firstChild) {
             techCards.removeChild(techCards.firstChild);
         }
@@ -169,45 +174,48 @@ const interestsModule = (function(){
     const addEvents = () => {
 
         //adds click event to specialization cards
-        document.querySelector('.interests__spec-cards')
-                .addEventListener("click", selectSpecialization);
+        document.querySelector('.interests__specs ul')
+                .addEventListener("click", () => { selectCard(event, 'spec')} );
     
         //adds click event to technology cards
-        document.querySelector('.interests__tech-cards')
-                .addEventListener("click", selectTechnology);
+        document.querySelector('.interests__techs ul')
+                .addEventListener("click", () => { selectCard(event, 'tech')} );
+
+
+        //adds click event to show/hide all button
+        document.querySelector('.interests__spec-lbl')
+                .addEventListener("click", () => { selectAllCards(event, 'spec') });
+
+        //adds click event to show/hide all button
+        document.querySelector('.interests__tech-lbl')
+                .addEventListener("click", () => { selectAllCards(event, 'tech') });        
+
 
         //adds click event to button go to technologies (only when active)
-        document.querySelector('.interests__spec-button')
+        document.querySelector('.interests__spec-btn')
                 .addEventListener("click", displayTechnologies);
 
         //adds click event to button go to tasks (only when active)
-        document.querySelector('.interests__tech-button')
+        document.querySelector('.interests__tech-btn')
                 .addEventListener("click", displayTasks);
 
-        //adds click event to show/hide all button
-        document.querySelector('.interests__spec-label')
-                .addEventListener("click", () => { selectAll(event, 'spec') });
-
-        //adds click event to show/hide all button
-        document.querySelector('.interests__tech-label')
-                .addEventListener("click", () => { selectAll(event, 'tech') });
 
         //adds click event to back button to specializations
         document.querySelector('.interests__tech-back')
                 .addEventListener("click", ()=> {
                     //show sepcializations  page
-                    toogleVisibility('spec-choice');
+                    toogleVisibility('specs');
                     //hide technologies page
-                    toogleVisibility('tech-choice');
+                    toogleVisibility('techs');
                 });
 
         //adds click event to back button to technologies
         document.querySelector('.interests__task-back')
                 .addEventListener("click", () => {
                     //show technologies page
-                    toogleVisibility('tech-choice');
+                    toogleVisibility('techs');
                     //hide task page
-                    toogleVisibility('task-list');
+                    toogleVisibility('tasks');
                 });
 
 
@@ -224,92 +232,92 @@ const interestsModule = (function(){
         return tech;
     };
 
-    const selectSpecialization =  e => {
+ 
+    const selectCard =  (e, elem) => {
 
-        // toggles class selected for spec-card
+        // toggles class selected for card with sepcialization/technology
         if (e.target !==e.currentTarget){
-            let spec = e.target.closest('.interests__spec-card');
-            spec.classList.toggle('interests__spec-card--selected');
+            let tech = e.target.closest('.interests__'+elem);
+            tech.classList.toggle('interests__'+elem+'--selected')
         }
 
-        // activates/inactivates button to go further
-        let specButton = document.querySelector('.interests__spec-button')
-        let activeClass = 'interests__spec-button--active';
+        //button to go further        
+        let goButton = document.querySelector('.interests__'+elem+'-btn');
+        let activeButton = 'interests__'+elem+'-btn--active';
+        // label to select / unselect all
+        let labelToSelect = document.querySelector('.interests__'+elem+'-lbl');
+        let selectedLabel = 'interests__'+elem+'-lbl--selected';
+        //all cards with tech/spec
+        let allCards = document.querySelectorAll('.interests__'+elem);
+        //all selected cards with tech/spec
+        let selectedCards = document.querySelectorAll('.interests__'+elem+'--selected');
 
-        if (document.querySelectorAll('.interests__spec-card--selected').length>0) {
-            // there are some spec-cards selected and button was inactive before - activate button
-            if (!specButton.classList.contains(activeClass)){
-                specButton.classList.add(activeClass)
+        // activates/inactivates button to go further
+        if (selectedCards.length>0) {
+            // there are some cards selected and button was inactive before - activate button
+            if (!goButton.classList.contains(activeButton)){
+                goButton.classList.add(activeButton)
+            }
+            //check if all technologies are selected then changes label select all to unselect all
+            if (selectedCards.length==allCards.length) {
+                if (!labelToSelect.classList.contains(selectedLabel)){
+                    labelToSelect.classList.add(selectedLabel)
+                }
             }
         } else {
-            //there are none spec-cards selected and button was active bere - inactivate button
-            if (specButton.classList.contains(activeClass)){
-                specButton.classList.remove(activeClass)
+            //there are none cards selected and button was active bere - inactivate button
+            if (goButton.classList.contains(activeButton)){
+                goButton.classList.remove(activeButton)
             }  
+            //changes label select all to unselect all
+            if (labelToSelect.classList.contains(selectedLabel)){
+                labelToSelect.classList.remove(selectedLabel)
+            }
         }
     };
 
-
-    const selectTechnology =  e => {
-
-        // toggles class selected for tech-card
-        if (e.target !==e.currentTarget){
-            let tech = e.target.closest('.interests__tech-card');
-            tech.classList.toggle('interests__tech-card--selected')
-        }
+    const selectAllCards = (e,elem) => {
         
-        // activates/inactivates button to go further
-        let techButton = document.querySelector('.interests__tech-button')
-        let activeClass = 'interests__tech-button--active';
-
-        if (document.querySelectorAll('.interests__tech-card--selected').length>0) {
-            // there are some tech-cards selected and button was inactive before - activate button
-            if (!techButton.classList.contains(activeClass)){
-                techButton.classList.add(activeClass)
-            }
-        } else {
-            //there are none tech-cards selected and button was active bere - inactivate button
-            if (techButton.classList.contains(activeClass)){
-                techButton.classList.remove(activeClass)
-            }  
-        }
-    };
-
-    const selectAll = (e,elem) => {
-        
-        let goButton = document.querySelector('.interests__'+elem+'-button')
+        //button to go further  
+        let goButton = document.querySelector('.interests__'+elem+'-btn')
+        let activeButton = 'interests__'+elem+'-btn--active';
+        // label to select / unselect all       
+        let labelToSelect = document.querySelector('.interests__'+elem+'-lbl');
+        let selectedLabel = 'interests__'+elem+'-lbl--selected';
+        //all selected cards with tech/spec
+        let selectedCard = 'interests__'+elem+'--selected';        
 
         //if label was selected we need to unselect all cards
-        if ( e.target.classList.contains('interests__'+elem+'-label--selected')){
+        if ( e.target.classList.contains(selectedLabel)){
 
-            [... document.querySelectorAll('.interests__'+elem+'-card')].forEach(x => {
-                if (x.classList.contains('interests__'+elem+'-card--selected')){
-                    x.classList.remove('interests__'+elem+'-card--selected')
+            [... document.querySelectorAll('.interests__'+elem)].forEach(x => {
+                if (x.classList.contains(selectedCard)){
+                    x.classList.remove(selectedCard)
                 }
             });
 
             // inactivates button to go further
-            if (goButton.classList.contains('interests__'+elem+'-button--active')){
-                goButton.classList.remove('interests__'+elem+'-button--active')
+            if (goButton.classList.contains(activeButton)){
+                goButton.classList.remove(activeButton)
             }
 
         //if label was NOT selected we need to select all cards
         } else {
             
-            [... document.querySelectorAll('.interests__'+elem+'-card')].forEach(spec => {
-                if (!spec.classList.contains('interests__'+elem+'-card--selected')){
-                    spec.classList.add('interests__'+elem+'-card--selected')
+            [... document.querySelectorAll('.interests__'+elem)].forEach(x => {
+                if (!x.classList.contains(selectedCard)){
+                    x.classList.add(selectedCard)
                 }
             });
 
             // activates button to go further
-            if (!goButton.classList.contains('interests__'+elem+'-button--active')){
-                goButton.classList.add('interests__'+elem+'-button--active')
+            if (!goButton.classList.contains(activeButton)){
+                goButton.classList.add(activeButton)
             }
         }
             
         //changes label from select all to unselect all and vice versa
-        e.target.classList.toggle('interests__'+elem+'-label--selected');
+        e.target.classList.toggle(selectedLabel);
 
     };
 
@@ -317,42 +325,29 @@ const interestsModule = (function(){
     const displayTechnologies = e => {
 
         //check if button is active
-        if (e.target.closest('.interests__spec-button--active')){
+        if (e.target.closest('.interests__spec-btn--active')){
             //stores selected specializations
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
             appendTechnologies();
             //show technologies page
-            toogleVisibility('tech-choice');
+            toogleVisibility('techs');
             //hide sepcializations page
-            toogleVisibility('spec-choice');
+            toogleVisibility('specs');
         }
     };
-
-    const displaySpecializations = e => {
-
-    }
-
-    const displayTec = e => {
-        //show technologies page
-        toogleVisibility('tech-choice');
-        //hide sepcializations page
-        toogleVisibility('spec-choice');
-    }
-
-
 
 
     const displayTasks= e => {
 
         //checks if button is active
-        if (e.target.closest('.interests__tech-button--active')){
+        if (e.target.closest('.interests__tech-btn--active')){
             //stores selected technologies
             setUserTechnologies();
             //hide technologies page
-            toogleVisibility('tech-choice');
+            toogleVisibility('techs');
             //show tasks page
-            toogleVisibility('task-list');
+            toogleVisibility('tasks');
         }   
     };
 

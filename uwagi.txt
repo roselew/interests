@@ -1,20 +1,4 @@
-Pytania do Piotra:
-
-3) Mam spory problem z svg. Do tej pory robiłam tak, że żeby modyfikować styl svg albo trzymałam kilka wersji pliku, albo trzymałam gdzieś w html ten który używałam wielokrotnie. Ale tu jest za dużo plików żeby tak zrobić. 
-Znalazłam w sieci jakieś "wstrzykiwacze" ale z tego co zrozumiałam one chyba wymagają uruchomienia lokalnego serwera. Mógłbyś mi podpowiedzieć czy da się to zrobić jakoś prościej ? 
-
-4) Mam jeszcze kilka problemów mniejszej rangi (zapisałam w punkcie "Brakujące funkcjonalności"), z którymi może lepiej jeszcze trochę powalczę, żeby nie marnować Twojego czasu. 
-
-
-Pytania do Grzegorza:
-
-
-Pytania do Marcina:
-
-1) W jakiej formie zapisywać wybór użytkownika?
-2) W jakiej formie dostanę dostępne specjalizacje i technologie
-
-
+﻿
 Brakujące funkcjonalności (z braku czasu...):
 
 2) Wczytywanie specjalizacji i technologii z pliku json a nie ze zmiennej
@@ -27,8 +11,6 @@ Brakujące funkcjonalności (z braku czasu...):
 Brakujące funkcjonalności (bo nie wiem jak...):
 
 1) svg - jak wstrzyknąć svg inline żeby zmieniać styl w css
-2) karta specjalizacji wybrana - biały trójkąt w lewym górnym rogu - jak zaokrąglić róg? (border-radius nie działa, może wczytać gotowe svg ?)
-3) karta specjalizacji - jak zrobić wygaszanie
 4) animacja ukrycia niepotrzebnie widoczna przy załadowaniu strony 
 5) usunąć zwiększone karty specjalizacji/technologii w ostatnim wierszu (tak żeby nadal mogły marginesy być takie same)
 6) skąd dostęp do czcionki Proxima Nova

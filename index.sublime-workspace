@@ -1,0 +1,527 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tog",
+				"toogleVisibility"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"get",
+				"getTechnologies"
+			],
+			[
+				"setuse",
+				"setUserTechnologies"
+			],
+			[
+				"set",
+				"setUserSpecializations"
+			],
+			[
+				"user",
+				"userSpecializations"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"bor",
+				"border-bottom-left-radius"
+			],
+			[
+				"header",
+				"header_logo_size"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"colo",
+				"color_back_kid"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"col",
+				"color_text_parent"
+			],
+			[
+				"border-bo",
+				"border-bottom-right-radius"
+			],
+			[
+				"inp",
+				"input_height"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"color",
+				"color_text_kid"
+			],
+			[
+				"heade",
+				"header-banner"
+			],
+			[
+				"margi",
+				"margin-right"
+			],
+			[
+				"odz",
+				"odznaki_right"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"day",
+				"day_margin"
+			],
+			[
+				"progress",
+				"progress_logo_size"
+			],
+			[
+				"odznaki_",
+				"odznaki_right"
+			],
+			[
+				"hig",
+				"height"
+			],
+			[
+				"o",
+				"odznaki_left"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"kid",
+				"kid_mode"
+			],
+			[
+				"no",
+				"noFilterMode"
+			],
+			[
+				"wait",
+				"waitMissions"
+			],
+			[
+				"start",
+				"startDay"
+			],
+			[
+				"current",
+				"currentDay"
+			],
+			[
+				"startD",
+				"startDayMonth"
+			],
+			[
+				"endDy",
+				"endDayMonth"
+			],
+			[
+				"border-ra",
+				"border-radius"
+			],
+			[
+				"head",
+				"header_logo_size"
+			],
+			[
+				"border-bot",
+				"border-bottom-right-radius"
+			],
+			[
+				"margin-",
+				"margin-right"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"var",
+				"vertical-align"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"bacc",
+				"background-color"
+			],
+			[
+				"mission",
+				"mission_small_size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"bcc",
+				"background-color"
+			],
+			[
+				"sm",
+				"circle-small"
+			],
+			[
+				"te",
+				"text-align"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Contro",
+				"Package Control: Install Package"
+			],
+			[
+				"Packag",
+				"Package Control: Install Package"
+			],
+			[
+				"em",
+				"Set Syntax: Emmet"
+			],
+			[
+				"e",
+				"Set Syntax: Emmet"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/U139204/Desktop/private/TORI/interests-master/index.html",
+		"/C/Users/U139204/Desktop/private/TORI/interests-master/main.js",
+		"/C/Users/U139204/Desktop/private/TORI/all",
+		"/C/Users/U139204/Desktop/private/TORI/bohater_new",
+		"/C/Users/U139204/Desktop/private/TORI/bohater_old",
+		"/C/Users/U139204/Desktop/private/TORI/app.routing.ts",
+		"/C/Users/U139204/Desktop/private/TORI/alldata2",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/medal.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_dziecko_menu.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/dziecko_menu.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/postepy_odznaki.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/data.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/obsluga_misji.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_progress_bar.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/dziecko_misje.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_dziecko_misje.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_postepy_odznaki.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/dziecko_login.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/rodzic_postepy.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/rodzic_wspolne.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/rodzic_misje.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/rodzic_misje.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/dziecko_misje.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_header.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/menu-button.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_zmienne.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/captain.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/index.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/K/style.css",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/reset.css",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_rodzic_misje.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/star.svg",
+		"/C/Users/U139204/Downloads/star.svg",
+		"/C/Users/U139204/Downloads/star (1).svg",
+		"/C/Users/U139204/Downloads/background_kid.svg",
+		"/C/Users/U139204/Downloads/background_kid (1) - Kopia.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_index.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/styl.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_circles.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/giftbox.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/rodzic_login.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/dziecko_odznaki.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/rodzic_register.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/misje.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/sass/_filter.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/css/styl.css",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/week.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/misje.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/misje_rodzic.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/gift.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/badge2.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/assets/badge1.svg",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/misje",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io-master/index.html",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io-master/js/week.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io-master/js/data.js",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io-master/sass/styl.scss",
+		"/C/Users/U139204/Desktop/private/TORI/roselew.github.io/js/skrypt.js",
+		"/C/Users/U139204/Desktop/private/TORI/index.html",
+		"/C/Users/U139204/Desktop/private/TORI/proba",
+		"/C/Users/U139204/Desktop/Installed Packages/emmet-sublime-master/_PyV8.pyd",
+		"/C/Users/U139204/Desktop/Installed Packages/emmet-sublime-master/PyV8.py",
+		"/C/Users/U139204/Desktop/private/TORI/czwarta.html",
+		"/C/Users/U139204/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/C/Users/U139204/AppData/Roaming/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"technologies",
+			"Technologies",
+			"technologies",
+			"Technologies",
+			"technologies",
+			"Technologies",
+			"technologies",
+			"pecializations",
+			"selectedSpecializations",
+			"specializations",
+			"Specializations",
+			"specializations",
+			"Specializations",
+			"specializations",
+			"Specializations",
+			"specializations",
+			"())",
+			"specializations",
+			"Specializations",
+			"specializations",
+			"technologies",
+			"show",
+			"Specializations",
+			"Specializations ",
+			"dzieci",
+			"gifts",
+			"missions",
+			"Missions",
+			"missions",
+			"kids",
+			"relative",
+			"left",
+			"00A6FF",
+			"eac",
+			"each",
+			"eac",
+			"each",
+			"forEa",
+			"menu",
+			"f1c40f",
+			"f39c12",
+			"f1c40f",
+			"newMissionForm",
+			"addE",
+			"starSvg",
+			"svg",
+			"boha",
+			"dayNumber",
+			"kid_mode",
+			"index",
+			"state",
+			"dayClass",
+			"index",
+			"showThu",
+			"docum",
+			"updateP",
+			"circl",
+			"adddon",
+			"add",
+			"update",
+			"children"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"zmie",
+				"sass\\_zmienne.scss"
+			],
+			[
+				"",
+				"sass\\styl.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 183.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
