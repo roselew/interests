@@ -1,9 +1,5 @@
 Pytania do Piotra:
 
-1) Grzegorz wspominał, że wszystko ma być przygotowne w modułach. Czy mógłbyś zerknąć, czy w js ten zapis modułowy jest prawidłowy? O to chodziło?
-
-2) Czy dobrze nazywam klasy? Taka konwencja jest ok ? Starałam się trzymać, zgodnie z prośbą Grzegorza, BEM. Tylko nie  jestem pewna czy dorze to zrozumiałam.
-
 3) Mam spory problem z svg. Do tej pory robiłam tak, że żeby modyfikować styl svg albo trzymałam kilka wersji pliku, albo trzymałam gdzieś w html ten który używałam wielokrotnie. Ale tu jest za dużo plików żeby tak zrobić. 
 Znalazłam w sieci jakieś "wstrzykiwacze" ale z tego co zrozumiałam one chyba wymagają uruchomienia lokalnego serwera. Mógłbyś mi podpowiedzieć czy da się to zrobić jakoś prościej ? 
 
@@ -11,9 +7,6 @@ Znalazłam w sieci jakieś "wstrzykiwacze" ale z tego co zrozumiałam one chyba 
 
 
 Pytania do Grzegorza:
-
-1) Wygląd przycisku powrót
-2) Czy dobrze zrozumiałam że dla kart specjalizacji/technologii marginesy skrajne i wewnętrzne mają być identyczne? 
 
 
 Pytania do Marcina:
@@ -24,11 +17,11 @@ Pytania do Marcina:
 
 Brakujące funkcjonalności (z braku czasu...):
 
-1) Opcja Zaznacz / Odznacz Wszystko
 2) Wczytywanie specjalizacji i technologii z pliku json a nie ze zmiennej
 3) Przegląd kompatybilności zastosowanych rozwiązań dla starszych przeglądarek
 4) Porządek w kodzie, komentarze etc. 
 5) RWD (tło nie jest na pełną stronę + za duża czcionka dla małych ekranów, zapalanie karty za duże dla małych ekranów, etc.)
+6) powrót do technologii nie ma wybranych wcześniej
 
 
 Brakujące funkcjonalności (bo nie wiem jak...):

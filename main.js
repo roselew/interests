@@ -1,18 +1,18 @@
 var specializations = [
-    {name: 'Web design',                icon:'assets/camera-digital.svg'},
-    {name: 'Wektory i dtp',             icon:'assets/camera-digital.svg'},
-    {name: 'Grafika i 3D',              icon:'assets/camera-digital.svg'},
-    {name: 'Front-End',                 icon:'assets/camera-digital.svg'},
-    {name: 'Back-End',                  icon:'assets/camera-digital.svg'},
-    {name: 'Wordpress i CMS',           icon:'assets/camera-digital.svg'},
-    {name: 'Mobile',                    icon:'assets/camera-digital.svg'},
-    {name: 'Wideo i Audio',             icon:'assets/camera-digital.svg'},
-    {name: 'Fotografia',                icon:'assets/camera-digital.svg'},
-    {name: 'Concept Art',               icon:'assets/camera-digital.svg'},
-    {name: 'Tworzenie gier',            icon:'assets/camera-digital.svg'},
-    {name: 'Promocja i biznes',         icon:'assets/camera-digital.svg'},
-    {name: 'Serwery i administracja',   icon:'assets/camera-digital.svg'},
-    {name: 'CAD i narzędzia',           icon:'assets/camera-digital.svg'}
+    {name: 'Web design',                icon:'#camera-digital'},
+    {name: 'Wektory i dtp',             icon:'#camera-digital'},
+    {name: 'Grafika i 3D',              icon:'#camera-digital'},
+    {name: 'Front-End',                 icon:'#camera-digital'},
+    {name: 'Back-End',                  icon:'#camera-digital'},
+    {name: 'Wordpress i CMS',           icon:'#camera-digital'},
+    {name: 'Mobile',                    icon:'#camera-digital'},
+    {name: 'Wideo i Audio',             icon:'#camera-digital'},
+    {name: 'Fotografia',                icon:'#camera-digital'},
+    {name: 'Concept Art',               icon:'#camera-digital'},
+    {name: 'Tworzenie gier',            icon:'#camera-digital'},
+    {name: 'Promocja i biznes',         icon:'#camera-digital'},
+    {name: 'Serwery i administracja',   icon:'#camera-digital'},
+    {name: 'CAD i narzędzia',           icon:'#camera-digital'}
 ]
 
 var technologies = [
@@ -83,9 +83,20 @@ const interestsModule = (function(){
             specTechNum.innerText = 'Technologii: ' +  getTechnologies(specialization.name).length;
             specCard.appendChild(specTechNum);
             //specialization icon 
-            let specIcon = document.createElement('img');
-            specIcon.src = specialization.icon;
+            let specIcon = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+            specIcon.setAttribute('width','50px');
+            specIcon.setAttribute('height','50px');
+            document.createElementNS ("http://www.w3.org/2000/svg", "svg");
+            let specUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
+            specUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', specialization.icon)
+            specIcon.appendChild(specUse);
+
+            // specIcon.innerHTML = '<use xlink:href=' + specialization.icon + '></use>';
             specCard.appendChild(specIcon);
+    
+            // let specIcon = document.createElement('img');
+            // specIcon.src = specialization.icon;
+            // specCard.appendChild(specIcon);
     
             //appends specialization card to specialization choice fragment
             fragment.appendChild(specCard);
