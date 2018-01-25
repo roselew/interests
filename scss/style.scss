@@ -6,6 +6,11 @@ html {font-size: 62.5%;height: 100%; background-color: $color_back;}
 body {width: 100%; height: 100%;}
 
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
 @keyframes slideInLeft {
     0%   {transform: translateX(100%)}
     100% {transform: translateX(0%)}
@@ -16,58 +21,6 @@ body {width: 100%; height: 100%;}
     100% {transform: translateX(-100%);}
 }
 
-@keyframes slideInDiagonal {
-    0%   {
-        border-top: 300px solid white;
-        border-left: 300px solid transparent;
-    }
-    100% {
-        border-top: 60px solid white;
-        border-left: 60px solid transparent;
-    }
-}
-
-@keyframes slideInDiagonal2 {
-    0%   {
-        width:0px;
-    }
-    99%{
-        width:0px;        
-    }
-    100% {
-        width:16px;
-    }
-}
-
-@keyframes slideOutDiagonal {
-    0%   {
-        border-top: 60px solid white;
-        border-left: 60px solid transparent;
-        
-    }
-    99% {
-        border-top: 1000px solid white;
-        border-left: 1000px solid transparent;
-    }
-    100% {
-        border-top: 0px solid white;
-        border-left: 0px solid transparent;
-    }
-}
-
-@keyframes slideOutDiagonal2 {
-    0%   {
-        background: $color_theme1_1;
-    }
-    99% {
-        background: $color_theme1_1;
-    }
-    100% {
-        background: $color_back_card;
-    }
-}
-
-
 
 .interests{
 
@@ -77,7 +30,7 @@ body {width: 100%; height: 100%;}
     text-align: center;
 
 
-    &__spec-choice, &__tech-choice, &__task-list {
+    &__specs, &__techs, &__tasks {
         position: absolute;
         width: 100%;
         top:0;
@@ -125,12 +78,13 @@ body {width: 100%; height: 100%;}
         margin-bottom: 6.0rem;
     }
 
-    &__tech-label, &__spec-label {
+    &__tech-lbl, &__spec-lbl {
         display: block;     
         position: relative;
         top:0;
         right: 6%;
         text-align: right;
+        cursor: pointer;
 
         &::before{
             content:'';
@@ -171,7 +125,7 @@ body {width: 100%; height: 100%;}
     }
 
 
-    &__spec-button, &__tech-button{   
+    &__spec-btn, &__tech-btn{   
         background: $color_theme4_1 $gradient_theme4_1; 
         &--active{ 
             background: $color_theme2_1 $gradient_theme2_1;
@@ -179,23 +133,26 @@ body {width: 100%; height: 100%;}
         }
     }
 
-    &__spec-cards, &__tech-cards {
+    &__specs ul, &__techs ul{
         margin: 0px 4.2%;
         display:flex;
         flex-flow: row wrap;
         justify-content: center;
     }
     
-    &__spec-card, &__tech-card{
+    &__spec, &__tech{
         flex-grow: 1;
         position: relative;
         display: inline-block;
         vertical-align: middle;
         text-align: left;
-        background: $color_back_card;
+        background: linear-gradient(45deg, $color_theme1_2 0%, $color_theme1_1 45%, $color_back_card 45.1%);
+        background-size: 200% 200%;
+        background-position: 100% 0%;
         padding: 2.0rem 3.0rem;
         border-radius: 2.6rem;
         transition: scale 0.3s;
+        transition: background-position 0.3s linear;
         transform-origin: 50% 50%;
         box-shadow: 0px 3px 6px rgba(black,0.05);
         cursor: pointer;
@@ -212,40 +169,26 @@ body {width: 100%; height: 100%;}
         }
 
         &:hover{
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0px 3px 22px rgba(black,0.15);
         }
 
         &--selected {
 
-            background: $gradient_theme1_1 $color_theme1_1;
+            background-position: 0% 100%;
             h3,p {color: white; }
             
 
             &::after{
-                content: '';
-                position: absolute;
-                top:0;
-                right:0;
-                width:0;
-                height:0;
-                animation: slideInDiagonal;
-                animation-duration: 0.3s;
-                animation-fill-mode: forwards;
-                border-top: 80px solid white;
-                border-left: 80px solid transparent;
 
-            }
-
-            &::before{
-                content: url('assets/tick.svg');
+                content: url('assets/tick2.svg');
                 position:absolute;
                 top:13px;
                 right:13px;
                 width:16px;
-                z-index:1;
-                animation: slideInDiagonal2;
-                animation-duration: 0.3s;
+                opacity: 0;
+                animation: fadeIn;
+                animation-delay: 0.3s;
                 animation-fill-mode: forwards;
 
             }
@@ -253,7 +196,7 @@ body {width: 100%; height: 100%;}
 
     }  
     
-    &__spec-card{
+    &__spec{
         width: 300px;
         height: 300px;
         margin: 24px;
@@ -275,30 +218,33 @@ body {width: 100%; height: 100%;}
         }
 
         &--selected {
-            svg {
-                fill: white;
-            }
+            svg { fill: white;}
         }
     }
 
-    &__tech-card{
+    &__tech{
         width: 400px;
         height: 120px;
-        margin: 20px;
+        margin: 24px;
         padding-left: 11.3rem;
 
         h3  { font-size: 3.0rem;}
 
-        img{
+        img, svg{
+            fill: $color_theme1_2;
             display: block;
             position:absolute;
             top: 2.8rem;
             left:3.5rem;
             width: 52px;
         }
+
+        &--selected {
+            svg { fill: white;}
+        }
     }
 
-    &__task-list{
+    &__tasks{
         width:100%;
         min-height: 100%;
     }
@@ -379,7 +325,7 @@ body {width: 100%; height: 100%;}
 
     }
 
-    &__task-button {
+    &__task-btn {
         background: $color_theme4_1 $gradient_theme4_1; 
         &--active{ 
             background: $color_theme3_1 $gradient_theme3_1;
