@@ -69,41 +69,32 @@ const interestsModule = (function(){
         var fragment = document.createDocumentFragment();
     
         for (let specialization of getAllSpecializations()) {
-    
-            //creates card with specialization
-            let specCard = document.createElement('li');
-            specCard.className = 'interests__spec';
-            //name of specialization
-            let specName = document.createElement('h3');
-            specName.innerText = specialization.name;
-            specCard.appendChild(specName);
-            //number of technologies avaiable
-            let specTechNum = document.createElement('p');
-            specTechNum.innerText = 'Technologii: ' +  getTechnologies(specialization.name).length;
-            specCard.appendChild(specTechNum);
-            //specialization icon 
-            let specIcon = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-            specIcon.setAttribute('width','50px');
-            specIcon.setAttribute('height','50px');
-            let specUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
-            specUse.classList.add('proba');
-            specUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', specialization.icon)
-            specIcon.appendChild(specUse);
-            specCard.appendChild(specIcon);
-    
-            // let specIcon = document.createElement('img');
-            // specIcon.src = specialization.icon;
-            // specCard.appendChild(specIcon);
-    
+            
+            //creates template with li with specialization card
+            let specCard = createSpecCard(specialization);
+            
             //appends specialization card to specialization choice fragment
-            fragment.appendChild(specCard);
-    
+            fragment.appendChild(specCard.content);
         }
-    
+
         //appends specialization choice fragment to html
         element.appendChild(fragment);
     
     };
+
+    const createSpecCard = specialization => {
+        let specCard = document.createElement('template');
+        specCard.innerHTML = `
+            <li class='interests__spec'>
+                <h3> ${specialization.name} </h3>
+                <p> Technologii: ${getTechnologies(specialization.name).length} </p>
+                <svg width="50px" height="50px">
+                    <use xlink:href=" ${specialization.icon} "</use>
+                </svg>
+            </li>
+        `;
+        return specCard;
+    }
 
     const appendTechnologies = () => {
 
@@ -117,52 +108,39 @@ const interestsModule = (function(){
 
         //takes all available technologies from selected specializations
         let allTechnologies = selectedSpecializations.map( x => getTechnologies(x)).join(',').split(',');
-
-        // let allTechnologies = [];
-        // for (let specialization of selectedSpecializations) {
-        //     for (let technology of this.getTechnologies(specialization)) {
-        //         allTechnologies.push(technology)
-        //     }
-        // }
     
         //get rid of repetiting technologies (technology can be in 2 specizalizations)
         uniq = allTechnologies => [... new Set(allTechnologies)];
     
         for (let technologyName of allTechnologies){
             let technology = getAllTechnologies().find( tech => tech.name ===technologyName);
-          
-           //creates card with technology
-            let techCard = document.createElement('li');
-            techCard.className = 'interests__tech';
-            //name of technology
-            let techName = document.createElement('h3');
-            techName.innerText = technology.name;
-            techCard.appendChild(techName);
-            // number of courses (DO ZROBIENIA!!!)
-            let techCourseNum = document.createElement('p');
-            techCourseNum.innerText = 'Kursów: ';
-            techCard.appendChild(techCourseNum);
-            //technology icon
-            let techIcon = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-            techIcon.setAttribute('width','50px');
-            techIcon.setAttribute('height','50px');
-            let techUse = document.createElementNS("http://www.w3.org/2000/svg",'use');
-            techUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', technology.icon)
-            techIcon.appendChild(techUse);
-            techCard.appendChild(techIcon);
-
-            // let techIcon = document.createElement('img');
-            // techIcon.src = technology.icon;
-            // techCard.appendChild(techIcon);
-    
+         
+            //creates template with li with technology card
+            let techCard = createTechCard(technology);
+            
             //appends technology card to technology choice fragment
-            fragment.appendChild(techCard);
+            fragment.appendChild(techCard.content);
         }
     
         //appends technology choice fragment to html
         element.appendChild(fragment);      
 
     };
+
+    const createTechCard = technology => {
+        let techCard = document.createElement('template');
+        techCard.innerHTML =  `
+            <li class='interests__tech'>
+                <h3> ${technology.name} </h3>
+                <p> Kursów: </p>
+                <svg width="50px" height="50px">
+                    <use xlink:href=" ${technology.icon} "</use>
+                </svg>
+            </li>
+        `;
+        return techCard;
+    }
+    
 
     const clearTechnologies = () => {
         let techCards = document.querySelector('.interests__techs ul');
