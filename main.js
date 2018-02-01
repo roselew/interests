@@ -1,49 +1,56 @@
 var specializations = [
-    {name: 'Web design',                icon:'#camera-digital'},
-    {name: 'Wektory i dtp',             icon:'#camera-digital'},
-    {name: 'Grafika i 3D',              icon:'#camera-digital'},
-    {name: 'Front-End',                 icon:'#camera-digital'},
-    {name: 'Back-End',                  icon:'#camera-digital'},
-    {name: 'Wordpress i CMS',           icon:'#camera-digital'},
-    {name: 'Mobile',                    icon:'#camera-digital'},
-    {name: 'Wideo i Audio',             icon:'#camera-digital'},
-    {name: 'Fotografia',                icon:'#camera-digital'},
-    {name: 'Concept Art',               icon:'#camera-digital'},
-    {name: 'Tworzenie gier',            icon:'#camera-digital'},
-    {name: 'Promocja i biznes',         icon:'#camera-digital'},
-    {name: 'Serwery i administracja',   icon:'#camera-digital'},
-    {name: 'CAD i narzędzia',           icon:'#camera-digital'}
+    {id:1,  name: 'Grafika i Interfejsy',          
+            badges:[    'UI/UX Design',
+                        'Wektory i Ilustracje',
+                        'Druk i DTP',
+                        'Concept Art',
+                        'Grafika 3D'
+                    ], 
+            icon:'#grafika'
+    },
+    {id:2,  name: 'Programowanie',                 
+            badges:[    
+                'Front-end i Frameworki',
+                'WordPress i CMSy',
+                'PHP i Frameworki', 
+                'C# i ASP.NET',
+                'Java',
+                'Python',
+                'Swift i iOS',
+                'Game Development',
+                'GO',
+                'Android z Kotlin'
+            ], 
+            icon:'#programowanie'
+    },
+    {id:3,  name: 'Marketing i Biznes',            
+            badges:[    
+                'Marketing w Social Media',
+                'Startupy i Produkty',
+                'Freelance i Produktywność'
+            ], 
+            icon:'#promocja'},
+    {id:4,  name: 'Wideo i Audio',
+            badges:[
+                'Montaż i Postprodukcja',
+                'Visual FX i Animacja',
+                'Audio',
+                'Produkcja filmów'
+            ],
+            icon:'#video'
+    },
+    {id:5,  name: 'Fotografia i Photoshop',       
+            badges:[
+                'Podstawy Fotografii',
+                'Fotografia Studyjna',
+                'Fotografia Podróżnicza',
+                'Obróbka Zdjęć i Retusz'
+            ],
+            icon:'#fotografia'
+    },
 ]
 
-var technologies = [
-    {name: 'UX/UI dla Stron WWW',           icon:'#text-document',     specializations:['Web design','UX/UI dla Stron WWW']},
-    {name: 'Photoshop i Illustrator',       icon:'#text-document',     specializations:['Web design']},
-    {name: 'Projektowanie UI',              icon:'#text-document',     specializations:['Web design','UX/UI dla Stron WWW']},
-    {name: 'Strony WWW bez kodowania',      icon:'#text-document',     specializations:['Web design']},
-    {name: 'Optymalizacja i RWD',           icon:'#text-document',     specializations:['Web design','Front-End']},
-    {name: 'Projektowanie graficzne',       icon:'#text-document',     specializations:['Wektory i dtp']},
-    {name: 'Typografia',                    icon:'#text-document',     specializations:['Wektory i dtp']},
-    {name: 'Photoshop',                     icon:'#text-document',     specializations:['Wektory i dtp']},
-    {name: 'Illustrator',                   icon:'#text-document',     specializations:['Wektory i dtp']},
-    {name: 'Prototypowanie',                icon:'#text-document',     specializations:['UX/UI dla Stron WWW']},
-    {name: '3D',                            icon:'#text-document',     specializations:['Grafika i 3D']},
-    {name: '3D i grafika',                  icon:'#text-document',     specializations:['Grafika i 3D','Concept Art']},
-    {name: 'Podstawy Tworzenia Stron',      icon:'#text-document',     specializations:['Front-End']},
-    {name: 'Client Side',                   icon:'#text-document',     specializations:['Front-End']},
-    {name: 'PHP',                           icon:'#text-document',     specializations:['Back-End']},
-    {name: 'Frameworki Back-End',           icon:'#text-document',     specializations:['Back-End']},
-    {name: '.NET',                          icon:'#text-document',     specializations:['Back-End']},
-    {name: 'Wordpress',                     icon:'#text-document',     specializations:['Wordpress i CMS']},
-    {name: 'Projektowanie na Mobile',       icon:'#text-document',     specializations:['Mobile']},
-    {name: 'Wideo',                         icon:'#text-document',     specializations:['Wideo i Audio']},
-    {name: 'Fotografia',                    icon:'#text-document',     specializations:['Fotografia']},
-    {name: 'Concept Art',                   icon:'#text-document',     specializations:['Concept Art']},
-    {name: 'Unity',                         icon:'#text-document',     specializations:['Tworzenie gier']},
-    {name: 'Facebook',                      icon:'#text-document',     specializations:['Promocja i biznes']},
-    {name: 'Google',                        icon:'#text-document',     specializations:['Promocja i biznes']},
-    {name: 'Linux',                         icon:'#text-document',     specializations:['Serwery i administracja']},
-    {name: 'AutoCAD',                       icon:'#text-document',     specializations:['CAD i narzędzia']}
-]
+
 
 const interestsModule = (function(){
 
@@ -60,8 +67,6 @@ const interestsModule = (function(){
     const getUserTechnologies = () => userTechnologies;
 
     const getAllSpecializations = () => specializations;
-
-    const getAllTechnologies = () => technologies; 
 
     const appendSpecializations = () => {
 
@@ -85,64 +90,65 @@ const interestsModule = (function(){
     const createSpecCard = specialization => {
         let specCard = document.createElement('template');
         specCard.innerHTML = `
-            <li class='interests__spec'>
+            <li class='interests__spec interests__spec${specialization.id}'>
                 <h3> ${specialization.name} </h3>
-                <p> Technologii: ${getTechnologies(specialization.name).length} </p>
-                <svg width="50px" height="50px">
+                <p> Technologii: ${specialization.badges.length} </p>
+                <svg width="auto" height="150px">
                     <use xlink:href=" ${specialization.icon} "</use>
+                </svg>
+                <svg class="interests__tick" width="auto" height="150px">
+                    <use xlink:href="#tick"</use>
                 </svg>
             </li>
         `;
         return specCard;
     }
 
-    const appendTechnologies = () => {
+    const appendBadges = () => {
 
         var element = document.querySelector('.interests__techs ul');
         var fragment = document.createDocumentFragment();    
 
         //deletes all technologies, otherwise they are doubled when going back
-        clearTechnologies();
+        clearBadges();
 
         let selectedSpecializations = getUserSpecializtions();
 
-        //takes all available technologies from selected specializations
-        let allTechnologies = selectedSpecializations.map( x => getTechnologies(x)).join(',').split(',');
-    
-        //get rid of repetiting technologies (technology can be in 2 specizalizations)
-        uniq = allTechnologies => [... new Set(allTechnologies)];
-    
-        for (let technologyName of allTechnologies){
-            let technology = getAllTechnologies().find( tech => tech.name ===technologyName);
-         
-            //creates template with li with technology card
-            let techCard = createTechCard(technology);
-            
-            //appends technology card to technology choice fragment
-            fragment.appendChild(techCard.content);
-        }
+
+        for (let specialization of getAllSpecializations()){
+            if (selectedSpecializations.indexOf(specialization.name)>-1){
+                for (let badge of specialization.badges){
+                    
+                    //creates template with li with technology card
+                    let badgeCard = createBadgeCard(badge,specialization.id);
+                    
+                    //appends technology card to technology choice fragment
+                    fragment.appendChild(badgeCard.content);
+                }
+            }
+        }     
     
         //appends technology choice fragment to html
         element.appendChild(fragment);      
 
     };
 
-    const createTechCard = technology => {
-        let techCard = document.createElement('template');
-        techCard.innerHTML =  `
-            <li class='interests__tech'>
-                <h3> ${technology.name} </h3>
+    const createBadgeCard = (badge, specId) => {
+        let badgeCard = document.createElement('template');
+        badgeCard.innerHTML =  `
+            <li class='interests__tech interests__tech${specId}'>
+                <h3> ${badge} </h3>
                 <p> Kursów: </p>
-                <svg width="50px" height="50px">
-                    <use xlink:href=" ${technology.icon} "</use>
+                <svg class="interests__tick" width="auto" height="150px">
+                    <use xlink:href="#tick"</use>
                 </svg>
             </li>
         `;
-        return techCard;
+        return badgeCard;
     }
     
 
-    const clearTechnologies = () => {
+    const clearBadges = () => {
         let techCards = document.querySelector('.interests__techs ul');
         while (techCards.firstChild) {
             techCards.removeChild(techCards.firstChild);
@@ -179,13 +185,13 @@ const interestsModule = (function(){
 
 
         //adds click event to back button to specializations
-        document.querySelector('.interests__tech-back')
-                .addEventListener("click", ()=> {
-                    //show sepcializations  page
-                    toogleVisibility('specs');
-                    //hide technologies page
-                    toogleVisibility('techs');
-                });
+        // document.querySelector('.interests__tech-back')
+        //         .addEventListener("click", ()=> {
+        //             //show sepcializations  page
+        //             toogleVisibility('specs');
+        //             //hide technologies page
+        //             toogleVisibility('techs');
+        //         });
 
         //adds click event to back button to technologies
         document.querySelector('.interests__task-back')
@@ -196,24 +202,12 @@ const interestsModule = (function(){
                     toogleVisibility('tasks');
                 });
 
-
     }
 
     const stopHiding = () => {
         document.querySelector('.interests__techs').style.opacity="1";
-        document.querySelector('.interests__tasks').style.opacity = "1"
+        document.querySelector('.interests__tasks').style.opacity="1"
     }
-
-    //retruns technologies from given specification name (spec)
-    const getTechnologies = spec => {
-        let tech=[];
-        for (let technology of getAllTechnologies()) {
-            if (technology.specializations.indexOf(spec)>-1){
-                tech.push(technology.name);
-            }
-        }
-        return tech;
-    };
 
  
     const selectCard =  (e, elem) => {
@@ -312,7 +306,7 @@ const interestsModule = (function(){
             //stores selected specializations
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
-            appendTechnologies();
+            appendBadges();
             //show technologies page
             toogleVisibility('techs');
             //hide sepcializations page
