@@ -56,15 +56,15 @@ const interestsModule = (function(){
 
     var userSpecializations = [];
 
-    var userTechnologies = [];
+    var userBadges = [];
 
     const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserTechnologies = () => userTechnologies = [...document.querySelectorAll('.interests__tech--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserBadges = () => userBadges = [...document.querySelectorAll('.interests__tech--selected')].map(x => x.querySelector('h3').innerText);
 
-    const getUserTechnologies = () => userTechnologies;
+    const getUserBadges = () => userBadges;
 
     const getAllSpecializations = () => specializations;
 
@@ -92,7 +92,7 @@ const interestsModule = (function(){
         specCard.innerHTML = `
             <li class='interests__spec interests__spec${specialization.id}'>
                 <h3> ${specialization.name} </h3>
-                <p> Technologii: ${specialization.badges.length} </p>
+                <p> Odznak: ${specialization.badges.length} </p>
                 <svg width="auto" height="150px">
                     <use xlink:href=" ${specialization.icon} "</use>
                 </svg>
@@ -106,7 +106,7 @@ const interestsModule = (function(){
 
     const appendBadges = () => {
 
-        var element = document.querySelector('.interests__techs ul');
+        var element = document.querySelector('.interests__badges ul');
         var fragment = document.createDocumentFragment();    
 
         //deletes all technologies, otherwise they are doubled when going back
@@ -136,7 +136,7 @@ const interestsModule = (function(){
     const createBadgeCard = (badge, specId) => {
         let badgeCard = document.createElement('template');
         badgeCard.innerHTML =  `
-            <li class='interests__tech interests__tech${specId}'>
+            <li class='interests__badge interests__badge${specId}'>
                 <h3> ${badge} </h3>
                 <p> Kursów: </p>
                 <svg class="interests__tick" width="auto" height="150px">
@@ -149,9 +149,9 @@ const interestsModule = (function(){
     
 
     const clearBadges = () => {
-        let techCards = document.querySelector('.interests__techs ul');
-        while (techCards.firstChild) {
-            techCards.removeChild(techCards.firstChild);
+        let badgeCards = document.querySelector('.interests__badges ul');
+        while (badgeCards.firstChild) {
+            badgeCards.removeChild(badgeCards.firstChild);
         }
     }
 
@@ -162,8 +162,8 @@ const interestsModule = (function(){
                 .addEventListener("click", () => { selectCard(event, 'spec')} );
     
         //adds click event to technology cards
-        document.querySelector('.interests__techs ul')
-                .addEventListener("click", () => { selectCard(event, 'tech')} );
+        document.querySelector('.interests__badges ul')
+                .addEventListener("click", () => { selectCard(event, 'badge')} );
 
 
         //adds click event to show/hide all button
@@ -171,33 +171,33 @@ const interestsModule = (function(){
                 .addEventListener("click", () => { selectAllCards(event, 'spec') });
 
         //adds click event to show/hide all button
-        document.querySelector('.interests__tech-lbl')
-                .addEventListener("click", () => { selectAllCards(event, 'tech') });        
+        document.querySelector('.interests__badge-lbl')
+                .addEventListener("click", () => { selectAllCards(event, 'badge') });        
 
 
         //adds click event to button go to technologies (only when active)
         document.querySelector('.interests__spec-btn')
-                .addEventListener("click", displayTechnologies);
+                .addEventListener("click", displayBadges);
 
         //adds click event to button go to tasks (only when active)
-        document.querySelector('.interests__tech-btn')
+        document.querySelector('.interests__badge-btn')
                 .addEventListener("click", displayTasks);
 
 
         //adds click event to back button to specializations
-        // document.querySelector('.interests__tech-back')
+        // document.querySelector('.interests__badge-back')
         //         .addEventListener("click", ()=> {
         //             //show sepcializations  page
         //             toogleVisibility('specs');
         //             //hide technologies page
-        //             toogleVisibility('techs');
+        //             toogleVisibility('badges');
         //         });
 
         //adds click event to back button to technologies
         document.querySelector('.interests__task-back')
                 .addEventListener("click", () => {
                     //show technologies page
-                    toogleVisibility('techs');
+                    toogleVisibility('badges');
                     //hide task page
                     toogleVisibility('tasks');
                 });
@@ -205,7 +205,7 @@ const interestsModule = (function(){
     }
 
     const stopHiding = () => {
-        document.querySelector('.interests__techs').style.opacity="1";
+        document.querySelector('.interests__badges').style.opacity="1";
         document.querySelector('.interests__tasks').style.opacity="1"
     }
 
@@ -214,8 +214,8 @@ const interestsModule = (function(){
 
         // toggles class selected for card with sepcialization/technology
         if (e.target !==e.currentTarget){
-            let tech = e.target.closest('.interests__'+elem);
-            tech.classList.toggle('interests__'+elem+'--selected')
+            let card = e.target.closest('.interests__'+elem);
+            card.classList.toggle('interests__'+elem+'--selected')
         }
 
         //button to go further        
@@ -299,7 +299,7 @@ const interestsModule = (function(){
     };
 
  
-    const displayTechnologies = e => {
+    const displayBadges = e => {
 
         //check if button is active
         if (e.target.closest('.interests__spec-btn--active')){
@@ -308,7 +308,7 @@ const interestsModule = (function(){
             //appends technologies from selected specializations to HTML
             appendBadges();
             //show technologies page
-            toogleVisibility('techs');
+            toogleVisibility('badges');
             //hide sepcializations page
             toogleVisibility('specs');
         }
@@ -318,11 +318,11 @@ const interestsModule = (function(){
     const displayTasks= e => {
 
         //checks if button is active
-        if (e.target.closest('.interests__tech-btn--active')){
+        if (e.target.closest('.interests__badge-btn--active')){
             //stores selected technologies
-            setUserTechnologies();
+            setUserBadges();
             //hide technologies page
-            toogleVisibility('techs');
+            toogleVisibility('badges');
             //show tasks page
             toogleVisibility('tasks');
         }   
@@ -346,7 +346,7 @@ const interestsModule = (function(){
     return {
         init: init,
         getUserSpecializtions: getUserSpecializtions,
-        getUserTechnologies: getUserTechnologies
+        getUserBadges: getUserBadges
     }
 
 
