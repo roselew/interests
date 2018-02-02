@@ -106,30 +106,35 @@ const interestsModule = (function(){
 
     const appendBadges = () => {
 
-        var element = document.querySelector('.interests__badges ul');
-        var fragment = document.createDocumentFragment();    
-
         //deletes all technologies, otherwise they are doubled when going back
         clearBadges();
 
+        let element = document.querySelector('.interests__badges-list');
+        let fragment = document.createDocumentFragment();   
         let selectedSpecializations = getUserSpecializtions();
-
 
         for (let specialization of getAllSpecializations()){
             if (selectedSpecializations.indexOf(specialization.name)>-1){
+
+                let fragUl = document.createElement('ul');
+
+                fragment.appendChild
                 for (let badge of specialization.badges){
                     
                     //creates template with li with technology card
                     let badgeCard = createBadgeCard(badge,specialization.id);
                     
                     //appends technology card to technology choice fragment
-                    fragment.appendChild(badgeCard.content);
+                    fragUl.appendChild(badgeCard.content);
                 }
+                //appends technology choice fragment to html
+                fragment.appendChild(fragUl);      
+
             }
-        }     
+        }    
+
+        element.appendChild(fragment) 
     
-        //appends technology choice fragment to html
-        element.appendChild(fragment);      
 
     };
 
@@ -149,9 +154,9 @@ const interestsModule = (function(){
     
 
     const clearBadges = () => {
-        let badgeCards = document.querySelector('.interests__badges ul');
-        while (badgeCards.firstChild) {
-            badgeCards.removeChild(badgeCards.firstChild);
+        let badgeList = document.querySelector('.interests__badges-list');
+        while (badgeList.firstChild) {
+            badgeList.removeChild(badgeList.firstChild);
         }
     }
 
@@ -162,7 +167,7 @@ const interestsModule = (function(){
                 .addEventListener("click", () => { selectCard(event, 'spec')} );
     
         //adds click event to technology cards
-        document.querySelector('.interests__badges ul')
+        document.querySelector('.interests__badges-list')
                 .addEventListener("click", () => { selectCard(event, 'badge')} );
 
 
@@ -185,31 +190,23 @@ const interestsModule = (function(){
 
 
         //adds click event to back button to specializations
-        // document.querySelector('.interests__badge-back')
-        //         .addEventListener("click", ()=> {
-        //             //show sepcializations  page
-        //             toogleVisibility('specs');
-        //             //hide technologies page
-        //             toogleVisibility('badges');
-        //         });
+        document.querySelector('.interests__badge-back')
+                .addEventListener("click", ()=> {
+                    document.querySelector('.interests__badges-footer').classList.remove('interests__badges-footer--active')
+                    //show sepcializations  page
+                    pushSlide('0%');
+                });
 
         //adds click event to back button to technologies
         document.querySelector('.interests__task-back')
                 .addEventListener("click", () => {
-                    //show technologies page
-                    toogleVisibility('badges');
-                    //hide task page
-                    toogleVisibility('tasks');
+                    //show sepcializations  page
+                    pushSlide('-33.33%');
                 });
 
     }
 
-    const stopHiding = () => {
-        document.querySelector('.interests__badges').style.opacity="1";
-        document.querySelector('.interests__tasks').style.opacity="1"
-    }
 
- 
     const selectCard =  (e, elem) => {
 
         // toggles class selected for card with sepcialization/technology
@@ -234,6 +231,9 @@ const interestsModule = (function(){
             // there are some cards selected and button was inactive before - activate button
             if (!goButton.classList.contains(activeButton)){
                 goButton.classList.add(activeButton)
+                if (elem =='badge') {
+                    document.querySelector('.interests__badges-footer').classList.add('interests__badges-footer--active')
+                }
             }
             //check if all technologies are selected then changes label select all to unselect all
             if (selectedCards.length==allCards.length) {
@@ -307,10 +307,8 @@ const interestsModule = (function(){
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
             appendBadges();
-            //show technologies page
-            toogleVisibility('badges');
-            //hide sepcializations page
-            toogleVisibility('specs');
+            //scroll horizontaly
+            pushSlide('-33.33%');
         }
     };
 
@@ -321,25 +319,23 @@ const interestsModule = (function(){
         if (e.target.closest('.interests__badge-btn--active')){
             //stores selected technologies
             setUserBadges();
-            //hide technologies page
-            toogleVisibility('badges');
-            //show tasks page
-            toogleVisibility('tasks');
+            //scroll horizontaly
+            pushSlide('-66.66%');
         }   
     };
 
+
+
     //toggles class --hidden for given element with className
-    const toogleVisibility = className => {
+    const pushSlide = size => {
         //scroll to the very top
         window.scrollTo(0,0);
-        let elem = document.querySelector('.interests__'+className);
-        elem.classList.toggle('interests__'+className+'--hidden');
+        document.querySelector('.interests').style.transform="translateX("+size+")"; 
     };
 
     const init = () => {
         appendSpecializations();
         addEvents(); 
-        setTimeout(stopHiding,1000);
     }
 
 
