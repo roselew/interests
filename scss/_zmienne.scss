@@ -1,3 +1,13 @@
+@mixin specBackground ($color1, $color2, $size) {
+
+	background: linear-gradient(45deg,$color2 0%, $color1 $size, $color_back_card calc(#{$size} + 0.1%));
+	background-size: 200% 200%;
+	background-position: 99% 0%;
+
+}
+
+
+
 //colors definition
 
 	$color_spec1_1:		#2884b3;
