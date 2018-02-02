@@ -203,9 +203,21 @@ const interestsModule = (function(){
                     //show sepcializations  page
                     pushSlide('-33.33%');
                 });
+        
+        let timer = null;
+        document.querySelector('.interests__name')
+                .addEventListener("keydown", ()=>{
+                    clearTimeout(timer); 
+                    timer = setTimeout(resizeName, 1000)
+                })
 
     }
 
+
+    const resizeName = () => {
+        document.querySelector('.interests__name').classList.add('interests__name--shifted');
+        document.querySelector('.interests__name-label').classList.add('interests__name-label--shifted');
+    }
 
     const selectCard =  (e, elem) => {
 
@@ -321,6 +333,7 @@ const interestsModule = (function(){
             setUserBadges();
             //scroll horizontaly
             pushSlide('-66.66%');
+            document.querySelector('.interest__badges').style.height="0px"
         }   
     };
 
