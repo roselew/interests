@@ -143,7 +143,7 @@ const interestsModule = (function(){
         badgeCard.innerHTML =  `
             <li class='interests__badge interests__badge${specId}'>
                 <h3> ${badge} </h3>
-                <p> Technologii: </p>
+                <p> Odznak: </p>
                 <svg class="interests__tick" width="auto" height="150px">
                     <use xlink:href="#tick"</use>
                 </svg>
