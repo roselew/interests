@@ -11,7 +11,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
       to { opacity: 1; }
 }
 
-
 .interests{
 
     display: flex;
@@ -19,21 +18,19 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     transform: translateX(0%);
     transition: transform 0.3s ease-out; 
 
-    width: 300%;
+    width: 500%;
     height: 100%;
     text-align: center;
 
 
-    &__specs, &__badges, &__tasks {
+    &__specs, &__badges, &__tasks, &__goals, &__courses{
         position: relative;
-        // float: left;
         display: inline-block;
-        width: 33.3%;
+        width: 20%;
         min-height: 100%;
         top:0;
         left:0;
-        transition: all 0.3s ease-out;
-        
+        transition: all 0.3s ease-out;     
     }
 
     button { 
@@ -49,16 +46,19 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
     h2,input {
         padding-top: 10%;
-        margin-bottom: 1rem;
+        max-width:80%;
+        margin:auto;
+        margin-bottom: 3rem;
         font: 4.0rem $font_title_family;
-        line-height: 6.6rem;
+        line-height: 4.6rem;
         color: $color_text_dark;
         span{font-weight: 700;}
     }
 
+
     &__badges h2{
-            padding-top: 5%;
-        }
+        padding-top: 5%;
+    }
 
     &__badge-back{
         border: 2px $color_text_light solid;
@@ -92,19 +92,20 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             border:none;
             outline:none;
             display:block;
-            text-align: right;
+            text-align: center;
             width:auto;
-            margin:0;
+            margin:auto;
             padding:0;
             transition: all 1s;
             font: 8.0rem $font_title_family;
             padding-top: 40vh;
             padding-bottom:60vh;
+            
+
 
             &--shifted{
                 display: inline-block;
-                text-align: right;
-                width: 250px; 
+                text-align: right; 
                 margin-left:-100px;      
                 text-decoration: underline;  
                 padding-top: 10%;
@@ -112,7 +113,9 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
                 margin-bottom: 1rem;
                 font: 4.0rem $font_title_family;
                 line-height: 5.0rem;
+
             }
+
         }
         
         h2{
@@ -129,6 +132,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         max-width: 580px;
         margin: auto;
         margin-bottom: 6.0rem;
+        span {font-weight: bold;}
     }
 
     &__badge-lbl, &__spec-lbl {
@@ -363,7 +367,8 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             border-bottom-left-radius: 2.6rem;
             background: inherit;
             background-position: 0% 100%;
-            background-size: 250%;
+            background-size: 42% 250%;
+            background-repeat: no-repeat;
         }
 
     }
@@ -423,13 +428,14 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         border-bottom: 2px rgba($color_text_light,0.21) solid;
         border-top: 2px rgba($color_text_light,0.21) solid;
         color: $color_text_tasks;
+        transition: text-decoration 3s;
         ::after {
             content: '';
             position: absolute;
             right: 8%;
             top: 2.8rem;
             width: 3.8rem;
-            height: 100;
+            height: 3.8rem;
             border-radius: 100%;
             background: $color_text_tasks url(assets/tick.svg) center center no-repeat;
             background-size: 60%;
@@ -456,7 +462,43 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     }
 
 
+    &__goals{
+        ul {
+            li{
+                max-width: 823px;
+                width: 80%;
+                margin: auto;
+                margin-bottom: 26px;
+                text-align: left;
+                padding: 2.4rem 2.0rem 3.3rem 11.3rem;
+                background-color: white;
+                border-radius: 26px;
+                box-shadow: 0px 3px 6px rgba(black,0.05);
+                h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; color: black;}
+                p { font: 1.6rem $font_reg_family; color: $color_text_lighter;}
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.03);
+                    box-shadow: 0px 3px 22px rgba(black,0.15);
+                }
+                &:nth-child(1){
+                    background: white url('assets/nipple.svg') left 26px center no-repeat;
+                    background-size: 51px 50%;
+                }
+                &:nth-child(2){
+                    background: white url('assets/idea.svg') left 26px center no-repeat;
+                    background-size: 51px 50%;
+                }
+                &:nth-child(3){
+                    background: white url('assets/magnifying-glass.svg') left 26px center no-repeat;
+                    background-size: 51px 50%;
+                }
+            
+            }
+       
 
+    }
+}
 
 
 }

@@ -54,9 +54,15 @@ var specializations = [
 
 const interestsModule = (function(){
 
+    var userName;
+
     var userSpecializations = [];
 
     var userBadges = [];
+
+    const setUserName = () => userName = document.querySelector('.interests__name').value;
+
+    const getUserName = () => userName;
 
     const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec--selected')].map(x => x.querySelector('h3').innerText);
 
@@ -188,7 +194,13 @@ const interestsModule = (function(){
         document.querySelector('.interests__badge-btn')
                 .addEventListener("click", displayTasks);
 
+        //adds click event to button go to tasks (only when active)
+        document.querySelector('.interests__courses-btn')
+                .addEventListener("click", () =>{
+                    pushSlide('-80%')
+                });
 
+                
         //adds click event to back button to specializations
         document.querySelector('.interests__badge-back')
                 .addEventListener("click", ()=> {
@@ -201,8 +213,15 @@ const interestsModule = (function(){
         document.querySelector('.interests__task-back')
                 .addEventListener("click", () => {
                     //show sepcializations  page
-                    pushSlide('-33.33%');
+                    pushSlide('-20%');
                 });
+
+        //adds click event to back button to technologies
+        document.querySelector('.interests__courses-back')
+        .addEventListener("click", () => {
+            //show sepcializations  page
+            pushSlide('-40%');
+        });
         
         let timer = null;
         document.querySelector('.interests__name')
@@ -211,8 +230,74 @@ const interestsModule = (function(){
                     timer = setTimeout(resizeName, 1000)
                 })
 
+        document.querySelector('.interests__name')
+                .addEventListener("keyup",  resizeName2)
+
+
+                
+        document.querySelector('.interests__goals ul li:nth-child(1)')
+                .addEventListener("click", ()=> {
+                    appendBeginnerCourses();
+                })
+
+        document.querySelector('.interests__goals ul li:nth-child(2)')
+        .addEventListener("click", ()=> {
+            appendAllCourses();
+        })
+
+
     }
 
+
+    const resizeName2 = (e) => {
+        e.target.setAttribute('size',e.target.value.length)
+    }
+
+    const appendBeginnerCourses = () =>{
+
+        let coursePage = document.querySelector('.interests__courses')
+        coursePage.querySelector('h2').innerHTML = 'Zacznij <span>Naukę!</span>';
+        coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        
+        let element = coursePage.querySelector('ul')
+        let fragment = document.createDocumentFragment();  
+        //  = document.createElement('template');
+        // coursePage.innerHTML = `
+        //     <h2>
+        //     <p class='interests__subtitle'>
+        //     <ul></ul>
+        //     <button>Powrót</button>
+        //     <button>Gotowe</button>
+        //     <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
+        // `;
+        // fragment.appendChild(coursePage.content);
+        // element.appendChild(fragment);
+        pushSlide('-60%');
+
+
+
+    }
+
+    const appendAllCourses = () =>{
+        let coursePage = document.querySelector('.interests__courses')
+        coursePage.querySelector('h2').innerHTML = 'Od czego <span>zaczynasz?</span>';
+        //coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        
+        let element = coursePage.querySelector('ul')
+        let fragment = document.createDocumentFragment();  
+        //  = document.createElement('template');
+        // coursePage.innerHTML = `
+        //     <h2>
+        //     <p class='interests__subtitle'>
+        //     <ul></ul>
+        //     <button>Powrót</button>
+        //     <button>Gotowe</button>
+        //     <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
+        // `;
+        // fragment.appendChild(coursePage.content);
+        // element.appendChild(fragment);
+        pushSlide('-60%');
+    }
 
     const resizeName = () => {
         document.querySelector('.interests__name').classList.add('interests__name--shifted');
@@ -315,12 +400,15 @@ const interestsModule = (function(){
 
         //check if button is active
         if (e.target.closest('.interests__spec-btn--active')){
+            //stores user name;
+            setUserName();
+            document.querySelector('.interests__goals h2').innerHTML=getUserName() + ', <span>określ swój cel!</span>';
             //stores selected specializations
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
             appendBadges();
             //scroll horizontaly
-            pushSlide('-33.33%');
+            pushSlide('-20%');
         }
     };
 
@@ -332,8 +420,7 @@ const interestsModule = (function(){
             //stores selected technologies
             setUserBadges();
             //scroll horizontaly
-            pushSlide('-66.66%');
-            document.querySelector('.interest__badges').style.height="0px"
+            pushSlide('-40%');
         }   
     };
 
