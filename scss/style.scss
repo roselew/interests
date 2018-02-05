@@ -22,6 +22,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     height: 100%;
     text-align: center;
 
+    &--noScroll{height:100vh;overflow-y: hidden;}
 
     &__specs, &__badges, &__tasks, &__goals, &__courses{
         position: relative;
@@ -60,12 +61,13 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         padding-top: 5%;
     }
 
-    &__badge-back{
-        border: 2px $color_text_light solid;
+    &__badge-back, &__courses-back{
+        box-shadow: inset 0px 0px 0px 2px $color_text_lighter;
         background: none;
-        color: $color_text_light !important;
+        color: $color_text_lighter !important;
         margin-right: 2.6rem;
         cursor: pointer;
+        font-weight: bolder;
     }
     
 
@@ -195,7 +197,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     }
 
 
-    &__spec-btn, &__badge-btn{   
+    &__spec-btn, &__badge-btn, &__courses-btn{   
         background: $color_theme4_1 $gradient_theme4_1; 
         &--active{ 
             background: $color_theme2_1 $gradient_theme2_1;
@@ -310,7 +312,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         &5 { @include specBackground ($color_spec5_1, $color_spec5_2, 45%);}
 
         &--selected {
-            background-position: 0% 100%;
+            background-position: 0% 99%;
         }
         
         &1 svg {fill: url(#gradient1);}
@@ -353,7 +355,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         &5 { @include specBackground ($color_spec5_1, $color_spec5_2, 43%);}
 
         &--selected {
-            background-position: 0% 100%; 
+            background-position: 0% 99%; 
         }
 
         &::before{
@@ -497,8 +499,129 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             }
        
 
+        }
     }
-}
 
+    &__courses-all{
+        position: relative;
+        display:grid;
+        grid-gap:42px;
+        grid-template-columns: repeat(auto-fill,minmax(266px, 1fr));
+
+        margin: 65px 10%;
+        &::after{
+            content:'';
+            height: 2px;
+            width: 100%;
+            background-color: rgba(black,0.026%);
+            position: absolute;
+            bottom: -34px;
+            left:0px;
+        }
+        &:last-child::after{
+            display:none;
+        }
+
+        li{
+
+            h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; padding-bottom: 0.5rem;};
+            p{ font: 1.6rem $font_reg_family; color:$color_text_lighter;}
+
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            min-height: 251px;    
+            background: white;
+
+            padding: 16rem 3.5rem 3.0rem 3.5rem;
+            border-radius: 2.6rem;
+            transition: scale 0.3s;
+            transform-origin: 50% 50%;
+            box-shadow: 0px 3px 6px rgba(black,0.05);
+            cursor: pointer;
+            
+            &:before{
+                content:'❬ / ❭';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width:100%;
+                height: 143px;
+                border-top-left-radius: 26px;
+                border-top-right-radius: 26px;
+                color: white;
+                font-size: 36px;
+                font-family: $font_reg_family;
+                text-align: center;
+                line-height: 143px;
+            }
+            &:hover{
+                transform: scale(1.03);
+                box-shadow: 0px 3px 22px rgba(black,0.15);
+            }
+          
+        }
+        &1:before { background: linear-gradient(121deg, $color_spec1_2 0%, $color_spec1_1 100%);}
+        &2:before { background: linear-gradient(121deg, $color_spec2_2 0%, $color_spec2_1 100%);}
+        &3:before { background: linear-gradient(121deg, $color_spec3_2 0%, $color_spec3_1 100%);}
+        &4:before { background: linear-gradient(121deg, $color_spec4_2 0%, $color_spec4_1 100%);}
+        &5:before { background: linear-gradient(121deg, $color_spec5_2 0%, $color_spec5_1 100%);}
+    }
+
+    &__courses-best{
+        li{
+            position: relative;
+            max-width: 823px;
+            width: 80%;
+            margin: auto;
+            margin-bottom: 26px;
+            text-align: left;
+            padding: 2.4rem 2.0rem 3.3rem 11.3rem;
+            background-color: white;
+            border-radius: 26px;
+            box-shadow: 0px 3px 6px rgba(black,0.05);
+            h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; color: black;}
+            p { font: 1.6rem $font_reg_family; color: $color_text_lighter;}
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.03);
+                box-shadow: 0px 3px 22px rgba(black,0.15);
+            }
+            &::before{
+                content:'';
+                position:absolute;
+                top:0;
+                left:0;
+                height: 100%;
+                width:26px;
+                border-top-left-radius: 2.6rem;
+                border-bottom-left-radius: 2.6rem;               
+            }
+            &:nth-child(1){
+                background: white url('assets/nipple.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }
+            &:nth-child(2){
+                background: white url('assets/idea.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }
+            &:nth-child(3){
+                background: white url('assets/magnifying-glass.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }
+        
+        }
+        &1:before { background: linear-gradient(121deg, $color_spec1_2 0%, $color_spec1_1 100%);background-size: 42% 250%;
+                background-repeat: no-repeat; }
+        &2:before { background: linear-gradient(121deg, $color_spec2_2 0%, $color_spec2_1 100%);background-size: 42% 250%;
+                background-repeat: no-repeat;}
+        &3:before { background: linear-gradient(121deg, $color_spec3_2 0%, $color_spec3_1 100%);background-size: 42% 250%;
+                background-repeat: no-repeat;}
+        &4:before { background: linear-gradient(121deg, $color_spec4_2 0%, $color_spec4_1 100%);background-size: 42% 250%;
+                background-repeat: no-repeat;}
+        &5:before { background: linear-gradient(121deg, $color_spec5_2 0%, $color_spec5_1 100%);background-size: 42% 250%;
+                background-repeat: no-repeat;}
+    }
 
 }

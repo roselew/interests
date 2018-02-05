@@ -1,50 +1,50 @@
 var specializations = [
     {id:1,  name: 'Grafika i Interfejsy',          
-            badges:[    {name: 'UI/UX Design',          courses: ['UI 1', 'UX 2','Design 3'], suggested: 'UI 1'},
-                        {name: 'Wektory i Ilustracje',  courses: ['Wektory1', 'Ilustracje2'], suggested: 'Wektory1'},
-                        {name: 'Druk i DTP',            courses: ['Druk 1','DTP2','Druk i DTP 3'], suggested: 'Druk i DTP 3'},
-                        {name: 'Concept Art',           courses: ['Concept1'], suggested: 'Concept1'},
-                        {name: 'Grafika 3D',            courses: ['Grafika1D','Grafika2D','Grafika3D'], suggested: 'Grafika3D'},
+            badges:[    {name: 'UI/UX Design',          courses: ['UI 1', 'UX 2','Design 3'], suggested: {name:'UI 1',desc:'Super kurs'}},
+                        {name: 'Wektory i Ilustracje',  courses: ['Wektory1', 'Ilustracje2'], suggested: {name: 'Wektory1',desc:'Super kurs'}},
+                        {name: 'Druk i DTP',            courses: ['Druk 1','DTP2','Druk i DTP 3'], suggested: {name: 'Druk i DTP 3',desc:'Super kurs'}},
+                        {name: 'Concept Art',           courses: ['Concept1'], suggested: {name: 'Concept1',desc:'Super kurs'}},
+                        {name: 'Grafika 3D',            courses: ['Grafika1D','Grafika2D','Grafika3D'], suggested: {name: 'Grafika3D',desc:'Super kurs'}},
                     ], 
             icon:'#grafika'
     },
     {id:2,  name: 'Programowanie',                 
             badges:[    
-                {name: 'Front-end i Frameworki',        courses: ['Front-end1','Front-end2','Framework1','Framework2'], suggested: 'Front-end1'},
-                {name: 'WordPress i CMSy',              courses: ['WordPress1','WordPress2'], suggested: 'WordPress1'},
-                {name: 'PHP i Frameworki',              courses: ['PHP1','PHP2','PHP3'], suggested: 'PHP1'}, 
-                {name: 'C# i ASP.NET',                  courses: ['C1','C2'], suggested: 'C1'},
-                {name: 'Java',                          courses: ['Java1','Java2','Java3'], suggested: 'Java1'},
-                {name: 'Python',                        courses: ['Python1','Python2'], suggested: 'Python1'},
-                {name: 'Swift i iOS',                   courses: ['Swift1','Swift2','Swift3'], suggested: 'Swift1'},
-                {name: 'Game Development',              courses: ['Game1','Game2'], suggested: 'Game1'},
-                {name: 'GO',                            courses: ['GO GO GO'], suggested: 'GO GO GO'},
-                {name: 'Android z Kotlin',              courses: ['Android1','Android2'], suggested: 'Android1'},
+                {name: 'Front-end i Frameworki',        courses: ['Front-end1','Front-end2','Framework1','Framework2'], suggested: {name: 'Front-end1',desc:'Super kurs'}},
+                {name: 'WordPress i CMSy',              courses: ['WordPress1','WordPress2'], suggested: {name: 'WordPress1',desc:'Super kurs'}},
+                {name: 'PHP i Frameworki',              courses: ['PHP1','PHP2','PHP3'], suggested: {name: 'PHP1',desc:'Super kurs'}},
+                {name: 'C# i ASP.NET',                  courses: ['C1','C2'], suggested: {name: 'C1',desc:'Super ku'}},
+                {name: 'Java',                          courses: ['Java1','Java2','Java3'], suggested: {name: 'Java1',desc:'Super kurs'}},
+                {name: 'Python',                        courses: ['Python1','Python2'], suggested: {name: 'Python1',desc:'Super kurs'}},
+                {name: 'Swift i iOS',                   courses: ['Swift1','Swift2','Swift3'], suggested: {name: 'Swift1',desc:'Super kurs'}},
+                {name: 'Game Development',              courses: ['Game1','Game2'], suggested: {name: 'Game1',desc:'Super kurs'}},
+                {name: 'GO',                            courses: ['GO GO GO'], suggested: {name: 'GO GO GO',desc:'Super kurs'}},
+                {name: 'Android z Kotlin',              courses: ['Android1','Android2'], suggested: {name: 'Android1',desc:'Super kurs'}},
             ], 
             icon:'#programowanie'
     },
     {id:3,  name: 'Marketing i Biznes',            
             badges:[    
-                {name: 'Marketing w Social Media',      courses: ['Marketing1','Marketing2'], suggested: 'Marketing1'},
-                {name: 'Startupy i Produkty',           courses: ['Startup1', 'Startup2','Produkty1'], suggested: 'Startup1'},
-                {name: 'Freelance i Produktywność',     courses: ['Freelance1','Freelance2'], suggested: 'Freelance1'},
+                {name: 'Marketing w Social Media',      courses: ['Marketing1','Marketing2'], suggested: {name: 'Marketing1',desc:'Super kurs'}},
+                {name: 'Startupy i Produkty',           courses: ['Startup1', 'Startup2','Produkty1'], suggested: {name: 'Startup1',desc:'Super kurs'}},
+                {name: 'Freelance i Produktywność',     courses: ['Freelance1','Freelance2'], suggested: {name: 'Freelance1',desc:'Super kurs'}},
             ], 
             icon:'#promocja'},
     {id:4,  name: 'Wideo i Audio',
             badges:[
-                {name: 'Montaż i Postprodukcja',        courses: ['Montaż1','Postprodukcja1','Postprodukcja3'], suggested: 'Postprodukcja1'},
-                {name: 'Visual FX i Animacja',          courses: ['Visual FX1','Visual FX2'], suggested: 'Visual FX1'},
-                {name: 'Audio',                         courses: ['Audio1','Audio2','Audio3'], suggested: 'Audio1'},
-                {name: 'Produkcja filmów',              courses: ['Produkcja filmów1','Produkcja filmów2','Produkcja filmów3'], suggested: 'Produkcja filmów1'},
+                {name: 'Montaż i Postprodukcja',        courses: ['Montaż1','Postprodukcja1','Postprodukcja3'], suggested: {name: 'Postprodukcja1',desc:'Super kurs'}},
+                {name: 'Visual FX i Animacja',          courses: ['Visual FX1','Visual FX2'], suggested: {name: 'Visual FX1',desc:'Super kurs'}},
+                {name: 'Audio',                         courses: ['Audio1','Audio2','Audio3'], suggested: {name: 'Audio1',desc:'Super kurs'}},
+                {name: 'Produkcja filmów',              courses: ['Produkcja filmów1','Produkcja filmów2','Produkcja filmów3'], suggested: {name: 'Produkcja filmów1',desc:'Super kurs'}},
             ],
             icon:'#video'
     },
     {id:5,  name: 'Fotografia i Photoshop',       
             badges:[
-                {name: 'Podstawy Fotografii',           courses: ['Fotografia 1','Fotografia2','Fotografia3'], suggested: 'Fotografia1'}},
-                {name: 'Fotografia Studyjna',           courses: ['Fotografia Studyjna'], suggested: 'Fotografia Studyjna'}},
-                {name: 'Fotografia Podróżnicza',        courses: ['Fotografia Podróżnicza'], suggested: 'Fotografia Podróżnicza'}},
-                {name: 'Obróbka Zdjęć i Retusz',        courses: ['Obróbka Zdjęć','Retusz'], suggested: 'Retusz'}},
+                {name: 'Podstawy Fotografii',           courses: ['Fotografia 1','Fotografia2','Fotografia3'], suggested: {name: 'Fotografia1',desc:'Super kurs'}},
+                {name: 'Fotografia Studyjna',           courses: ['Fotografia Studyjna'], suggested: {name: 'Fotografia Studyjna',desc:'Super kurs'}},
+                {name: 'Fotografia Podróżnicza',        courses: ['Fotografia Podróżnicza'], suggested: {name: 'Fotografia Podróżnicza',desc:'Super kurs'}},
+                {name: 'Obróbka Zdjęć i Retusz',        courses: ['Obróbka Zdjęć','Retusz'], suggested: {name: 'Retusz',desc:'Super kurs'}},
             ],
             icon:'#fotografia'
     },
@@ -60,6 +60,8 @@ const interestsModule = (function(){
 
     var userBadges = [];
 
+    var userCourse;
+
     const setUserName = () => userName = document.querySelector('.interests__name').value;
 
     const getUserName = () => userName;
@@ -68,9 +70,13 @@ const interestsModule = (function(){
 
     const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserBadges = () => userBadges = [...document.querySelectorAll('.interests__tech--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserBadges = () => userBadges = [...document.querySelectorAll('.interests__badge--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserBadges = () => userBadges;
+
+    const setUserCourse = (e) => e.target.querySelector('h3').textContent;
+
+    const getUserCourse = () => userCourse;
 
     const getAllSpecializations = () => specializations;
 
@@ -124,7 +130,6 @@ const interestsModule = (function(){
 
                 let fragUl = document.createElement('ul');
 
-                fragment.appendChild
                 for (let badge of specialization.badges){
                     
                     //creates template with li with technology card
@@ -148,7 +153,7 @@ const interestsModule = (function(){
         let badgeCard = document.createElement('template');
         badgeCard.innerHTML =  `
             <li class='interests__badge interests__badge${specId}'>
-                <h3> ${badge} </h3>
+                <h3> ${badge.name} </h3>
                 <p> Odznak: </p>
                 <svg class="interests__tick" width="auto" height="150px">
                     <use xlink:href="#tick"</use>
@@ -175,6 +180,13 @@ const interestsModule = (function(){
         //adds click event to technology cards
         document.querySelector('.interests__badges-list')
                 .addEventListener("click", () => { selectCard(event, 'badge')} );
+
+        //adds click event to technology cards
+        document.querySelector('.interests__courses-list')
+                .addEventListener("click", ()=> { 
+                    setUserCourse;
+                    pushSlide('-80%');
+                } );
 
 
         //adds click event to show/hide all button
@@ -241,9 +253,9 @@ const interestsModule = (function(){
                 })
 
         document.querySelector('.interests__goals ul li:nth-child(2)')
-        .addEventListener("click", ()=> {
-            appendAllCourses();
-        })
+                .addEventListener("click", ()=> {
+                    appendAllCourses();
+                })
 
 
     }
@@ -253,55 +265,104 @@ const interestsModule = (function(){
         e.target.setAttribute('size',e.target.value.length)
     }
 
-    const appendBeginnerCourses = () =>{
+    const appendAllCourses = () =>{
+
 
         let coursePage = document.querySelector('.interests__courses')
-        coursePage.querySelector('h2').innerHTML = 'Zacznij <span>Naukę!</span>';
-        coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        coursePage.querySelector('h2').innerHTML = 'Od czego <span>zaczynasz?</span>';
+        // coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
         
-        let element = coursePage.querySelector('ul')
+        let element = document.querySelector('.interests__courses-list')
+        
+        //firstly clear courses list
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+
         let fragment = document.createDocumentFragment();  
-        //  = document.createElement('template');
-        // coursePage.innerHTML = `
-        //     <h2>
-        //     <p class='interests__subtitle'>
-        //     <ul></ul>
-        //     <button>Powrót</button>
-        //     <button>Gotowe</button>
-        //     <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
-        // `;
-        // fragment.appendChild(coursePage.content);
-        // element.appendChild(fragment);
+
+        for (let specialization of getAllSpecializations()){
+            if (getUserSpecializtions().indexOf(specialization.name)>-1){
+                let fragUl = document.createElement('ul');
+                fragUl.classList.add('interests__courses-all')
+
+                for (let badge of specialization.badges){
+                    if (getUserBadges().indexOf(badge.name)>-1){
+                        for (let course of badge.courses){
+                            //creates template with li with technology card
+                            let courseCard = document.createElement('template');
+
+                            courseCard.innerHTML = `
+                                <li class="interests__courses-all${specialization.id}">
+                                    <h3>${course}</h3>
+                                    <p>15godzin</p>
+                                </li>
+                            `;                         
+                            //appends technology card to technology choice fragment
+                            fragUl.appendChild(courseCard.content);
+                        }                            
+                        //appends technology choice fragment to html
+                        fragment.appendChild(fragUl);    
+                    }
+                }
+            }
+        }
+        element.appendChild(fragment);
+
         pushSlide('-60%');
 
 
 
     }
 
-    const appendAllCourses = () =>{
+    const appendBeginnerCourses = () =>{
         let coursePage = document.querySelector('.interests__courses')
-        coursePage.querySelector('h2').innerHTML = 'Od czego <span>zaczynasz?</span>';
-        //coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        coursePage.querySelector('h2').innerHTML = 'Zacznij <span>Naukę!</span>';
+        coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
         
-        let element = coursePage.querySelector('ul')
+        let element = document.querySelector('.interests__courses-list')
+        //firstly clear courses list
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+
         let fragment = document.createDocumentFragment();  
-        //  = document.createElement('template');
-        // coursePage.innerHTML = `
-        //     <h2>
-        //     <p class='interests__subtitle'>
-        //     <ul></ul>
-        //     <button>Powrót</button>
-        //     <button>Gotowe</button>
-        //     <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
-        // `;
-        // fragment.appendChild(coursePage.content);
-        // element.appendChild(fragment);
+
+        for (let specialization of getAllSpecializations()){
+            if (getUserSpecializtions().indexOf(specialization.name)>-1){
+                let fragUl = document.createElement('ul');
+                fragUl.classList.add('interests__courses-best')
+
+                for (let badge of specialization.badges){
+                    if (getUserBadges().indexOf(badge.name)>-1){
+
+                            let courseCard = document.createElement('template');
+
+                            courseCard.innerHTML = `
+                                <li class="interests__courses-best${specialization.id}">
+                                    <h3>${badge.suggested.name}</h3>
+                                    <p>${badge.suggested.desc}</p>
+                                </li>
+                            `;                         
+                            //appends technology card to technology choice fragment
+                            fragUl.appendChild(courseCard.content);
+                        }                            
+                        //appends technology choice fragment to html
+                        fragment.appendChild(fragUl);    
+               }
+            }
+        }
+        element.appendChild(fragment);
+
         pushSlide('-60%');
+
+
     }
 
     const resizeName = () => {
         document.querySelector('.interests__name').classList.add('interests__name--shifted');
         document.querySelector('.interests__name-label').classList.add('interests__name-label--shifted');
+        document.querySelector('.interests').classList.remove('interests--noScroll');
     }
 
     const selectCard =  (e, elem) => {
