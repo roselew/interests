@@ -239,7 +239,7 @@ const interestsModule = (function(){
         document.querySelector('.interests__name')
                 .addEventListener("keydown", ()=>{
                     clearTimeout(timer); 
-                    timer = setTimeout(resizeName, 1000)
+                    timer = setTimeout(resizeName, 500)
                 })
 
         document.querySelector('.interests__name')
