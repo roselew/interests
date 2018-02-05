@@ -1,50 +1,50 @@
 var specializations = [
     {id:1,  name: 'Grafika i Interfejsy',          
-            badges:[    'UI/UX Design',
-                        'Wektory i Ilustracje',
-                        'Druk i DTP',
-                        'Concept Art',
-                        'Grafika 3D'
+            badges:[    {name: 'UI/UX Design',          courses: ['UI 1', 'UX 2','Design 3'], suggested: 'UI 1'},
+                        {name: 'Wektory i Ilustracje',  courses: ['Wektory1', 'Ilustracje2'], suggested: 'Wektory1'},
+                        {name: 'Druk i DTP',            courses: ['Druk 1','DTP2','Druk i DTP 3'], suggested: 'Druk i DTP 3'},
+                        {name: 'Concept Art',           courses: ['Concept1'], suggested: 'Concept1'},
+                        {name: 'Grafika 3D',            courses: ['Grafika1D','Grafika2D','Grafika3D'], suggested: 'Grafika3D'},
                     ], 
             icon:'#grafika'
     },
     {id:2,  name: 'Programowanie',                 
             badges:[    
-                'Front-end i Frameworki',
-                'WordPress i CMSy',
-                'PHP i Frameworki', 
-                'C# i ASP.NET',
-                'Java',
-                'Python',
-                'Swift i iOS',
-                'Game Development',
-                'GO',
-                'Android z Kotlin'
+                {name: 'Front-end i Frameworki',        courses: ['Front-end1','Front-end2','Framework1','Framework2'], suggested: 'Front-end1'},
+                {name: 'WordPress i CMSy',              courses: ['WordPress1','WordPress2'], suggested: 'WordPress1'},
+                {name: 'PHP i Frameworki',              courses: ['PHP1','PHP2','PHP3'], suggested: 'PHP1'}, 
+                {name: 'C# i ASP.NET',                  courses: ['C1','C2'], suggested: 'C1'},
+                {name: 'Java',                          courses: ['Java1','Java2','Java3'], suggested: 'Java1'},
+                {name: 'Python',                        courses: ['Python1','Python2'], suggested: 'Python1'},
+                {name: 'Swift i iOS',                   courses: ['Swift1','Swift2','Swift3'], suggested: 'Swift1'},
+                {name: 'Game Development',              courses: ['Game1','Game2'], suggested: 'Game1'},
+                {name: 'GO',                            courses: ['GO GO GO'], suggested: 'GO GO GO'},
+                {name: 'Android z Kotlin',              courses: ['Android1','Android2'], suggested: 'Android1'},
             ], 
             icon:'#programowanie'
     },
     {id:3,  name: 'Marketing i Biznes',            
             badges:[    
-                'Marketing w Social Media',
-                'Startupy i Produkty',
-                'Freelance i Produktywność'
+                {name: 'Marketing w Social Media',      courses: ['Marketing1','Marketing2'], suggested: 'Marketing1'},
+                {name: 'Startupy i Produkty',           courses: ['Startup1', 'Startup2','Produkty1'], suggested: 'Startup1'},
+                {name: 'Freelance i Produktywność',     courses: ['Freelance1','Freelance2'], suggested: 'Freelance1'},
             ], 
             icon:'#promocja'},
     {id:4,  name: 'Wideo i Audio',
             badges:[
-                'Montaż i Postprodukcja',
-                'Visual FX i Animacja',
-                'Audio',
-                'Produkcja filmów'
+                {name: 'Montaż i Postprodukcja',        courses: ['Montaż1','Postprodukcja1','Postprodukcja3'], suggested: 'Postprodukcja1'},
+                {name: 'Visual FX i Animacja',          courses: ['Visual FX1','Visual FX2'], suggested: 'Visual FX1'},
+                {name: 'Audio',                         courses: ['Audio1','Audio2','Audio3'], suggested: 'Audio1'},
+                {name: 'Produkcja filmów',              courses: ['Produkcja filmów1','Produkcja filmów2','Produkcja filmów3'], suggested: 'Produkcja filmów1'},
             ],
             icon:'#video'
     },
     {id:5,  name: 'Fotografia i Photoshop',       
             badges:[
-                'Podstawy Fotografii',
-                'Fotografia Studyjna',
-                'Fotografia Podróżnicza',
-                'Obróbka Zdjęć i Retusz'
+                {name: 'Podstawy Fotografii',           courses: ['Fotografia 1','Fotografia2','Fotografia3'], suggested: 'Fotografia1'}},
+                {name: 'Fotografia Studyjna',           courses: ['Fotografia Studyjna'], suggested: 'Fotografia Studyjna'}},
+                {name: 'Fotografia Podróżnicza',        courses: ['Fotografia Podróżnicza'], suggested: 'Fotografia Podróżnicza'}},
+                {name: 'Obróbka Zdjęć i Retusz',        courses: ['Obróbka Zdjęć','Retusz'], suggested: 'Retusz'}},
             ],
             icon:'#fotografia'
     },
