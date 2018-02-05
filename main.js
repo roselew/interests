@@ -448,6 +448,9 @@ const interestsModule = (function(){
             // activates button to go further
             if (!goButton.classList.contains(activeButton)){
                 goButton.classList.add(activeButton)
+                if (elem =='badge') {
+                    document.querySelector('.interests__badges-footer').classList.add('interests__badges-footer--active')
+                }
             }
         }
             

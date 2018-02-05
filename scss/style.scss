@@ -13,6 +13,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
 .interests{
 
+
     display: flex;
     align-items: stretch;
     transform: translateX(0%);
@@ -43,6 +44,12 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         color: $color_text_white;
         margin-top: 8.0rem;
         margin-bottom: 8.0rem;
+        
+        @media( max-width: $screen_size_S){
+            display: block;
+            margin: 2.0rem auto;
+            width: 80%;
+        }
     }
 
     h2,input {
@@ -56,8 +63,9 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         span{font-weight: 700;}
     }
 
+    a {text-decoration: none;}
 
-    &__badges h2{
+    &__badges h2, &__courses h2{
         padding-top: 5%;
     }
 
@@ -114,7 +122,11 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
                 padding-bottom:0;
                 margin-bottom: 1rem;
                 font: 4.0rem $font_title_family;
-                line-height: 5.0rem;
+                line-height: 4.6rem;
+
+                @media( max-width: $screen_size_S){
+                    text-align: center;
+                }
 
             }
 
@@ -123,6 +135,11 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         h2{
             text-align: left;
             display: inline-block;
+
+            @media( max-width: $screen_size_S){
+                padding-top:0;
+                text-align: center;
+            }
         }
     }
 
@@ -180,8 +197,9 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     &__badges-footer {
             position: relative;
             transition: all 0.3s linear;            
-
+            .interests__badge-btn{display:none;}
         &--active{
+            .interests__badge-btn{display:inline-block;}
             position: sticky;
             bottom: 0px;
             left: 0px;
@@ -189,6 +207,10 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             // height: 205px;
             box-shadow: -2px 0px 4px rgba(black,0.16);
             background-color: white;
+
+            @media( max-width: $screen_size_S){
+                padding-top:2rem;
+            }
         }
     }
 
@@ -233,6 +255,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             bottom: -34px;
             left:0px;
         }
+        &:first-child{margin-top:24px;}
         &:last-child::after{
             display:none;
         }
@@ -405,15 +428,19 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
     }
 
-    &__skip, &__task-back{
+    &__skip, &__task-back {
         display: block;
         font: 1.2rem $font_reg_family;
         color: $color_text_light;
         margin: auto;
         margin-top: -4.0rem;
         padding-bottom: 5.7rem;
-        text-decoration: underline;
+        text-decoration: underline !important;
         cursor: pointer;
+
+        @media( max-width: $screen_size_S){
+            margin-top:0;
+        }
     }
 
 
