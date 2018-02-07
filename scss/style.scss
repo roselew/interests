@@ -2,7 +2,7 @@
 @import '_zmienne';
 
 
-html {font-size: 62.5%;min-height: 100%; background-color: $color_back;}
+html {font-size: 62.5%;height: 100%; background-color: $color_back;}
 body {width: 100%; height: 100%; overflow-x: hidden;}
 
 
@@ -11,16 +11,16 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
       to { opacity: 1; }
 }
 
-.interests{
+.prof{
 
-
+    position: relative;
     display: flex;
     align-items: stretch;
     transform: translateX(0%);
     transition: transform 0.3s ease-out; 
 
     width: 500%;
-    height: 100%;
+    min-height: 100%;
     text-align: center;
 
     &--noScroll{height:100vh;overflow-y: hidden;}
@@ -63,17 +63,30 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         span{font-weight: 700;}
     }
 
-    a {text-decoration: none;}
-
+    //Nagłówek wyżej na stronach gdzie jest dużo elementów
     &__badges h2, &__courses h2{
         padding-top: 5%;
     }
 
-    &__badge-back, &__courses-back{
+    a {text-decoration: none;}
+
+    h3{
+        color: $color_text_darker;
+        font: 3.0rem $font_title_family;
+        line-height: 100%;
+        font-weight: 700;
+        padding-bottom: 0.5rem; 
+    }
+
+    p{
+        font: 1.6rem $font_reg_family;
+        color: $color_text_lighter;
+    }
+
+    &__btn-back{
         box-shadow: inset 0px 0px 0px 2px $color_text_lighter;
         background: none;
         color: $color_text_lighter !important;
-        margin-right: 2.6rem;
         cursor: pointer;
         font-weight: bolder;
     }
@@ -81,7 +94,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
 
     &__specs {
-        label.interests__name-label {
+        label.prof__name-label {
             position: absolute;
             top: 0;
             left: 0;
@@ -94,7 +107,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
                 display:none;
             }
         }
-        input.interests__name{
+        input.prof__name{
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -116,7 +129,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             &--shifted{
                 display: inline-block;
                 text-align: right; 
-                margin-left:-100px;      
+                margin-left:-75px;    
                 text-decoration: underline;  
                 padding-top: 10%;
                 padding-bottom:0;
@@ -126,6 +139,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
                 @media( max-width: $screen_size_S){
                     text-align: center;
+                    margin-left: 0;
                 }
 
             }
@@ -135,16 +149,18 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         h2{
             text-align: left;
             display: inline-block;
+            &:before{content:', '}
 
             @media( max-width: $screen_size_S){
                 padding-top:0;
                 text-align: center;
+                &:before{content:''}
             }
         }
     }
 
 
-    &__subtitle {
+    p.prof__subtitle {
         font: 1.8rem $font_reg_family;
         padding: 0px 30px;
         color: $color_text_light;
@@ -165,7 +181,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         &::before{
             content:'';
             display:inline-block;
-            vertical-align: middle;
             width: 1.4rem;
             height: 1.4rem;
             margin-right: 0.8rem;
@@ -176,6 +191,8 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         &::after{
             content: 'Zaznacz wszystko';
             font: 1.0rem $font_reg_family;
+            line-height: 1.6rem;
+            vertical-align: bottom;
             text-transform: uppercase;
             color: $color_text_light;
             font-weight: bold;
@@ -195,19 +212,43 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     }
 
     &__badges-footer {
-            position: relative;
-            transition: all 0.3s linear;            
-            .interests__badge-btn{display:none;}
-        &--active{
-            .interests__badge-btn{display:inline-block;}
-            position: sticky;
-            bottom: 0px;
-            left: 0px;
-            width:100%;
-            // height: 205px;
-            box-shadow: -2px 0px 4px rgba(black,0.16);
-            background-color: white;
+        position: fixed;
+        left:0;
+        bottom:0;
+        width: 100%;
+        height:0px;
+        text-align: center;
+        box-shadow: 0px -4px 4px -4px rgba(black,0.16);
+        //box-shadow: -2px 0px 4px rgba(black,0.16);
+        background-color: white;
+        transition: height 0.3s linear;  
+        -webkit-backface-visibility: hidden;
 
+        button { 
+            text-transform: uppercase;
+            font: 1.9rem $font_reg_family;
+            font-weight: bolder;
+            padding: 1.5rem 4.0rem; //tu były różne paddingi podane
+            border-radius: 2.6rem;
+            color: $color_text_white;
+            margin-top: 8.0rem;
+            margin-bottom: 8.0rem;
+
+            
+            @media( max-width: $screen_size_S){
+                display: block;
+                margin: 2.0rem auto;
+                width: 80%;
+            }
+        }
+
+        button, a {display:none;}
+                     
+
+        &--active{
+            button, a {display: inline-block;}
+            a{display: block;}
+            height:250px;
             @media( max-width: $screen_size_S){
                 padding-top:2rem;
             }
@@ -219,13 +260,15 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     }
 
 
-    &__spec-btn, &__badge-btn, &__courses-btn{   
+    &__spec-btn, &__badge-btn{   
         background: $color_theme4_1 $gradient_theme4_1; 
         &--active{ 
             background: $color_theme2_1 $gradient_theme2_1;
             cursor: pointer;
         }
     }
+
+    &__badge-btn {margin-left: 2.6rem; }
 
     &__specs ul{
         display:grid;
@@ -276,17 +319,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         box-shadow: 0px 3px 6px rgba(black,0.05);
         cursor: pointer;
         
-        h3{
-            color: $color_text_darker;
-            font-family: $font_title_family;
-            line-height: 100%;
-            font-weight: 700;
-        }
-        p{
-            font: 1.6rem $font_reg_family;
-            color: $color_text_lighter;
-        }
-
         &:hover{
             transform: scale(1.03);
             box-shadow: 0px 3px 22px rgba(black,0.15);
@@ -296,7 +328,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             h3,p {color: white; }
         }
 
-        .interests__tick{
+        .prof__tick{
             display: none;
             fill: none;
             stroke-width: 3px;
@@ -308,14 +340,14 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             height: 20px;
         }
         
-        &1 .interests__tick{ stroke: url(#gradient1); }
-        &2 .interests__tick{ stroke: url(#gradient2); }
-        &3 .interests__tick{ stroke: url(#gradient3); }
-        &4 .interests__tick{ stroke: url(#gradient4); }
-        &5 .interests__tick{ stroke: url(#gradient5); }
+        &1 .prof__tick{ stroke: url(#gradient1); }
+        &2 .prof__tick{ stroke: url(#gradient2); }
+        &3 .prof__tick{ stroke: url(#gradient3); }
+        &4 .prof__tick{ stroke: url(#gradient4); }
+        &5 .prof__tick{ stroke: url(#gradient5); }
 
         &--selected {
-            .interests__tick{
+            .prof__tick{
                 display: block;
             }
         }
@@ -325,9 +357,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     &__spec{
 
         min-height: 300px;      
-
-        h3 { font-size: 3.7rem;}
-        
+      
         &1 { @include specBackground ($color_spec1_1, $color_spec1_2, 45%);}
         &2 { @include specBackground ($color_spec2_1, $color_spec2_2, 45%);}
         &3 { @include specBackground ($color_spec3_1, $color_spec3_2, 45%);}
@@ -367,19 +397,13 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
         min-height: 120px;
         padding-left: 5.9rem;
-        padding-top: 3.4rem;
-
-        h3  { font-size: 3.0rem; padding-bottom: 0.5rem; }
+        padding-top: 3.4rem; 
 
         &1 { @include specBackground ($color_spec1_1, $color_spec1_2, 43%);}
         &2 { @include specBackground ($color_spec2_1, $color_spec2_2, 43%);}
         &3 { @include specBackground ($color_spec3_1, $color_spec3_2, 43%);}
         &4 { @include specBackground ($color_spec4_1, $color_spec4_2, 43%);}
         &5 { @include specBackground ($color_spec5_1, $color_spec5_2, 43%);}
-
-        &--selected {
-            background-position: 0% 99%; 
-        }
 
         &::before{
             content:'';
@@ -394,6 +418,11 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             background-position: 0% 100%;
             background-size: 42% 250%;
             background-repeat: no-repeat;
+        }
+
+        &--selected {
+            background-position: 0% 99%; 
+            &::before{display:none;}
         }
 
     }
@@ -453,7 +482,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         margin-top: -2px;
         padding: 3.5rem 10% 3.5rem 8%;
         text-align:left;
-        font: 2.1rem $font_reg_family;
+        p{font: 2.1rem $font_reg_family;}
         border-bottom: 2px rgba($color_text_light,0.21) solid;
         border-top: 2px rgba($color_text_light,0.21) solid;
         color: $color_text_tasks;
@@ -503,8 +532,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
                 background-color: white;
                 border-radius: 26px;
                 box-shadow: 0px 3px 6px rgba(black,0.05);
-                h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; color: black;}
-                p { font: 1.6rem $font_reg_family; color: $color_text_lighter;}
                 cursor: pointer;
                 &:hover{
                     transform: scale(1.03);
@@ -550,9 +577,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
 
         li{
-
-            h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; padding-bottom: 0.5rem;};
-            p{ font: 1.6rem $font_reg_family; color:$color_text_lighter;}
 
             position: relative;
             display: inline-block;
@@ -608,8 +632,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             background-color: white;
             border-radius: 26px;
             box-shadow: 0px 3px 6px rgba(black,0.05);
-            h3{ font: 3.0rem $font_title_family; line-height: 3.5rem; font-weight: bold; color: black;}
-            p { font: 1.6rem $font_reg_family; color: $color_text_lighter;}
             cursor: pointer;
             &:hover{
                 transform: scale(1.03);
