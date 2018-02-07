@@ -52,7 +52,7 @@ var specializations = [
 
 
 
-const interestsModule = (function(){
+const profModule = (function(){
 
     var userName;
 
@@ -62,15 +62,15 @@ const interestsModule = (function(){
 
     var userCourse;
 
-    const setUserName = () => userName = document.querySelector('.interests__name').value;
+    const setUserName = () => userName = document.querySelector('.prof__name').value;
 
     const getUserName = () => userName;
 
-    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.interests__spec--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.prof__spec--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserSpecializtions = () =>  userSpecializations;
 
-    const setUserBadges = () => userBadges = [...document.querySelectorAll('.interests__badge--selected')].map(x => x.querySelector('h3').innerText);
+    const setUserBadges = () => userBadges = [...document.querySelectorAll('.prof__badge--selected')].map(x => x.querySelector('h3').innerText);
 
     const getUserBadges = () => userBadges;
 
@@ -80,9 +80,13 @@ const interestsModule = (function(){
 
     const getAllSpecializations = () => specializations;
 
+    //this variable keeps current Page position, what is needed for translateX 
+    var currentPosition = 0;
+
+
     const appendSpecializations = () => {
 
-        var element = document.querySelector('.interests__specs ul');
+        var element = document.querySelector('.prof__specs ul');
         var fragment = document.createDocumentFragment();
     
         for (let specialization of getAllSpecializations()) {
@@ -102,13 +106,13 @@ const interestsModule = (function(){
     const createSpecCard = specialization => {
         let specCard = document.createElement('template');
         specCard.innerHTML = `
-            <li class='interests__spec interests__spec${specialization.id}'>
+            <li class='prof__spec prof__spec${specialization.id}'>
                 <h3> ${specialization.name} </h3>
                 <p> Odznak: ${specialization.badges.length} </p>
                 <svg width="auto" height="150px">
                     <use xlink:href=" ${specialization.icon} "</use>
                 </svg>
-                <svg class="interests__tick" width="auto" height="150px">
+                <svg class="prof__tick" width="auto" height="150px">
                     <use xlink:href="#tick"</use>
                 </svg>
             </li>
@@ -121,7 +125,7 @@ const interestsModule = (function(){
         //deletes all technologies, otherwise they are doubled when going back
         clearBadges();
 
-        let element = document.querySelector('.interests__badges-list');
+        let element = document.querySelector('.prof__badges-list');
         let fragment = document.createDocumentFragment();   
         let selectedSpecializations = getUserSpecializtions();
 
@@ -152,10 +156,10 @@ const interestsModule = (function(){
     const createBadgeCard = (badge, specId) => {
         let badgeCard = document.createElement('template');
         badgeCard.innerHTML =  `
-            <li class='interests__badge interests__badge${specId}'>
+            <li class='prof__badge prof__badge${specId}'>
                 <h3> ${badge.name} </h3>
-                <p> Odznak: </p>
-                <svg class="interests__tick" width="auto" height="150px">
+                <p> Kursów: ${badge.courses.length}</p>
+                <svg class="prof__tick" width="auto" height="150px">
                     <use xlink:href="#tick"</use>
                 </svg>
             </li>
@@ -165,7 +169,13 @@ const interestsModule = (function(){
     
 
     const clearBadges = () => {
-        let badgeList = document.querySelector('.interests__badges-list');
+        document.querySelector('.prof__badge-lbl').classList.remove('prof__badge-lbl--selected')
+        document.querySelector('.prof__badge-btn').classList.remove('prof__badge-btn--active')
+        document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')
+        document.querySelector('.prof__badges .prof__btn-back').style.display="inline-block"
+        document.querySelector('.prof__badges .prof__skip').style.display="block"
+        document.querySelector('.prof__badges-list').style.paddingBottom="0rem"
+        let badgeList = document.querySelector('.prof__badges-list');
         while (badgeList.firstChild) {
             badgeList.removeChild(badgeList.firstChild);
         }
@@ -174,89 +184,92 @@ const interestsModule = (function(){
     const addEvents = () => {
 
         //adds click event to specialization cards
-        document.querySelector('.interests__specs ul')
+        document.querySelector('.prof__specs ul')
                 .addEventListener("click", () => { selectCard(event, 'spec')} );
     
         //adds click event to technology cards
-        document.querySelector('.interests__badges-list')
+        document.querySelector('.prof__badges-list')
                 .addEventListener("click", () => { selectCard(event, 'badge')} );
 
         //adds click event to technology cards
-        document.querySelector('.interests__courses-list')
+        document.querySelector('.prof__courses-list')
                 .addEventListener("click", ()=> { 
                     setUserCourse;
-                    pushSlide('-80%');
+                    pushSlide('next');
                 } );
 
 
         //adds click event to show/hide all button
-        document.querySelector('.interests__spec-lbl')
+        document.querySelector('.prof__spec-lbl')
                 .addEventListener("click", () => { selectAllCards(event, 'spec') });
 
         //adds click event to show/hide all button
-        document.querySelector('.interests__badge-lbl')
+        document.querySelector('.prof__badge-lbl')
                 .addEventListener("click", () => { selectAllCards(event, 'badge') });        
 
 
         //adds click event to button go to technologies (only when active)
-        document.querySelector('.interests__spec-btn')
+        document.querySelector('.prof__spec-btn')
                 .addEventListener("click", displayBadges);
 
         //adds click event to button go to tasks (only when active)
-        document.querySelector('.interests__badge-btn')
+        document.querySelector('.prof__badge-btn')
                 .addEventListener("click", displayTasks);
 
-        //adds click event to button go to tasks (only when active)
-        document.querySelector('.interests__courses-btn')
-                .addEventListener("click", () =>{
-                    pushSlide('-80%')
-                });
-
                 
-        //adds click event to back button to specializations
-        document.querySelector('.interests__badge-back')
-                .addEventListener("click", ()=> {
-                    document.querySelector('.interests__badges-footer').classList.remove('interests__badges-footer--active')
-                    //show sepcializations  page
-                    pushSlide('0%');
+        //adds click event to back button 
+        document.querySelectorAll('.prof__btn-back').forEach( (elem) => {
+                elem.addEventListener("click", ()=> {
+                    pushSlide('prev');
                 });
+        })
 
-        //adds click event to back button to technologies
-        document.querySelector('.interests__task-back')
+
+        //adds click event to back button to badges
+        document.querySelector('.prof__task-back')
                 .addEventListener("click", () => {
                     //show sepcializations  page
-                    pushSlide('-20%');
+                    pushSlide(-20);
+                    document.querySelector('.prof__badges-footer').classList.add('prof__badges-footer--active')
                 });
 
-        //adds click event to back button to technologies
-        document.querySelector('.interests__courses-back')
-        .addEventListener("click", () => {
-            //show sepcializations  page
-            pushSlide('-40%');
-        });
         
         let timer = null;
-        document.querySelector('.interests__name')
+        document.querySelector('.prof__name')
                 .addEventListener("keydown", ()=>{
                     clearTimeout(timer); 
-                    timer = setTimeout(resizeName, 500)
+                    timer = setTimeout(resizeName, 1000)
                 })
 
-        document.querySelector('.interests__name')
+        document.querySelector('.prof__name')
                 .addEventListener("keyup",  resizeName2)
 
 
                 
-        document.querySelector('.interests__goals ul li:nth-child(1)')
+        document.querySelector('.prof__goals ul li:nth-child(1)')
                 .addEventListener("click", ()=> {
                     appendBeginnerCourses();
                 })
 
-        document.querySelector('.interests__goals ul li:nth-child(2)')
+        document.querySelector('.prof__goals ul li:nth-child(2)')
                 .addEventListener("click", ()=> {
                     appendAllCourses();
                 })
 
+
+        document.querySelectorAll('.prof__badges-footer .prof__btn-back,.prof__badges-footer a.prod__skip').forEach( (elem)=> {
+                elem.addEventListener("click", ()=> {
+                    document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')
+                })            
+        })
+
+
+        document.querySelector('.prof__badges-footer .prof__badge-btn')
+                .addEventListener("click", (event)=> {
+                    if (event.target.classList.contains('prof__badge-btn--active')) {
+                        document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')                        
+                    }
+                })
 
     }
 
@@ -268,11 +281,11 @@ const interestsModule = (function(){
     const appendAllCourses = () =>{
 
 
-        let coursePage = document.querySelector('.interests__courses')
+        let coursePage = document.querySelector('.prof__courses')
         coursePage.querySelector('h2').innerHTML = 'Od czego <span>zaczynasz?</span>';
-        // coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        // coursePage.querySelector('p.prof__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
         
-        let element = document.querySelector('.interests__courses-list')
+        let element = document.querySelector('.prof__courses-list')
         
         //firstly clear courses list
         while (element.firstChild) {
@@ -284,7 +297,7 @@ const interestsModule = (function(){
         for (let specialization of getAllSpecializations()){
             if (getUserSpecializtions().indexOf(specialization.name)>-1){
                 let fragUl = document.createElement('ul');
-                fragUl.classList.add('interests__courses-all')
+                fragUl.classList.add('prof__courses-all')
 
                 for (let badge of specialization.badges){
                     if (getUserBadges().indexOf(badge.name)>-1){
@@ -293,7 +306,7 @@ const interestsModule = (function(){
                             let courseCard = document.createElement('template');
 
                             courseCard.innerHTML = `
-                                <li class="interests__courses-all${specialization.id}">
+                                <li class="prof__courses-all${specialization.id}">
                                     <h3>${course}</h3>
                                     <p>15godzin</p>
                                 </li>
@@ -309,18 +322,18 @@ const interestsModule = (function(){
         }
         element.appendChild(fragment);
 
-        pushSlide('-60%');
+        pushSlide('next');
 
 
 
     }
 
     const appendBeginnerCourses = () =>{
-        let coursePage = document.querySelector('.interests__courses')
+        let coursePage = document.querySelector('.prof__courses')
         coursePage.querySelector('h2').innerHTML = 'Zacznij <span>Naukę!</span>';
-        coursePage.querySelector('p.interests__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
+        coursePage.querySelector('p.prof__subtitle').innerHTML = 'Oto lista najbardziej popularnych tematów w ramach <span>Specjalizacji</span>, które Cię interesują. Wybierz coś z tej listy i zacznij naukę:'
         
-        let element = document.querySelector('.interests__courses-list')
+        let element = document.querySelector('.prof__courses-list')
         //firstly clear courses list
         while (element.firstChild) {
             element.removeChild(element.firstChild);
@@ -331,7 +344,7 @@ const interestsModule = (function(){
         for (let specialization of getAllSpecializations()){
             if (getUserSpecializtions().indexOf(specialization.name)>-1){
                 let fragUl = document.createElement('ul');
-                fragUl.classList.add('interests__courses-best')
+                fragUl.classList.add('prof__courses-best')
 
                 for (let badge of specialization.badges){
                     if (getUserBadges().indexOf(badge.name)>-1){
@@ -339,7 +352,7 @@ const interestsModule = (function(){
                             let courseCard = document.createElement('template');
 
                             courseCard.innerHTML = `
-                                <li class="interests__courses-best${specialization.id}">
+                                <li class="prof__courses-best${specialization.id}">
                                     <h3>${badge.suggested.name}</h3>
                                     <p>${badge.suggested.desc}</p>
                                 </li>
@@ -354,35 +367,37 @@ const interestsModule = (function(){
         }
         element.appendChild(fragment);
 
-        pushSlide('-60%');
+        pushSlide('next');
 
 
     }
 
     const resizeName = () => {
-        document.querySelector('.interests__name').classList.add('interests__name--shifted');
-        document.querySelector('.interests__name-label').classList.add('interests__name-label--shifted');
-        document.querySelector('.interests').classList.remove('interests--noScroll');
+        document.querySelector('.prof__name').classList.add('prof__name--shifted');
+        document.querySelector('.prof__name-label').classList.add('prof__name-label--shifted');
+        document.querySelector('.prof').classList.remove('prof--noScroll');
     }
 
     const selectCard =  (e, elem) => {
 
         // toggles class selected for card with sepcialization/technology
-        if (e.target !==e.currentTarget){
-            let card = e.target.closest('.interests__'+elem);
-            card.classList.toggle('interests__'+elem+'--selected')
+        if (e.target ==e.currentTarget){
+            return false
         }
 
+        let card = e.target.closest('.prof__'+elem);
+        card.classList.toggle('prof__'+elem+'--selected')
+
         //button to go further        
-        let goButton = document.querySelector('.interests__'+elem+'-btn');
-        let activeButton = 'interests__'+elem+'-btn--active';
+        let goButton = document.querySelector('.prof__'+elem+'-btn');
+        let activeButton = 'prof__'+elem+'-btn--active';
         // label to select / unselect all
-        let labelToSelect = document.querySelector('.interests__'+elem+'-lbl');
-        let selectedLabel = 'interests__'+elem+'-lbl--selected';
+        let labelToSelect = document.querySelector('.prof__'+elem+'-lbl');
+        let selectedLabel = 'prof__'+elem+'-lbl--selected';
         //all cards with tech/spec
-        let allCards = document.querySelectorAll('.interests__'+elem);
+        let allCards = document.querySelectorAll('.prof__'+elem);
         //all selected cards with tech/spec
-        let selectedCards = document.querySelectorAll('.interests__'+elem+'--selected');
+        let selectedCards = document.querySelectorAll('.prof__'+elem+'--selected');
 
         // activates/inactivates button to go further
         if (selectedCards.length>0) {
@@ -390,7 +405,10 @@ const interestsModule = (function(){
             if (!goButton.classList.contains(activeButton)){
                 goButton.classList.add(activeButton)
                 if (elem =='badge') {
-                    document.querySelector('.interests__badges-footer').classList.add('interests__badges-footer--active')
+                    document.querySelector('.prof__badges-footer').classList.add('prof__badges-footer--active')
+                    document.querySelector('.prof__badges .prof__btn-back').style.display="none"
+                    document.querySelector('.prof__badges .prof__skip').style.display="none"
+                    document.querySelector('.prof__badges-list').style.paddingBottom="25rem"
                 }
             }
             //check if all technologies are selected then changes label select all to unselect all
@@ -414,18 +432,18 @@ const interestsModule = (function(){
     const selectAllCards = (e,elem) => {
         
         //button to go further  
-        let goButton = document.querySelector('.interests__'+elem+'-btn')
-        let activeButton = 'interests__'+elem+'-btn--active';
+        let goButton = document.querySelector('.prof__'+elem+'-btn')
+        let activeButton = 'prof__'+elem+'-btn--active';
         // label to select / unselect all       
-        let labelToSelect = document.querySelector('.interests__'+elem+'-lbl');
-        let selectedLabel = 'interests__'+elem+'-lbl--selected';
+        let labelToSelect = document.querySelector('.prof__'+elem+'-lbl');
+        let selectedLabel = 'prof__'+elem+'-lbl--selected';
         //all selected cards with tech/spec
-        let selectedCard = 'interests__'+elem+'--selected';        
+        let selectedCard = 'prof__'+elem+'--selected';        
 
         //if label was selected we need to unselect all cards
         if ( e.target.classList.contains(selectedLabel)){
 
-            [... document.querySelectorAll('.interests__'+elem)].forEach(x => {
+            [... document.querySelectorAll('.prof__'+elem)].forEach(x => {
                 if (x.classList.contains(selectedCard)){
                     x.classList.remove(selectedCard)
                 }
@@ -439,7 +457,7 @@ const interestsModule = (function(){
         //if label was NOT selected we need to select all cards
         } else {
             
-            [... document.querySelectorAll('.interests__'+elem)].forEach(x => {
+            [... document.querySelectorAll('.prof__'+elem)].forEach(x => {
                 if (!x.classList.contains(selectedCard)){
                     x.classList.add(selectedCard)
                 }
@@ -449,7 +467,10 @@ const interestsModule = (function(){
             if (!goButton.classList.contains(activeButton)){
                 goButton.classList.add(activeButton)
                 if (elem =='badge') {
-                    document.querySelector('.interests__badges-footer').classList.add('interests__badges-footer--active')
+                    document.querySelector('.prof__badges-footer').classList.add('prof__badges-footer--active')
+                    document.querySelector('.prof__badges .prof__btn-back').style.display="none"
+                    document.querySelector('.prof__badges .prof__skip').style.display="none"
+                    document.querySelector('.prof__badges-list').style.paddingBottom="25rem"
                 }
             }
         }
@@ -463,16 +484,16 @@ const interestsModule = (function(){
     const displayBadges = e => {
 
         //check if button is active
-        if (e.target.closest('.interests__spec-btn--active')){
+        if (e.target.closest('.prof__spec-btn--active')){
             //stores user name;
             setUserName();
-            document.querySelector('.interests__goals h2').innerHTML=getUserName() + ', <span>określ swój cel!</span>';
+            document.querySelector('.prof__goals h2').innerHTML=getUserName() + ', <span>określ swój cel!</span>';
             //stores selected specializations
             setUserSpecializations();
             //appends technologies from selected specializations to HTML
             appendBadges();
             //scroll horizontaly
-            pushSlide('-20%');
+            pushSlide('next');
         }
     };
 
@@ -480,21 +501,28 @@ const interestsModule = (function(){
     const displayTasks= e => {
 
         //checks if button is active
-        if (e.target.closest('.interests__badge-btn--active')){
+        if (e.target.closest('.prof__badge-btn--active')){
             //stores selected technologies
             setUserBadges();
             //scroll horizontaly
-            pushSlide('-40%');
+            pushSlide('next');
         }   
     };
 
 
 
     //toggles class --hidden for given element with className
-    const pushSlide = size => {
+    const pushSlide = position => {
+        if (position=='next'){
+            currentPosition -= 20;
+        } else if (position=='prev'){
+            currentPosition += 20;
+        } else {
+            currentPosition = position;
+        }
         //scroll to the very top
         window.scrollTo(0,0);
-        document.querySelector('.interests').style.transform="translateX("+size+")"; 
+        document.querySelector('.prof').style.transform="translateX("+currentPosition+"%)"; 
     };
 
     const init = () => {
@@ -512,7 +540,7 @@ const interestsModule = (function(){
 
 })()
 
-interestsModule.init()
+profModule.init()
 
 
 

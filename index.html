@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,700" rel="stylesheet">
@@ -10,36 +10,36 @@
 </head>
 <body>
 
-    <section class="interests interests--noScroll">
+
+    <section class="prof prof--noScroll">
 
         
-        <div class="interests__specs">
-            <label class="interests__name-label">Jak masz na imię?</label>
-            <input class="interests__name" type="text" autofocus="autofocus">
-            <h2><span>, czym się interesujesz?</span></h2>
-            <p class="interests__subtitle">Specjalizacje to główne kategorie, które pomogą nam określić Twoje preferencje pwiadomień oraz dedykowanych materiałów</p>
-            <input type="checkbox"><label class="interests__spec-lbl"></label>
+        <div class="prof__specs">
+            <label class="prof__name-label">Jak masz na imię?</label>
+            <input class="prof__name" type="text" autofocus="autofocus">
+            <h2><span>czym się interesujesz?</span></h2>
+            <p class="prof__subtitle">Specjalizacje to główne kategorie, które pomogą nam określić Twoje preferencje pwiadomień oraz dedykowanych materiałów</p>
+            <input type="checkbox"><label class="prof__spec-lbl"></label>
             <ul></ul>
-            <button class="interests__spec-btn">Dalej</button>
-            <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
+            <button class="prof__spec-btn">Dalej</button>
+            <a href="wyszukiwarka.html" class="prof__skip">Pomiń profilowanie</a>
         </div>
         
 
-        <div class="interests__badges">
+        <div class="prof__badges">
             <h2>Zawęź swoje <span>Zainteresowania</span></h2>
-            <!-- <p class="interests__subtitle">Na każdą Specjalizację przypada szereg Technologii - ich wybór pozwoli nam przygotować dla Ciebie optymalną ścieżkę nauki.</p> -->
-            <input type="checkbox"><label class="interests__badge-lbl"></label>
-            <div class="interests__badges-list"></div>
-            <div class="interests__badges-footer">
-                <button class="interests__badge-back">〈 Powrót</button>
-                <button class="interests__badge-btn">Gotowe!</button>
-                <a href="wyszukiwarka.html" class="interests__skip">Pomiń profilowanie</a>
-            </div>
+            <!-- <p class="prof__subtitle">Na każdą Specjalizację przypada szereg Technologii - ich wybór pozwoli nam przygotować dla Ciebie optymalną ścieżkę nauki.</p> -->
+            <input type="checkbox"><label class="prof__badge-lbl"></label>
+            <div class="prof__badges-list"></div>
+            <button class="prof__btn-back">< Powrót</button>
+            <a href="wyszukiwarka.html" class="prof__skip">Pomiń profilowanie</a>
+
         </div>
-        
-        <div class="interests__goals">
+
+
+        <div class="prof__goals">
                 <h2></h2>
-                <p class="interests__subtitle"> Pomożemy Ci wybrać optymalny tryb i tempo nauki. Możesz także <span>pominąć ten krok</span> i przejść do wyszukiwarki kursów.
+                <p class="prof__subtitle"> Pomożemy Ci wybrać optymalny tryb i tempo nauki. Możesz także <span>pominąć ten krok</span> i przejść do wyszukiwarki kursów.
                 <ul>
                     <li>
                         <h3>Jestem nowy i chcę zacząć od początku</h3>
@@ -56,29 +56,28 @@
                 </ul>
         </div>
 
-        <div class="interests__courses">
+        <div class="prof__courses">
             <h2></h2>
-            <p class="interests__subtitle"></p>
-            <div class="interests__courses-list"></div>
-            <button class="interests__courses-back">〈 Powrót</button>
-            <button class="interests__courses-btn interests__courses-btn--active">Gotowe!</button>
-            <a href="wyszukiwarka.html" class="interests__skip">Pomiń te profilowanie</a>
+            <p class="prof__subtitle"></p>
+            <div class="prof__courses-list"></div>
+            <button class="prof__btn-back">< Powrót</button>
+            <a href="wyszukiwarka.html" class="prof__skip">Pomiń te profilowanie</a>
         </div>
 
 
-        <div class="interests__tasks">
-            <div class="interests__task-left">
+        <div class="prof__tasks">
+            <div class="prof__task-left">
                 <h2><span>Zrobione!</span></h2>
-                <p class="interests__subtitle">Gratulacje! Właśnie skreśliłeś kolejne <b>zadanie z listy</b>. Lista zadań pomoże Ci lepiej się zorganizować i uczyć efektywniej.</p>
+                <p class="prof__subtitle">Gratulacje! Właśnie skreśliłeś kolejne <b>zadanie z listy</b>. Lista zadań pomoże Ci lepiej się zorganizować i uczyć efektywniej.</p>
                 <ul>
-                        <li class="interests__task interests__task--completed"><p>Podaj swoje imię</p></li>
-                        <li class="interests__task interests__task--completed"><p>Podaj swoje zainteresowania</p></li>
-                    <li class="interests__task interests__task--completed"><p>Wypełnij Swój Profil</p></li>
+                        <li class="prof__task prof__task--completed"><p>Podaj swoje imię</p></li>
+                        <li class="prof__task prof__task--completed"><p>Podaj swoje zainteresowania</p></li>
+                    <li class="prof__task prof__task--completed"><p>Wypełnij Swój Profil</p></li>
                 </ul>
-                <button class="interests__task-btn interests__task-btn--active">Przygodę czas zacząć!</button>
-                <a class="interests__task-back">Powrót do Profilowania</a>
+                <button class="prof__task-btn prof__task-btn--active">Przygodę czas zacząć!</button>
+                <a class="prof__task-back">Powrót do Profilowania</a>
             </div>
-            <div class="interests__task-right">
+            <div class="prof__task-right">
               
                 <img class="inject-me" src="assets/list.svg">
 
@@ -88,6 +87,14 @@
 
 
     </section>
+
+
+    <div class="prof__badges-footer">
+        <button class="prof__btn-back">< Powrót</button>
+        <button class="prof__badge-btn">Gotowe!</button>
+        <a href="wyszukiwarka.html" class="prof__skip">Pomiń profilowanie</a>
+    </div>
+
 
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display:"none">
         <defs>
