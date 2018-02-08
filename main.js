@@ -54,33 +54,30 @@ var specializations = [
 
 const profModule = (function(){
 
-    var userName;
+    var user = {};
 
-    var userSpecializations = [];
+    const setUserName = () => user.name = document.querySelector('.prof__name').value;
 
-    var userBadges = [];
+    const getUserName = () => user.name;
 
-    var userCourse;
+    const setUserSpecializations = () => user.specializations = [...document.querySelectorAll('.prof__spec--selected')].map(x => x.querySelector('h3').innerText);
 
-    const setUserName = () => userName = document.querySelector('.prof__name').value;
+    const getUserSpecializtions = () =>  user.specializations;
 
-    const getUserName = () => userName;
+    const setUserBadges = () => user.badges = [...document.querySelectorAll('.prof__badge--selected')].map(x => x.querySelector('h3').innerText);
 
-    const setUserSpecializations = () => userSpecializations = [...document.querySelectorAll('.prof__spec--selected')].map(x => x.querySelector('h3').innerText);
+    const getUserBadges = () => user.badges;
 
-    const getUserSpecializtions = () =>  userSpecializations;
+    const setUserCourse = (e) => user.course = e.target.closest('li').querySelector('h3').textContent;
 
-    const setUserBadges = () => userBadges = [...document.querySelectorAll('.prof__badge--selected')].map(x => x.querySelector('h3').innerText);
-
-    const getUserBadges = () => userBadges;
-
-    const setUserCourse = (e) => e.target.querySelector('h3').textContent;
-
-    const getUserCourse = () => userCourse;
+    const getUserCourse = () => user.course;
 
     const getAllSpecializations = () => specializations;
 
+    const getUser = () => user;
+
     //this variable keeps current Page position, what is needed for translateX 
+    //there are 5 pages, each 20% wide
     var currentPosition = 0;
 
 
@@ -122,7 +119,7 @@ const profModule = (function(){
 
     const appendBadges = () => {
 
-        //deletes all technologies, otherwise they are doubled when going back
+        //deletes all badges, otherwise they are doubled when going back
         clearBadges();
 
         let element = document.querySelector('.prof__badges-list');
@@ -136,13 +133,13 @@ const profModule = (function(){
 
                 for (let badge of specialization.badges){
                     
-                    //creates template with li with technology card
+                    //creates template with li with badge card
                     let badgeCard = createBadgeCard(badge,specialization.id);
                     
-                    //appends technology card to technology choice fragment
+                    //appends badge card to badge choice fragment
                     fragUl.appendChild(badgeCard.content);
                 }
-                //appends technology choice fragment to html
+                //appends badge choice fragment to html
                 fragment.appendChild(fragUl);      
 
             }
@@ -150,7 +147,6 @@ const profModule = (function(){
 
         element.appendChild(fragment) 
     
-
     };
 
     const createBadgeCard = (badge, specId) => {
@@ -169,12 +165,19 @@ const profModule = (function(){
     
 
     const clearBadges = () => {
+        //change select all label to unselect all
         document.querySelector('.prof__badge-lbl').classList.remove('prof__badge-lbl--selected')
+        //turn off button to go to the next page
         document.querySelector('.prof__badge-btn').classList.remove('prof__badge-btn--active')
+        //turn off bottom panel with buttons
         document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')
+        //turn on button to go back (not on the bottom panel)
         document.querySelector('.prof__badges .prof__btn-back').style.display="inline-block"
-        document.querySelector('.prof__badges .prof__skip').style.display="block"
+        //turn on link to skip profiling (not on the bottom panel)
+        document.querySelector('.prof__badges .prof__skip').style.display="inline-block"
+        //when bottom panel is not active we dont need place on the bottom any more
         document.querySelector('.prof__badges-list').style.paddingBottom="0rem"
+        //deletes all badges
         let badgeList = document.querySelector('.prof__badges-list');
         while (badgeList.firstChild) {
             badgeList.removeChild(badgeList.firstChild);
@@ -183,21 +186,13 @@ const profModule = (function(){
 
     const addEvents = () => {
 
-        //adds click event to specialization cards
+        //adds click event to specialization cards (li.prof_spec)
         document.querySelector('.prof__specs ul')
                 .addEventListener("click", () => { selectCard(event, 'spec')} );
     
-        //adds click event to technology cards
+        //adds click event to badge cards (li.prof_badge)
         document.querySelector('.prof__badges-list')
                 .addEventListener("click", () => { selectCard(event, 'badge')} );
-
-        //adds click event to technology cards
-        document.querySelector('.prof__courses-list')
-                .addEventListener("click", ()=> { 
-                    setUserCourse;
-                    pushSlide('next');
-                } );
-
 
         //adds click event to show/hide all button
         document.querySelector('.prof__spec-lbl')
@@ -207,63 +202,53 @@ const profModule = (function(){
         document.querySelector('.prof__badge-lbl')
                 .addEventListener("click", () => { selectAllCards(event, 'badge') });        
 
-
-        //adds click event to button go to technologies (only when active)
+        //adds click event to button go from specializations to badges (only when active)
         document.querySelector('.prof__spec-btn')
                 .addEventListener("click", displayBadges);
 
-        //adds click event to button go to tasks (only when active)
+        //adds click event to button go from badges to goals (only when active)
         document.querySelector('.prof__badge-btn')
-                .addEventListener("click", displayTasks);
+                .addEventListener("click", displayGoals);
 
-                
-        //adds click event to back button 
+        //adds click event to course cards to go from courses to tasks (li.prof_course)
+        document.querySelector('.prof__courses-list')
+                .addEventListener("click", displayTasks)      
+
+        //adds click event to all back buttons 
         document.querySelectorAll('.prof__btn-back').forEach( (elem) => {
                 elem.addEventListener("click", ()=> {
                     pushSlide('prev');
                 });
         })
 
-
-        //adds click event to back button to badges
+        //adds click event to back button to badges from tasks 
         document.querySelector('.prof__task-back')
                 .addEventListener("click", () => {
-                    //show sepcializations  page
+                    //show badges  page
                     pushSlide(-20);
+                    //activate bottom panel 
                     document.querySelector('.prof__badges-footer').classList.add('prof__badges-footer--active')
                 });
 
-        
-        let timer = null;
+        //wait for user stop writing to change input with name position and show specializations        
         document.querySelector('.prof__name')
-                .addEventListener("keydown", ()=>{
-                    clearTimeout(timer); 
-                    timer = setTimeout(resizeName, 1000)
-                })
+                .addEventListener("keydown", waitForBreak)
 
-        document.querySelector('.prof__name')
-                .addEventListener("keyup",  resizeName2)
-
-
-                
+        //adds click to goals, go from goals to course page
         document.querySelector('.prof__goals ul li:nth-child(1)')
-                .addEventListener("click", ()=> {
-                    appendBeginnerCourses();
-                })
+                .addEventListener("click", appendBeginnerCourses)
 
         document.querySelector('.prof__goals ul li:nth-child(2)')
-                .addEventListener("click", ()=> {
-                    appendAllCourses();
-                })
+                .addEventListener("click", appendAllCourses)
 
-
+        //turn off bottom panel on badges page if you go back or totally skip profiling
         document.querySelectorAll('.prof__badges-footer .prof__btn-back,.prof__badges-footer a.prod__skip').forEach( (elem)=> {
                 elem.addEventListener("click", ()=> {
                     document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')
                 })            
         })
 
-
+        //turn off bottom panel on badges page if you go further 
         document.querySelector('.prof__badges-footer .prof__badge-btn')
                 .addEventListener("click", (event)=> {
                     if (event.target.classList.contains('prof__badge-btn--active')) {
@@ -274,12 +259,8 @@ const profModule = (function(){
     }
 
 
-    const resizeName2 = (e) => {
-        e.target.setAttribute('size',e.target.value.length)
-    }
-
+    //if user knows what to choose, we show ALLcourses
     const appendAllCourses = () =>{
-
 
         let coursePage = document.querySelector('.prof__courses')
         coursePage.querySelector('h2').innerHTML = 'Od czego <span>zaczynasz?</span>';
@@ -296,25 +277,29 @@ const profModule = (function(){
 
         for (let specialization of getAllSpecializations()){
             if (getUserSpecializtions().indexOf(specialization.name)>-1){
+
+                //in every selected specialization separate ul is created
                 let fragUl = document.createElement('ul');
                 fragUl.classList.add('prof__courses-all')
 
                 for (let badge of specialization.badges){
                     if (getUserBadges().indexOf(badge.name)>-1){
+
+                        //in every selected badge li with ALL courses are created
                         for (let course of badge.courses){
-                            //creates template with li with technology card
+
                             let courseCard = document.createElement('template');
 
                             courseCard.innerHTML = `
                                 <li class="prof__courses-all${specialization.id}">
                                     <h3>${course}</h3>
-                                    <p>15godzin</p>
+                                    <p>15 godzin</p>
                                 </li>
                             `;                         
-                            //appends technology card to technology choice fragment
+
                             fragUl.appendChild(courseCard.content);
                         }                            
-                        //appends technology choice fragment to html
+
                         fragment.appendChild(fragUl);    
                     }
                 }
@@ -328,6 +313,7 @@ const profModule = (function(){
 
     }
 
+    //if user doesn't know what to choose, we show recommended courses
     const appendBeginnerCourses = () =>{
         let coursePage = document.querySelector('.prof__courses')
         coursePage.querySelector('h2').innerHTML = 'Zacznij <span>Naukę!</span>';
@@ -343,12 +329,15 @@ const profModule = (function(){
 
         for (let specialization of getAllSpecializations()){
             if (getUserSpecializtions().indexOf(specialization.name)>-1){
+
+                //in every selected specialization separate ul is created
                 let fragUl = document.createElement('ul');
                 fragUl.classList.add('prof__courses-best')
 
                 for (let badge of specialization.badges){
                     if (getUserBadges().indexOf(badge.name)>-1){
 
+                            //in every selected badge li with recommended course is created
                             let courseCard = document.createElement('template');
 
                             courseCard.innerHTML = `
@@ -356,11 +345,11 @@ const profModule = (function(){
                                     <h3>${badge.suggested.name}</h3>
                                     <p>${badge.suggested.desc}</p>
                                 </li>
-                            `;                         
-                            //appends technology card to technology choice fragment
+                            `;   
+
                             fragUl.appendChild(courseCard.content);
-                        }                            
-                        //appends technology choice fragment to html
+                        }    
+
                         fragment.appendChild(fragUl);    
                }
             }
@@ -369,22 +358,48 @@ const profModule = (function(){
 
         pushSlide('next');
 
-
     }
 
+    //this part is for input with name 
+    let timer = null;
+    const waitForBreak = () => {
+        clearTimeout(timer); 
+        timer = setTimeout(resizeName, 1000);       
+    }              
+
+    //push input with name higher and show specializations
     const resizeName = () => {
+        //move input
         document.querySelector('.prof__name').classList.add('prof__name--shifted');
+        //hide label "Jak masz na imie"
         document.querySelector('.prof__name-label').classList.add('prof__name-label--shifted');
+        //allow page to be scrolled
         document.querySelector('.prof').classList.remove('prof--noScroll');
+        //resize input width
+        document.querySelector('.prof__name').style.width= (document.querySelector('.prof__name').value.length+1) / 2 + 'em';   
+        //get rid of this listener, once input is resized it won't move
+        document.querySelector('.prof__name').removeEventListener("keydown",waitForBreak);
+        //add listener that will resize input with every entry
+        document.querySelector('.prof__name').addEventListener("keydown",  resizeName2)
     }
 
+    //resize input with name
+    const resizeName2 = (e) => {
+        if (e.target.classList.contains('prof__name--shifted')){
+            e.target.style.width= (e.target.value.length+2) / 2 + 'em';
+            //e.target.setAttribute('size',e.target.value.length)            
+        }
+    }
+
+    //thisis both for badges and specializations
     const selectCard =  (e, elem) => {
 
-        // toggles class selected for card with sepcialization/technology
+        // toggles class selected for card with sepcialization/badge
         if (e.target ==e.currentTarget){
             return false
         }
 
+        //card is selected
         let card = e.target.closest('.prof__'+elem);
         card.classList.toggle('prof__'+elem+'--selected')
 
@@ -498,7 +513,7 @@ const profModule = (function(){
     };
 
 
-    const displayTasks= e => {
+    const displayGoals= e => {
 
         //checks if button is active
         if (e.target.closest('.prof__badge-btn--active')){
@@ -509,9 +524,19 @@ const profModule = (function(){
         }   
     };
 
+    const displayTasks = e => {
+        setUserCourse(e);
+        pushSlide('next');
+
+        //complete task one by one with delay 
+        let timer = null;
+        document.querySelectorAll('.prof__task').forEach( (task, index)=>{
+            timer = setTimeout(function(){task.classList.add('prof__task--completed')},750*(1+index));                      
+        })
+        timer=setTimeout(function(){document.querySelector('.prof__task-btn').classList.add('prof__task-btn--active')},750*(1+document.querySelectorAll('.prof__task').length))
+    }
 
 
-    //toggles class --hidden for given element with className
     const pushSlide = position => {
         if (position=='next'){
             currentPosition -= 20;
@@ -533,8 +558,7 @@ const profModule = (function(){
 
     return {
         init: init,
-        getUserSpecializtions: getUserSpecializtions,
-        getUserBadges: getUserBadges
+        getUser: getUser
     }
 
 
