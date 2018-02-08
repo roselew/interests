@@ -6,6 +6,11 @@ html {font-size: 62.5%;height: 100%; background-color: $color_back;}
 body {width: 100%; height: 100%; overflow-x: hidden;}
 
 
+@keyframes show {
+    from { display: none; }
+    to   { display: block; } 
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
@@ -35,15 +40,15 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         transition: all 0.3s ease-out;     
     }
 
-    button { 
+    & button, &__badges-footer button{ 
         text-transform: uppercase;
         font: 1.9rem $font_reg_family;
-        font-weight: bolder;
-        padding: 1.5rem 4.0rem; //tu były różne paddingi podane
+        font-weight: 800;
+        padding: 1.7rem 4.5rem; //tu były różne paddingi podane
         border-radius: 2.6rem;
         color: $color_text_white;
         margin-top: 8.0rem;
-        margin-bottom: 8.0rem;
+        margin-bottom: 4.0rem;
         
         @media( max-width: $screen_size_S){
             display: block;
@@ -66,6 +71,9 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
     //Nagłówek wyżej na stronach gdzie jest dużo elementów
     &__badges h2, &__courses h2{
         padding-top: 5%;
+        @media( max-width: $screen_size_S){
+            padding-top: 10%;
+        }
     }
 
     a {text-decoration: none;}
@@ -80,18 +88,20 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
     p{
         font: 1.6rem $font_reg_family;
+        font-weight: 600;
         color: $color_text_lighter;
     }
 
-    &__btn-back{
-        box-shadow: inset 0px 0px 0px 2px $color_text_lighter;
-        background: none;
-        color: $color_text_lighter !important;
+    & &__btn-back, &__badges-footer &__btn-back{
+        padding: 1.7rem 2.7rem;
+        padding-left: 4.3rem;
+        box-shadow: inset 0px 0px 0px 2px #c0c0c0;
+        background: url(assets/left-arrow.svg) center left 2.5rem no-repeat;
+        background-size: 1.6rem;
+        color: #c0c0c0;
         cursor: pointer;
-        font-weight: bolder;
+        font-weight: 800;
     }
-    
-
 
     &__specs {
         label.prof__name-label {
@@ -116,34 +126,33 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             outline:none;
             display:block;
             text-align: center;
-            width:auto;
-            margin:auto;
             padding:0;
-            transition: all 1s;
-            font: 8.0rem $font_title_family;
+            //transition:all 1s;
+            transition: padding-top 1s ease-out;
+
+            font-family: $font_title_family;
+            font-size: 8.0rem;
+
             padding-top: 40vh;
             padding-bottom:60vh;
             
-
-
             &--shifted{
                 display: inline-block;
                 text-align: right; 
-                margin-left:-75px;    
-                text-decoration: underline;  
+                //margin-left:-75px;    
+                //text-decoration: underline;  
+                border-bottom: solid 2px rgba($color_text_light,0.28);
                 padding-top: 10%;
                 padding-bottom:0;
                 margin-bottom: 1rem;
-                font: 4.0rem $font_title_family;
+                font-size: 4.0rem;
                 line-height: 4.6rem;
 
                 @media( max-width: $screen_size_S){
                     text-align: center;
                     margin-left: 0;
                 }
-
             }
-
         }
         
         h2{
@@ -159,15 +168,15 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
     }
 
-
     p.prof__subtitle {
         font: 1.8rem $font_reg_family;
+        line-height: 140%; //około
         padding: 0px 30px;
         color: $color_text_light;
         max-width: 580px;
         margin: auto;
         margin-bottom: 6.0rem;
-        span {font-weight: bold;}
+        span {font-weight: 700;}
     }
 
     &__badge-lbl, &__spec-lbl {
@@ -183,6 +192,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             display:inline-block;
             width: 1.4rem;
             height: 1.4rem;
+            vertical-align: middle;
             margin-right: 0.8rem;
             background: $color_back url(assets/zaznacz.svg) top center no-repeat;
             background-size: 100%;
@@ -191,11 +201,11 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         &::after{
             content: 'Zaznacz wszystko';
             font: 1.0rem $font_reg_family;
-            line-height: 1.6rem;
-            vertical-align: bottom;
+            line-height: 1.4rem;
+            vertical-align: middle;
             text-transform: uppercase;
             color: $color_text_light;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         &--selected {
@@ -205,10 +215,8 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             &::before{
                 background: $color_back url(assets/odznacz.svg) top center no-repeat;
                 background-size: 100%;
-            }
-            
+            }        
         }
-
     }
 
     &__badges-footer {
@@ -218,36 +226,18 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         width: 100%;
         height:0px;
         text-align: center;
-        box-shadow: 0px -4px 4px -4px rgba(black,0.16);
-        //box-shadow: -2px 0px 4px rgba(black,0.16);
+        //box-shadow: 0px -4px 4px -4px rgba(black,0.16);
+        box-shadow: -2px 0px 4px rgba(black,0.16);
         background-color: white;
         transition: height 0.3s linear;  
         -webkit-backface-visibility: hidden;
-
-        button { 
-            text-transform: uppercase;
-            font: 1.9rem $font_reg_family;
-            font-weight: bolder;
-            padding: 1.5rem 4.0rem; //tu były różne paddingi podane
-            border-radius: 2.6rem;
-            color: $color_text_white;
-            margin-top: 8.0rem;
-            margin-bottom: 8.0rem;
-
-            
-            @media( max-width: $screen_size_S){
-                display: block;
-                margin: 2.0rem auto;
-                width: 80%;
-            }
-        }
 
         button, a {display:none;}
                      
 
         &--active{
             button, a {display: inline-block;}
-            a{display: block;}
+            a {text-decoration: none;}
             height:250px;
             @media( max-width: $screen_size_S){
                 padding-top:2rem;
@@ -329,7 +319,7 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
 
         .prof__tick{
-            display: none;
+            opacity: 0;
             fill: none;
             stroke-width: 3px;
             position:absolute;
@@ -348,10 +338,12 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
         &--selected {
             .prof__tick{
-                display: block;
+                // display: block;
+                animation: fadeIn;
+                animation-delay: 0.2s;
+                animation-fill-mode: forwards;
             }
         }
-
     }  
 
     &__spec{
@@ -389,7 +381,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             width: auto;
             height: 150px;
         }
-
     }
 
 
@@ -424,7 +415,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             background-position: 0% 99%; 
             &::before{display:none;}
         }
-
     }
     
 
@@ -457,19 +447,15 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
     }
 
-    &__skip, &__task-back {
-        display: block;
+    & &__skip, &__badges-footer &__skip, &__task-back {
+        display: inline-block;
         font: 1.2rem $font_reg_family;
+        font-weight: 700;
+        line-height: 1.5rem;
         color: $color_text_light;
-        margin: auto;
-        margin-top: -4.0rem;
-        padding-bottom: 5.7rem;
-        text-decoration: underline !important;
+        margin-bottom: 5.7rem;
+        border-bottom: solid 1px;
         cursor: pointer;
-
-        @media( max-width: $screen_size_S){
-            margin-top:0;
-        }
     }
 
 
@@ -480,27 +466,35 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         max-width: 530px;
         margin: auto;
         margin-top: -2px;
-        padding: 3.5rem 10% 3.5rem 8%;
+        padding: 3.5rem 10% 3.5rem 5%;
         text-align:left;
-        p{font: 2.1rem $font_reg_family;}
+        p{font: 2.1rem $font_reg_family;font-weight: 500;}
         border-bottom: 2px rgba($color_text_light,0.21) solid;
         border-top: 2px rgba($color_text_light,0.21) solid;
         color: $color_text_tasks;
-        transition: text-decoration 3s;
+        @media( max-width: $screen_size_S){
+            padding: 3.5rem 12% 3.5rem 4%;
+            & p::after {right:4%;}
+        }
         ::after {
             content: '';
             position: absolute;
             right: 8%;
-            top: 2.8rem;
+            top: 33%;
             width: 3.8rem;
             height: 3.8rem;
             border-radius: 100%;
             background: $color_text_tasks url(assets/tick.svg) center center no-repeat;
             background-size: 60%;
+            transition: transform 0.5s;
+            transform: scale(0.7);
+            transform-origin: 50% 50%;
         }
         &--completed{
+            animation: show 0.5s;
             text-decoration: line-through;
             ::after {
+                transform: scale(1.0);
                 content: '';
                 background: $color_done url(assets/tick.svg) center center no-repeat;
                 background-size: 60%;
@@ -510,49 +504,44 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
 
     }
 
+
     &__task-btn {
         background: $color_theme4_1 $gradient_theme4_1; 
         &--active{ 
             background: $color_theme3_1 $gradient_theme3_1;
             cursor: pointer;
         }
-
     }
 
 
     &__goals{
-        ul {
-            li{
-                max-width: 823px;
-                width: 80%;
-                margin: auto;
-                margin-bottom: 26px;
-                text-align: left;
-                padding: 2.4rem 2.0rem 3.3rem 11.3rem;
-                background-color: white;
-                border-radius: 26px;
-                box-shadow: 0px 3px 6px rgba(black,0.05);
-                cursor: pointer;
-                &:hover{
-                    transform: scale(1.03);
-                    box-shadow: 0px 3px 22px rgba(black,0.15);
-                }
-                &:nth-child(1){
-                    background: white url('assets/nipple.svg') left 26px center no-repeat;
-                    background-size: 51px 50%;
-                }
-                &:nth-child(2){
-                    background: white url('assets/idea.svg') left 26px center no-repeat;
-                    background-size: 51px 50%;
-                }
-                &:nth-child(3){
-                    background: white url('assets/magnifying-glass.svg') left 26px center no-repeat;
-                    background-size: 51px 50%;
-                }
-            
+        li{
+            max-width: 823px;
+            width: 80%;
+            margin: auto;
+            margin-bottom: 26px;
+            text-align: left;
+            padding: 2.4rem 2.0rem 3.3rem 11.3rem;
+            background-color: white;
+            border-radius: 26px;
+            box-shadow: 0px 3px 6px rgba(black,0.05);
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.03);
+                box-shadow: 0px 3px 22px rgba(black,0.15);
             }
-       
-
+            &:nth-child(1){
+                background: white url('assets/nipple.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }
+            &:nth-child(2){
+                background: white url('assets/idea.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }
+            &:nth-child(3){
+                background: white url('assets/magnifying-glass.svg') left 26px center no-repeat;
+                background-size: 51px 50%;
+            }       
         }
     }
 
@@ -577,7 +566,6 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
         }
 
         li{
-
             position: relative;
             display: inline-block;
             vertical-align: middle;
@@ -610,9 +598,9 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             &:hover{
                 transform: scale(1.03);
                 box-shadow: 0px 3px 22px rgba(black,0.15);
-            }
-          
+            }    
         }
+
         &1:before { background: linear-gradient(121deg, $color_spec1_2 0%, $color_spec1_1 100%);}
         &2:before { background: linear-gradient(121deg, $color_spec2_2 0%, $color_spec2_1 100%);}
         &3:before { background: linear-gradient(121deg, $color_spec3_2 0%, $color_spec3_1 100%);}
@@ -661,16 +649,11 @@ body {width: 100%; height: 100%; overflow-x: hidden;}
             }
         
         }
-        &1:before { background: linear-gradient(121deg, $color_spec1_2 0%, $color_spec1_1 100%);background-size: 42% 250%;
-                background-repeat: no-repeat; }
-        &2:before { background: linear-gradient(121deg, $color_spec2_2 0%, $color_spec2_1 100%);background-size: 42% 250%;
-                background-repeat: no-repeat;}
-        &3:before { background: linear-gradient(121deg, $color_spec3_2 0%, $color_spec3_1 100%);background-size: 42% 250%;
-                background-repeat: no-repeat;}
-        &4:before { background: linear-gradient(121deg, $color_spec4_2 0%, $color_spec4_1 100%);background-size: 42% 250%;
-                background-repeat: no-repeat;}
-        &5:before { background: linear-gradient(121deg, $color_spec5_2 0%, $color_spec5_1 100%);background-size: 42% 250%;
-                background-repeat: no-repeat;}
+        &1:before { background: linear-gradient(121deg, $color_spec1_2 0%, $color_spec1_1 100%);background-size: 42% 250%;  background-repeat: no-repeat;}
+        &2:before { background: linear-gradient(121deg, $color_spec2_2 0%, $color_spec2_1 100%);background-size: 42% 250%;  background-repeat: no-repeat;}
+        &3:before { background: linear-gradient(121deg, $color_spec3_2 0%, $color_spec3_1 100%);background-size: 42% 250%;  background-repeat: no-repeat;}
+        &4:before { background: linear-gradient(121deg, $color_spec4_2 0%, $color_spec4_1 100%);background-size: 42% 250%;  background-repeat: no-repeat;}
+        &5:before { background: linear-gradient(121deg, $color_spec5_2 0%, $color_spec5_1 100%);background-size: 42% 250%;  background-repeat: no-repeat;}
     }
 
 }

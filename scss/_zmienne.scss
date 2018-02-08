@@ -73,8 +73,45 @@
 
 $font_title_family: 'Catamaran', sans_serif;
 $font_reg_family: 'Proxima Nova', 'Arial', sans_serif;
+$font_code_family: 'Source Code Pro', monospace;
 
+//title family potrzebna 300,400,500,700
+//reg family potrzebne 300,400,500,600,700,800
+//code family potrzebne 500
 
-
+// @font-face {
+//     	font-family: "Proxima Nova";
+//     	src: url("fonts/Proxima Nova.eot");
+//		src: url('fonts/Proxima Nova.eot?#iefix') format('embedded-opentype'),
+//		  url('fonts/Proxima Nova.woff2') format('woff2'),
+//		  url('fonts/Proxima Nova.woff') format('woff'),
+//		  url('fonts/Proxima Nova.ttf') format('truetype'),
+//		font-weight: 400;
+// }
+// @font-face {
+//     font-family: "Proxima Nova";
+//     src: url("fonts/Proxima Nova-Light.ttf");
+//     font-weight: 300;
+// }
+// @font-face {
+//     font-family: "Proxima Nova";
+//     src: url("fonts/Proxima Nova-Medium.ttf");
+//     font-weight: 500;
+// }
+// @font-face {
+//     font-family: "Proxima Nova";
+//     src: url("fonts/Proxima Nova-SemiBold.ttf");
+//     font-weight: 600;
+// }
+// @font-face {
+//     font-family: "Proxima Nova";
+//     src: url("fonts/Proxima Nova-Bold.ttf");
+//     font-weight: 700;
+// }
+// @font-face {
+//     font-family: "Proxima Nova";
+//     src: url("fonts/Proxima Nova-ExtraBold.ttf");
+//     font-weight: 800;
+// }
 
 
