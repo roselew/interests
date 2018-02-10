@@ -11,9 +11,19 @@ body {width: 100%; height: 100%;}
     to   { display: block; } 
 }
 
+@keyframes fadeOut {
+    from { opacity:1;}
+    to   { opacity:0; position: absolute; visibility: hidden;} 
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    0%   {opacity:0; transform: translateY(100px)}
+    100% {opacity:1; transform: translateX(0)}
 }
 
 @keyframes slideInLeft {
@@ -66,8 +76,6 @@ body {width: 100%; height: 100%;}
         animation-fill-mode:forwards;
     }
 
-    &--noScroll{height:100vh;overflow-y: hidden;}
-
     &__specs, &__badges, &__tasks, &__goals, &__courses{
         transform: translateX(-200%);
         opacity:0;
@@ -99,7 +107,7 @@ body {width: 100%; height: 100%;}
         }
     }
 
-    h2,input {
+    h2, input{
         padding-top: 10%;
         max-width:80%;
         margin:auto;
@@ -148,18 +156,15 @@ body {width: 100%; height: 100%;}
     &__specs {
         transform: translateX(0%);
         opacity:1;
+
         label.prof__name-label {
-            position: absolute;
-            top: 0;
-            left: 0;
+            opacity:1;
+            display: block;
             text-align: center;
             width:100%;
-            padding-top: 30vh;
+            padding-top: 20%;
             font: 4.0rem $font_title_family;
             color: $color_text_dark;
-            &--shifted{
-                display:none;
-            }
         }
         input.prof__name{
             appearance: none;
@@ -171,23 +176,35 @@ body {width: 100%; height: 100%;}
             display:block;
             text-align: center;
             padding:0;
-            //transition:all 1s;
-            transition: padding-top 1s ease-out;
-
+            transition: font-size 0.3s;
             font-family: $font_title_family;
             font-size: 8.0rem;
+            // padding-top: 40vh;      
+        }
+        
+        button, label, a, p.prof__subtitle {opacity:0;}
 
-            padding-top: 40vh;
-            padding-bottom:60vh;
+        h2{
+            opacity:0;
+            text-align: left;
+            display: inline-block;
+            &:before{content:', '}
+
+            @media( max-width: $screen_size_S){
+                padding-top:0;
+                text-align: center;
+                &:before{content:''}
+            }
+        }
+
+
+        &--shifted{
             
-            &--shifted{
-                display: inline-block;
+            input.prof__name{
+                display:inline-block;
                 text-align: right; 
-                //margin-left:-75px;    
-                //text-decoration: underline;  
                 border-bottom: solid 2px rgba($color_text_light,0.28);
                 padding-top: 10%;
-                padding-bottom:0;
                 margin-bottom: 1rem;
                 font-size: 4.0rem;
                 line-height: 4.6rem;
@@ -197,17 +214,23 @@ body {width: 100%; height: 100%;}
                     margin-left: 0;
                 }
             }
-        }
-        
-        h2{
-            text-align: left;
-            display: inline-block;
-            &:before{content:', '}
-
-            @media( max-width: $screen_size_S){
-                padding-top:0;
-                text-align: center;
-                &:before{content:''}
+            label.prof__name-label{
+                animation: fadeOut 0.3s;
+                animation-fill-mode: forwards;
+            }
+            h2{
+                animation: fadeIn 0.3s;
+                animation-fill-mode: forwards;               
+            }
+            ul{
+                animation: slideInDown 0.3s;
+                animation-delay: 0.3s;
+                animation-fill-mode: forwards;
+            }
+            button, label,p.prof__subtitle  {
+                animation: fadeIn 0.3s;
+                animation-delay: 0.6s;
+                animation-fill-mode: forwards;               
             }
         }
     }
@@ -305,6 +328,8 @@ body {width: 100%; height: 100%;}
     &__badge-btn {margin-left: 2.6rem; }
 
     &__specs ul{
+        opacity:0;
+
         display:grid;
         grid-gap:48px;
         grid-template-columns: repeat(auto-fill,minmax(296px, 1fr));
@@ -313,6 +338,8 @@ body {width: 100%; height: 100%;}
         }
         margin: 24px 6%;
     }
+
+
 
     &__badges ul{
         position: relative;
@@ -566,7 +593,7 @@ body {width: 100%; height: 100%;}
             margin: auto;
             margin-bottom: 26px;
             text-align: left;
-            padding: 2.4rem 2.0rem 3.3rem 11.3rem;
+            padding: 2.4rem 2.0rem 2.4rem 11.3rem;
             background-color: white;
             border-radius: 26px;
             box-shadow: 0px 3px 6px rgba(black,0.05);

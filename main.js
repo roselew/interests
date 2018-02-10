@@ -373,14 +373,10 @@ const profModule = (function(){
 
     //push input with name higher and show specializations
     const resizeName = () => {
-        //move input
-        document.querySelector('.prof__name').classList.add('prof__name--shifted');
-        //hide label "Jak masz na imie"
-        document.querySelector('.prof__name-label').classList.add('prof__name-label--shifted');
-        //allow page to be scrolled
-        document.querySelector('.prof').classList.remove('prof--noScroll');
         //resize input width
-        document.querySelector('.prof__name').style.width= (document.querySelector('.prof__name').value.length+1) / 2 + 'em';   
+        document.querySelector('.prof__name').style.width= (document.querySelector('.prof__name').value.length+1) / 2 + 'em'; 
+        //move input
+        document.querySelector('.prof__specs').classList.add('prof__specs--shifted');         
         //get rid of this listener, once input is resized it won't move
         document.querySelector('.prof__name').removeEventListener("keydown",waitForBreak);
         //add listener that will resize input with every entry
@@ -389,10 +385,8 @@ const profModule = (function(){
 
     //resize input with name
     const resizeName2 = (e) => {
-        if (e.target.classList.contains('prof__name--shifted')){
             e.target.style.width= (e.target.value.length+2) / 2 + 'em';
             //e.target.setAttribute('size',e.target.value.length)            
-        }
     }
 
     //thisis both for badges and specializations
