@@ -3,8 +3,7 @@
 
 
 html {font-size: 62.5%;height: 100%; background-color: $color_back;}
-body {width: 100%; height: 100%; overflow-x: hidden;}
-section {width: 100%; height: 100%;}
+body {width: 100%; height: 100%;}
 
 
 @keyframes show {
@@ -17,28 +16,70 @@ section {width: 100%; height: 100%;}
       to { opacity: 1; }
 }
 
+@keyframes slideInLeft {
+    0%   {opacity:0; transform: translateX(200%)}
+    100% {opacity:1; transform: translateX(0%)}
+}
+
+@keyframes slideOutLeft {
+    0%   {opacity:1; transform: translateX(0%);}
+    100% {opacity:0; transform: translateX(-200%);}
+}
+
+@keyframes slideInRight {
+    0%   {opacity:0; transform: translateX(-200%);}
+    100% {opacity:1; transform: translateX(0%);}
+}
+
+@keyframes slideOutRight {
+    0%   {opacity:1; transform: translateX(0%);}
+    100% {opacity:0; transform: translateX(200%);}
+}
+
 .prof{
-
-    position: relative;
-    display: flex;
-    align-items: stretch;
-    transform: translateX(0%);
-    transition: transform 0.3s ease-out; 
-
-    width: 500%;
-    min-height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
     text-align: center;
+    overflow-x:hidden;
+
+    &--slideInLeft{
+        animation: slideInLeft;
+        animation-duration: 0.3s;
+        animation-fill-mode:forwards;
+    }
+    &--slideOutLeft{
+        animation: slideOutLeft;
+        animation-duration: 0.3s;
+        animation-fill-mode:forwards;
+    }
+    &--slideInRight{
+        animation: slideInRight;
+        animation-duration: 0.3s;
+        animation-fill-mode:forwards;
+    }
+    &--slideOutRight{
+        animation: slideOutRight;
+        animation-duration: 0.3s;
+        animation-fill-mode:forwards;
+    }
 
     &--noScroll{height:100vh;overflow-y: hidden;}
 
     &__specs, &__badges, &__tasks, &__goals, &__courses{
-        position: relative;
-        display: inline-block;
-        width: 20%;
+        transform: translateX(-200%);
+        opacity:0;
+        position: absolute;
+        width: 100%;
+        max-width: 2000px;
         min-height: 100%;
         top:0;
         left:0;
-        transition: all 0.3s ease-out;     
+        right:0;
+        bottom:0;
+        margin:auto;
     }
 
     & button, &__badges-footer button{ 
@@ -105,6 +146,8 @@ section {width: 100%; height: 100%;}
     }
 
     &__specs {
+        transform: translateX(0%);
+        opacity:1;
         label.prof__name-label {
             position: absolute;
             top: 0;
@@ -432,15 +475,16 @@ section {width: 100%; height: 100%;}
         position: absolute;
         right:0;
         top:0;
-        width:23%;
+        width:0%;
         height:100%;
         background: $color_theme3_1 $gradient_theme3_1;
-
+        transition: width 2s;
         img {
+            transform-origin: 100% 50%;
             width: 50%;
             margin:auto;
             position: relative;
-            top:40vh;
+            top:40%;
         }
 
         @media(max-width: $screen_size_L){

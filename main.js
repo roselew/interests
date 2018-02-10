@@ -215,17 +215,21 @@ const profModule = (function(){
                 .addEventListener("click", displayTasks)      
 
         //adds click event to all back buttons 
-        document.querySelectorAll('.prof__btn-back').forEach( (elem) => {
-                elem.addEventListener("click", ()=> {
-                    pushSlide('prev');
-                });
-        })
+        document.querySelector('.prof__badges .prof__btn-back')
+                .addEventListener("click", ()=> showPrevPage('badges','specs'))
+
+        document.querySelector('.prof__badges-footer .prof__btn-back')
+                .addEventListener("click", ()=> showPrevPage('badges','specs'))
+
+        document.querySelector('.prof__courses .prof__btn-back')
+                .addEventListener("click", ()=> showPrevPage('courses','goals'))
 
         //adds click event to back button to badges from tasks 
         document.querySelector('.prof__task-back')
                 .addEventListener("click", () => {
+                    document.querySelector('.prof__task-right').style.width='0%';
                     //show badges  page
-                    pushSlide(-20);
+                    showPrevPage('tasks','badges');
                     //activate bottom panel 
                     document.querySelector('.prof__badges-footer').classList.add('prof__badges-footer--active')
                 });
@@ -307,7 +311,7 @@ const profModule = (function(){
         }
         element.appendChild(fragment);
 
-        pushSlide('next');
+        showNextPage('goals','courses');
 
 
 
@@ -356,7 +360,7 @@ const profModule = (function(){
         }
         element.appendChild(fragment);
 
-        pushSlide('next');
+        showNextPage('goals','courses');
 
     }
 
@@ -508,7 +512,7 @@ const profModule = (function(){
             //appends technologies from selected specializations to HTML
             appendBadges();
             //scroll horizontaly
-            pushSlide('next');
+            showNextPage('specs','badges');
         }
     };
 
@@ -520,13 +524,14 @@ const profModule = (function(){
             //stores selected technologies
             setUserBadges();
             //scroll horizontaly
-            pushSlide('next');
+            showNextPage('badges','goals');
         }   
     };
 
     const displayTasks = e => {
         setUserCourse(e);
-        pushSlide('next');
+        document.querySelector('.prof__task-right').style.width='23%';
+        showNextPage('courses','tasks');
 
         //complete task one by one with delay 
         let timer = null;
@@ -536,21 +541,28 @@ const profModule = (function(){
         timer=setTimeout(function(){document.querySelector('.prof__task-btn').classList.add('prof__task-btn--active')},750*(1+document.querySelectorAll('.prof__task').length))
     }
 
+    const showNextPage = (oldPage, newPage) =>{
+        //scroll to the top
+        document.querySelector('div.prof__'+oldPage).scrollIntoView({ behavior: "instant", block: "start" })
+        document.querySelector('div.prof__'+oldPage).classList.remove('prof--slideInLeft')
+        document.querySelector('div.prof__'+oldPage).classList.remove('prof--slideInRight')
+        document.querySelector('div.prof__'+oldPage).classList.add('prof--slideOutLeft')
+        document.querySelector('div.prof__'+newPage).classList.remove('prof--slideOutLeft')
+        document.querySelector('div.prof__'+newPage).classList.remove('prof--slideOutRight')
+        document.querySelector('div.prof__'+newPage).classList.add('prof--slideInLeft')
+    }
+    
+    const showPrevPage = (oldPage, newPage) =>{
+        document.querySelector('div.prof__'+oldPage).scrollIntoView({ behavior: "instant", block: "start" })
+        document.querySelector('div.prof__'+oldPage).classList.remove('prof--slideInLeft')
+        document.querySelector('div.prof__'+oldPage).classList.remove('prof--slideInRight')
+        document.querySelector('div.prof__'+oldPage).classList.add('prof--slideOutRight')
+        document.querySelector('div.prof__'+newPage).classList.remove('prof--slideOutLeft')
+        document.querySelector('div.prof__'+newPage).classList.remove('prof--slideOutRight')
+        document.querySelector('div.prof__'+newPage).classList.add('prof--slideInRight')
+    }
 
-    const pushSlide = position => {
-        if (position=='next'){
-            currentPosition -= 20;
-        } else if (position=='prev'){
-            currentPosition += 20;
-        } else {
-            currentPosition = position;
-        }
-        //scroll to the very top
-        window.scrollTo(0,0);
-        document.querySelector('.prof').style.transform="translateX("+currentPosition+"%)"; 
-    };
-
-    const init = () => {
+    const init = () => { 
         appendSpecializations();
         addEvents(); 
     }
