@@ -21,6 +21,7 @@ body {width: 100%; height: 100%;}
       to { opacity: 1; }
 }
 
+
 @keyframes slideInDown {
     0%   {opacity:0; transform: translateY(100px)}
     100% {opacity:1; transform: translateX(0)}
@@ -173,9 +174,10 @@ body {width: 100%; height: 100%;}
             background: transparent;
             border:none;
             outline:none;
-            display:block;
+            display:inline-block;
             text-align: center;
             padding:0;
+            width: auto;
             transition: font-size 0.3s;
             font-family: $font_title_family;
             font-size: 8.0rem;
@@ -186,8 +188,9 @@ body {width: 100%; height: 100%;}
 
         h2{
             opacity:0;
-            text-align: left;
             display: inline-block;
+            padding-top:0;
+            text-align: left;
             &:before{content:', '}
 
             @media( max-width: $screen_size_S){
@@ -201,7 +204,6 @@ body {width: 100%; height: 100%;}
         &--shifted{
             
             input.prof__name{
-                display:inline-block;
                 text-align: right; 
                 border-bottom: solid 2px rgba($color_text_light,0.28);
                 padding-top: 10%;
@@ -215,10 +217,11 @@ body {width: 100%; height: 100%;}
                 }
             }
             label.prof__name-label{
-                animation: fadeOut 0.3s;
+                animation: fadeOut 0s;
                 animation-fill-mode: forwards;
             }
             h2{
+                padding-top:10%;
                 animation: fadeIn 0.3s;
                 animation-fill-mode: forwards;               
             }
@@ -505,7 +508,7 @@ body {width: 100%; height: 100%;}
         width:0%;
         height:100%;
         background: $color_theme3_1 $gradient_theme3_1;
-        transition: width 2s;
+        transition: width 0.3s;
         img {
             transform-origin: 100% 50%;
             width: 50%;

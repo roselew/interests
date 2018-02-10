@@ -238,6 +238,8 @@ const profModule = (function(){
         document.querySelector('.prof__name')
                 .addEventListener("keydown", waitForBreak)
 
+        document.querySelector('.prof__name').addEventListener("keyup",  resizeName2)
+
         //adds click to goals, go from goals to course page
         document.querySelector('.prof__goals ul li:nth-child(1)')
                 .addEventListener("click", appendBeginnerCourses)
@@ -251,6 +253,8 @@ const profModule = (function(){
                     document.querySelector('.prof__badges-footer').classList.remove('prof__badges-footer--active')
                 })            
         })
+
+        
 
         //turn off bottom panel on badges page if you go further 
         document.querySelector('.prof__badges-footer .prof__badge-btn')
@@ -373,20 +377,19 @@ const profModule = (function(){
 
     //push input with name higher and show specializations
     const resizeName = () => {
-        //resize input width
-        document.querySelector('.prof__name').style.width= (document.querySelector('.prof__name').value.length+1) / 2 + 'em'; 
         //move input
-        document.querySelector('.prof__specs').classList.add('prof__specs--shifted');         
+        document.querySelector('.prof__specs').classList.add('prof__specs--shifted');
+        document.querySelector('.prof__specs--shifted h2 span').textContent='czym się interesujesz?';         
         //get rid of this listener, once input is resized it won't move
         document.querySelector('.prof__name').removeEventListener("keydown",waitForBreak);
         //add listener that will resize input with every entry
-        document.querySelector('.prof__name').addEventListener("keydown",  resizeName2)
+        
     }
 
     //resize input with name
     const resizeName2 = (e) => {
-            e.target.style.width= (e.target.value.length+2) / 2 + 'em';
-            //e.target.setAttribute('size',e.target.value.length)            
+            //e.target.style.width= (e.target.value.length+2) / 2 + 'em';
+            e.target.setAttribute('size',e.target.value.length)            
     }
 
     //thisis both for badges and specializations
